@@ -256,3 +256,17 @@ if (statEls.length) {
   window.addEventListener("resize", onScroll, { passive: true });
   update();
 })();
+
+
+/* ---------- contact: live local time ---------- */
+(function localClock() {
+  const el = document.getElementById("localTime");
+  if (!el) return;
+  function tick() {
+    el.textContent = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", hour12: false,
+    }).format(new Date());
+  }
+  tick();
+  setInterval(tick, 20000);
+})();
