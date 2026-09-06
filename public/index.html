@@ -21,9 +21,9 @@
 
 <nav class="nav-menu" id="navMenu" aria-label="Sections" hidden>
   <a href="#capabilities">capabilities</a>
-  <a href="#about">about</a>
   <a href="#systems">systems</a>
   <a href="#experience">experience</a>
+  <a href="#about">about</a>
   <a href="#contact">contact</a>
   <span class="theme-toggle" role="group" aria-label="Theme">
     <span class="dim">theme:</span>
@@ -49,21 +49,16 @@
 
     <p class="cmd"><span class="prompt">$</span> cat intro.txt</p>
     <div class="out">
-      <p class="typewriter" id="introText" data-text="I build systems that act on their own — browsers that navigate and decide, computer-vision models that catch what a human would miss, pipelines that turn manual, repetitive work into something that runs itself. ~7 years focused on automation and applied AI: designing autonomous agents, training and shipping models, and building the infrastructure that lets them run unsupervised."></p>
+      <p class="typewriter type-target" id="introText">I build systems that act on their own — browsers that navigate and decide, computer-vision models that catch what a human would miss, pipelines that turn manual, repetitive work into something that runs itself. ~7 years focused on automation and applied AI: designing autonomous agents, training and shipping models, and building the infrastructure that lets them run unsupervised.</p>
+    </div>
+
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#systems">my work</a>
+      <a class="btn btn-ghost" href="resume/Govind_Pradeep_Resume.pdf" download>download resume</a>
     </div>
 
     <p class="cmd"><span class="prompt">$</span> tail -f systems.log --summary</p>
     <div class="out stat-log">
-      <div class="stat-line">
-        <span class="tag tag-ok">[ok]</span>
-        <span class="stat-num" data-count="2200000" data-end="2500000" data-suffix="">0</span>
-        <span class="stat-desc">rows of data scraped &amp; processed</span>
-      </div>
-      <div class="stat-line">
-        <span class="tag tag-ok">[ok]</span>
-        <span class="stat-num" data-count="120" data-end="150" data-suffix="">0</span>
-        <span class="stat-desc">APIs &amp; endpoints built across those systems</span>
-      </div>
       <div class="stat-line">
         <span class="tag tag-ok">[ok]</span>
         <span class="stat-num" data-count="40" data-suffix="+">0</span>
@@ -74,12 +69,16 @@
         <span class="stat-num" data-count="7" data-suffix=" yrs">0</span>
         <span class="stat-desc">professional AI &amp; automation engineering</span>
       </div>
-    </div>
-
-    <p class="cmd"><span class="prompt">$</span> ./next-steps.sh</p>
-    <div class="out options">
-      <a class="opt opt-primary" href="#systems"><span class="caret">&gt;</span> my work</a>
-      <button type="button" class="opt" title="Coming soon"><span class="caret">&gt;</span> download resume</button>
+      <div class="stat-line">
+        <span class="tag tag-ok">[ok]</span>
+        <span class="stat-num" data-count="120" data-end="150" data-suffix="">0</span>
+        <span class="stat-desc">APIs &amp; endpoints built across those systems</span>
+      </div>
+      <div class="stat-line">
+        <span class="tag tag-ok">[ok]</span>
+        <span class="stat-num" data-count="2200000" data-end="2500000" data-suffix="">0</span>
+        <span class="stat-desc">rows of data scraped &amp; processed</span>
+      </div>
     </div>
   </section>
 
@@ -152,29 +151,6 @@
         <p class="entry-tags">--tags swiftui cognito-identity on-device-inference</p>
       </article>
 
-    </div>
-  </section>
-
-  <hr class="rule">
-
-  <!-- ============ about ============ -->
-  <section class="block" id="about">
-    <p class="cmd"><span class="prompt">$</span> cat about-me.txt</p>
-    <div class="out">
-      <p class="entry-body">I like building things more than talking about building things. Most of
-      what's on this page started as "this manual work is stupid, I could automate it" and turned
-      into something that runs on its own. That's the part I enjoy — the moment a system stops
-      needing me.</p>
-      <p class="entry-body">Off the clock I read a lot, and I'm a fairly serious gamer. Mostly
-      <strong>Dota 2</strong>, where I play as <strong>devilsnare</strong> — currently rank
-      <strong>4300</strong> on the
-      <a href="https://www.dota2.com/leaderboards/#sea" target="_blank" rel="noopener">SEA
-      leaderboards</a>, which takes about as much stubbornness as debugging someone else's
-      Selenium script at 2am. Same instinct, different arena: learn the system, find where it
-      breaks, get better at it.</p>
-      <p class="entry-body">I also write occasionally — here's
-      <a href="https://medium.com/@thewholeworldfun/how-i-created-my-first-discord-bot-using-javascript-b6d48385751a" target="_blank" rel="noopener">how
-      I built my first Discord bot in JavaScript</a>.</p>
     </div>
   </section>
 
@@ -388,6 +364,31 @@
 
   <hr class="rule">
 
+  <!-- ============ about ============ -->
+  <section class="block" id="about">
+    <p class="cmd"><span class="prompt">$</span> cat about-me.txt</p>
+    <div class="out">
+      <p class="entry-body">Maybe I'm lazy — but that's exactly what made me automate everything.
+      Most of what's on this page started as "this manual work is stupid, I could automate it"
+      and turned into something that runs on its own. That's the part I enjoy: the moment a
+      system stops needing me.</p>
+      <p class="entry-body">Based in <strong>Bangalore, India</strong>, working with teams
+      anywhere.</p>
+      <p class="entry-body">Off the clock I read a lot, and I'm a fairly serious gamer. Mostly
+      <strong>Dota 2</strong>, where I play as <strong>devilsnare</strong> — currently rank
+      <strong>4300</strong> on the
+      <a href="https://www.dota2.com/leaderboards/#sea" target="_blank" rel="noopener">SEA
+      leaderboards</a>, which takes about as much stubbornness as debugging someone else's
+      Selenium script at 2am. Same instinct, different arena: learn the system, find where it
+      breaks, get better at it.</p>
+      <p class="entry-body">I also write occasionally — here's
+      <a href="https://medium.com/@thewholeworldfun/how-i-created-my-first-discord-bot-using-javascript-b6d48385751a" target="_blank" rel="noopener">how
+      I built my first Discord bot in JavaScript</a>.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
   <!-- ============ contact ============ -->
   <section class="block" id="contact">
     <p class="cmd"><span class="prompt">$</span> whois govind</p>
@@ -395,17 +396,16 @@
     <div class="out whois">
       <div class="whois-row"><span class="whois-key">name</span><span>govind pradeep</span></div>
       <div class="whois-row"><span class="whois-key">email</span><a href="mailto:govindpradeep1998@gmail.com">govindpradeep1998@gmail.com</a></div>
-      <div class="whois-row"><span class="whois-key">phone</span><a href="tel:+918075671785">+91 80756 71785</a></div>
+      <div class="whois-row"><span class="whois-key">phone</span><a href="tel:+919061905172">+91 90619 05172</a></div>
       <div class="whois-row"><span class="whois-key">linkedin</span><a href="https://www.linkedin.com/in/devilasenare/" target="_blank" rel="noopener">linkedin.com/in/devilasenare</a></div>
       <div class="whois-row"><span class="whois-key">writing</span><a href="https://medium.com/@thewholeworldfun/how-i-created-my-first-discord-bot-using-javascript-b6d48385751a" target="_blank" rel="noopener">medium — building a discord bot in javascript</a></div>
       <div class="whois-row"><span class="whois-key">dota 2</span><a href="https://www.dota2.com/leaderboards/#sea" target="_blank" rel="noopener">devilsnare — rank 4300, sea leaderboards</a></div>
-      <div class="whois-row"><span class="whois-key">location</span><span>remote-friendly — open to travel</span></div>
+      <div class="whois-row"><span class="whois-key">location</span><span>bangalore, india — remote-friendly, open to travel</span></div>
       <div class="whois-row"><span class="whois-key">booking</span><span class="dim">&lt;coming soon&gt;</span></div>
     </div>
 
-    <p class="cmd"><span class="prompt">$</span> ./get-in-touch.sh</p>
-    <div class="out options">
-      <a class="opt opt-primary" href="mailto:govindpradeep1998@gmail.com"><span class="caret">&gt;</span> email me</a>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="mailto:govindpradeep1998@gmail.com">email me</a>
     </div>
   </section>
 

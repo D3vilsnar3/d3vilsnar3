@@ -214,13 +214,15 @@ main { max-width: var(--content-max); margin: 0 auto; padding: 0 24px; }
   white-space: pre-wrap;
   min-height: 4.5em;
 }
-.typewriter::after {
+
+/* generic scroll-triggered typing reveal, shared by the intro and every
+   descriptive text block on the page */
+.type-target.typing::after {
   content: "▌";
   color: var(--prompt);
   animation: blink 1s steps(1) infinite;
   margin-left: 2px;
 }
-.typewriter.done::after { display: none; }
 
 .stat-log { display: flex; flex-direction: column; gap: 10px; }
 @media (min-width: 700px) {
@@ -243,23 +245,37 @@ main { max-width: var(--content-max); margin: 0 auto; padding: 0 24px; }
 }
 .stat-desc { color: var(--fg); font-size: 15.5px; flex-basis: 100%; margin-top: 2px; }
 
-.options { display: flex; flex-direction: column; gap: 6px; }
-.opt {
-  color: var(--fg);
-  text-decoration: none;
-  width: max-content;
-  background: none;
-  border: none;
-  padding: 0;
-  font-family: var(--font-mono);
-  font-size: inherit;
-  text-align: left;
-  cursor: pointer;
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 20px 0 32px;
 }
-.opt .caret { color: var(--prompt); margin-right: 8px; }
-.opt:hover { color: var(--accent); }
-.opt:hover .caret { color: var(--accent); }
-.opt-primary { color: var(--accent); font-weight: 600; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 14.5px;
+  font-weight: 600;
+  padding: 12px 22px;
+  border-radius: 3px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg);
+  border: 1px solid var(--accent);
+}
+.btn-primary:hover { background: var(--fg); border-color: var(--fg); }
+.btn-ghost {
+  background: none;
+  color: var(--fg);
+  border: 1px solid var(--rule);
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
 /* anchored sections shouldn't land underneath the sticky top bar */
 #capabilities, #about, #systems, #experience, #contact {
@@ -276,7 +292,40 @@ main { max-width: var(--content-max); margin: 0 auto; padding: 0 24px; }
     row-gap: 34px;
   }
 }
-.entry { padding: 0; }
+.entry {
+  padding: 0;
+  position: relative;
+}
+/* faint abstract line-art behind each description, so the empty space
+   around shorter entries doesn't read as bare. Purely decorative — sits
+   behind the text via normal paint order, no z-index needed. */
+.entry::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: -10px;
+  width: 220px;
+  height: 220px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+}
+.listing .entry:nth-of-type(4n+1)::before {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMjAiIGhlaWdodD0iMjIwIiB2aWV3Qm94PSIwIDAgMjIwIDIyMCI+PHBvbHlnb24gcG9pbnRzPSIxMTAsMTAgMTgwLDQwIDIwNSwxMDAgMTkwLDE2MCAxNDAsMjA1IDgwLDIwMCAzMCwxNTUgMjAsOTAgNTUsMzUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYyZDlhOCIgc3Ryb2tlLXdpZHRoPSIxLjEiIG9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=");
+}
+.listing .entry:nth-of-type(4n+2)::before {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMjAiIGhlaWdodD0iMjIwIiB2aWV3Qm94PSIwIDAgMjIwIDIyMCI+PHBvbHlnb24gcG9pbnRzPSIyMCw2MCA5MCwxNSAxNTAsMzAgMjAwLDgwIDE4MCwxNTAgMTIwLDIwMCA2MCwxODAgMTUsMTIwIiBmaWxsPSJub25lIiBzdHJva2U9IiM2MmQ5YTgiIHN0cm9rZS13aWR0aD0iMS4xIiBvcGFjaXR5PSIwLjA1Ii8+PC9zdmc+");
+}
+.listing .entry:nth-of-type(4n+3)::before {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMjAiIGhlaWdodD0iMjIwIiB2aWV3Qm94PSIwIDAgMjIwIDIyMCI+PHBvbHlnb24gcG9pbnRzPSIxMDAsNSAxNjAsNTAgMjEwLDExMCAxNzAsMTkwIDEwMCwyMTAgNDAsMTc1IDEwLDExMCA0NSw1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjJkOWE4IiBzdHJva2Utd2lkdGg9IjEuMSIgb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==");
+}
+.listing .entry:nth-of-type(4n)::before {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMjAiIGhlaWdodD0iMjIwIiB2aWV3Qm94PSIwIDAgMjIwIDIyMCI+PHBvbHlnb24gcG9pbnRzPSIzMCwxMDAgNzAsMjAgMTUwLDE1IDIwMCw3MCAxOTAsMTQwIDEzMCwyMDUgNjAsMTkwIDE1LDE1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjJkOWE4IiBzdHJva2Utd2lkdGg9IjEuMSIgb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==");
+}
+#capabilities .entry::before { width: 170px; height: 170px; }
+@media (max-width: 600px) {
+  .entry::before { width: 140px; height: 140px; opacity: 0.7; }
+}
 .entry-head { margin: 0 0 9px; font-size: 16.5px; }
 .dir { color: var(--link); font-size: 12px; }
 .path { color: var(--fg); font-weight: 600; }

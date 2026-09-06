@@ -52,24 +52,47 @@ themeButtons.forEach((btn) => {
   });
 });
 
-/* ---------- typewriter intro ---------- */
-const intro = document.getElementById("introText");
-if (intro) {
-  const fullText = intro.dataset.text || "";
-  {
-    let i = 0;
-    const speed = 14; // ms per character
-    function type() {
-      if (i <= fullText.length) {
-        intro.textContent = fullText.slice(0, i);
-        i++;
-        setTimeout(type, speed);
-      } else {
-        intro.classList.add("done");
-      }
+/* ---------- typewriter reveal for every descriptive text block ----------
+   Applies to anything marked .type-target: the hero intro, every
+   capability/system description, and every experience bullet. Each types
+   out the first time it scrolls into view, preserving any links/bold text
+   inside it (stored up front, restored once typing finishes). */
+function typewriterReveal(el, speed) {
+  if (el.dataset.typed === "1") return;
+  el.dataset.typed = "1";
+  const html = el.innerHTML;
+  const text = el.textContent;
+  el.textContent = "";
+  el.classList.add("typing");
+  let i = 0;
+  function step() {
+    if (i <= text.length) {
+      el.textContent = text.slice(0, i);
+      i++;
+      setTimeout(step, speed);
+    } else {
+      el.innerHTML = html;
+      el.classList.remove("typing");
     }
-    type();
   }
+  step();
+}
+
+const typeTargets = document.querySelectorAll(".type-target");
+if (typeTargets.length) {
+  const typeObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const isIntro = entry.target.id === "introText";
+          typewriterReveal(entry.target, isIntro ? 14 : 6);
+          typeObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
+  );
+  typeTargets.forEach((el) => typeObserver.observe(el));
 }
 
 /* ---------- stat count-up ---------- */

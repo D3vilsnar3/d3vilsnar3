@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Govind Pradeep — Resume</title>
+<style>
+  @page { size: A4; margin: 0; }
+
+  :root {
+    --navy: #17243c;
+    --navy-soft: #24344f;
+    --accent: #2f6fb5;
+    --ink: #1c1f24;
+    --muted: #565c66;
+    --hair: #d6dae1;
+    --side-w: 33%;
+    --pad-x: 15mm;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    line-height: 1.58;
+    color: var(--ink);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- page 1 shell: navy band only on the first sheet ---------- */
+  .sheet {
+    position: relative;
+    width: 210mm;
+    height: 297mm;
+    padding: 14mm var(--pad-x) 12mm;
+    overflow: hidden;
+  }
+  .sheet--one::before {
+    content: "";
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: var(--side-w);
+    background: var(--navy);
+  }
+  .sheet--two { page-break-before: always; }
+
+  .col-main { width: calc(100% - var(--side-w) - 8mm); }
+
+  /* ---------- header ---------- */
+  .name {
+    font-size: 27pt;
+    font-weight: 700;
+    letter-spacing: -0.6pt;
+    line-height: 1.05;
+    margin: 0;
+  }
+  .title {
+    font-size: 10.5pt;
+    font-weight: 600;
+    letter-spacing: 2.6pt;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 7pt 0 0;
+  }
+  .name-rule {
+    width: 46pt;
+    height: 2.4pt;
+    background: var(--accent);
+    margin: 13pt 0 0;
+  }
+
+  /* ---------- main-column sections ---------- */
+  h2 {
+    font-size: 12pt;
+    font-weight: 700;
+    letter-spacing: 0.2pt;
+    margin: 16pt 0 8pt;
+    color: var(--ink);
+  }
+  h2:first-of-type { margin-top: 18pt; }
+  .sheet--two h2:first-of-type { margin-top: 0; }
+
+  p.summary { margin: 0; text-align: left; color: #23272e; }
+
+  .role { margin-top: 15pt; }
+  .role:first-of-type { margin-top: 0; }
+  .role-title { font-size: 11pt; font-weight: 700; margin: 0; }
+  .role-org { color: var(--accent); }
+  .role-meta {
+    font-size: 8.8pt;
+    color: var(--muted);
+    letter-spacing: 0.4pt;
+    text-transform: uppercase;
+    margin: 3pt 0 8pt;
+  }
+
+  ul { margin: 0; padding-left: 14pt; }
+  li { margin-bottom: 5.6pt; padding-left: 1pt; }
+  li:last-child { margin-bottom: 0; }
+  li strong { font-weight: 700; }
+  li .lead { font-weight: 700; }
+
+  /* ---------- education / certs ---------- */
+  .stack-item { margin-bottom: 11pt; }
+  .stack-item:last-child { margin-bottom: 0; }
+  .stack-title { font-weight: 700; margin: 0; }
+  .stack-meta { font-size: 8.8pt; color: var(--muted); margin: 2pt 0 0; }
+
+  /* ---------- sidebar ---------- */
+  .side {
+    position: absolute;
+    top: 14mm;
+    right: 0;
+    width: var(--side-w);
+    padding: 0 var(--pad-x) 0 9mm;
+    color: #e8ecf3;
+  }
+  .side h3 {
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 1.8pt;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin: 0 0 8pt;
+    padding-bottom: 4pt;
+    border-bottom: 0.8pt solid rgba(255,255,255,0.28);
+  }
+  .side section { margin-bottom: 20pt; }
+  .side section:last-child { margin-bottom: 0; }
+  .side p { margin: 0 0 7pt; font-size: 9pt; line-height: 1.5; color: #cbd4e2; }
+  .side p:last-child { margin-bottom: 0; }
+  .side .lbl {
+    display: block;
+    font-size: 7.6pt;
+    letter-spacing: 1pt;
+    text-transform: uppercase;
+    color: #8fa3c4;
+    margin-bottom: 1pt;
+  }
+  .side a { color: #cbd4e2; }
+
+  /* skill bars */
+  .skill { margin-bottom: 9pt; }
+  .skill:last-child { margin-bottom: 0; }
+  .skill-name { font-size: 9pt; color: #e8ecf3; margin-bottom: 3.5pt; }
+  .bar { height: 3.2pt; background: rgba(255,255,255,0.18); border-radius: 2pt; }
+  .bar > i { display: block; height: 100%; background: #6ea8e8; border-radius: 2pt; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 4pt; }
+  .chips span {
+    font-size: 8pt;
+    color: #cbd4e2;
+    border: 0.7pt solid rgba(255,255,255,0.3);
+    border-radius: 8pt;
+    padding: 1.6pt 6pt;
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1 ================= -->
+<div class="sheet sheet--one">
+
+  <div class="col-main">
+    <h1 class="name">Govind<br>Pradeep</h1>
+    <p class="title">Automation &amp; AI Engineer</p>
+    <div class="name-rule"></div>
+
+    <h2>Profile</h2>
+    <p class="summary">Engineer with ~7 years building automation and applied-AI systems end to end —
+    autonomous browser agents, production computer-vision pipelines, and the cloud infrastructure
+    that runs them unsupervised. I take systems from first prototype through production operation:
+    training and shipping models, hardening automation against real-world failure, and leading the
+    people who produce the ground-truth data behind it.</p>
+
+    <h2>Experience</h2>
+
+    <div class="role">
+      <p class="role-title">Senior Automation &amp; AI Engineer, <span class="role-org">AsimovX</span></p>
+      <p class="role-meta">Feb 2024 — Present</p>
+      <ul>
+        <li><span class="lead">Own the production AWS data pipeline behind GolfTrak's shot data</span>
+        — nine Lambda functions spanning ingest, quality control, alignment, scoring, daily
+        reporting and alerting, backed by DynamoDB and S3.</li>
+
+        <li><span class="lead">Built GolfTrak's automated shot quality-control system:</span> two
+        production Lambdas validating every capture a device uploads — parameter checks, then
+        CNN/ONNX visual verification with a Bedrock Nemotron fallback, plus a rendered annotated
+        video for human review. <strong>86% recall</strong> on range-mode ball-impact detection.</li>
+
+        <li><span class="lead">Lead a team of annotators</span> producing ground-truth data for the
+        computer-vision pipeline, and built the PyQt5 desktop tooling they use daily — per-user
+        attribution, a correction/verification workflow, and live physics feedback so a correction's
+        effect is visible immediately rather than discovered downstream.</li>
+
+        <li><span class="lead">Trained and shipped three neural networks</span> predicting spin rate,
+        spin axis and club speed on a dataset of <strong>~2.4M rows</strong>. Converted to CoreML for
+        on-device iOS inference, cutting club-speed error from <strong>20.5 km/h to 1.99 km/h</strong>
+        against the legacy model.</li>
+
+        <li><span class="lead">Built an autonomous negotiation agent</span> — a browser extension
+        plus Flask service driving an authenticated session, pricing listings from photos via a
+        Bedrock vision model and negotiating unattended. Runs continuously on EC2 with block
+        detection and spam guards built from real incidents.</li>
+
+        <li><span class="lead">Built a fleet of five production scrapers</span> collecting
+        <strong>22,000+ profiles and posts</strong>, each with its own deduplication and
+        resume-after-failure logic.</li>
+      </ul>
+    </div>
+  </div>
+
+  <aside class="side">
+    <section>
+      <h3>Details</h3>
+      <p><span class="lbl">Location</span>Bangalore, India — open to remote</p>
+      <p><span class="lbl">Phone</span>+91 90619 05172</p>
+      <p><span class="lbl">Email</span><a href="mailto:govindpradeep1998@gmail.com">govindpradeep1998@gmail.com</a></p>
+    </section>
+
+    <section>
+      <h3>Links</h3>
+      <p><span class="lbl">Portfolio</span><a href="https://d3vilsnar3.com">d3vilsnar3.com</a></p>
+      <p><span class="lbl">LinkedIn</span><a href="https://www.linkedin.com/in/devilasenare/">linkedin.com/in/devilasenare</a></p>
+      <p><span class="lbl">Writing</span><a href="https://medium.com/@thewholeworldfun">medium.com/@thewholeworldfun</a></p>
+    </section>
+
+    <section>
+      <h3>Core Skills</h3>
+      <div class="skill">
+        <div class="skill-name">Python</div>
+        <div class="bar"><i style="width:95%"></i></div>
+      </div>
+      <div class="skill">
+        <div class="skill-name">Browser Automation</div>
+        <div class="bar"><i style="width:95%"></i></div>
+      </div>
+      <div class="skill">
+        <div class="skill-name">LLM &amp; Agent Systems</div>
+        <div class="bar"><i style="width:90%"></i></div>
+      </div>
+      <div class="skill">
+        <div class="skill-name">AWS / Cloud</div>
+        <div class="bar"><i style="width:88%"></i></div>
+      </div>
+      <div class="skill">
+        <div class="skill-name">Computer Vision &amp; ML</div>
+        <div class="bar"><i style="width:85%"></i></div>
+      </div>
+      <div class="skill">
+        <div class="skill-name">APIs &amp; Backend</div>
+        <div class="bar"><i style="width:88%"></i></div>
+      </div>
+    </section>
+
+    <section>
+      <h3>Toolkit</h3>
+      <div class="chips">
+        <span>AWS Bedrock</span><span>Playwright</span><span>Selenium</span>
+        <span>Chrome MV3</span><span>Lambda</span><span>DynamoDB</span>
+        <span>TensorFlow</span><span>ONNX</span><span>CoreML</span>
+        <span>Hugging Face</span><span>Rasa</span><span>DialogFlow</span>
+        <span>Flask</span><span>Express</span><span>Docker</span>
+        <span>SwiftUI</span><span>JavaScript</span><span>SQL</span>
+      </div>
+    </section>
+
+    <section>
+      <h3>Languages</h3>
+      <p>English — Professional</p>
+      <p>Malayalam — Native</p>
+    </section>
+  </aside>
+</div>
+
+<!-- ================= PAGE 2 ================= -->
+<div class="sheet sheet--two">
+  <div class="col-main" style="width:100%">
+
+    <h2>Experience (continued)</h2>
+
+    <div class="role">
+      <p class="role-title">AI Engineer, <span class="role-org">Accubits Technologies</span></p>
+      <p class="role-meta">Aug 2019 — Dec 2023 · Trivandrum</p>
+      <ul>
+        <li><span class="lead">Deep Listening</span> — built a multi-modal information-extraction
+        platform: Hugging Face models for object detection, tagging and image description;
+        translation and transcription for audio; combined handling for video; summarization and
+        keyword extraction for text. Integrated a fine-tuned LLaMA with a vector database for
+        retrieval-backed extraction and chat.</li>
+
+        <li><span class="lead">CipBot (Cipla)</span> — an intelligent WhatsApp chatbot built on Rasa
+        connecting Cipla's procurement team with its vendors, surfacing internal database records
+        through a structured chat flow with role-based options per user type, plus an admin panel
+        for reviewing interactions and data traffic.</li>
+
+        <li><span class="lead">Trajectus (Computer Instruments)</span> — an IVR-based chatbot on
+        Google DialogFlow handling medical query calls, delivered as outsourced client work.</li>
+
+        <li><span class="lead">Coglide</span> — built "Cori", an email service extracting contact
+        details from inbound mail, and "Gx", a browser extension synchronising data from diverse
+        marketing websites into Coglide's database. Owned the data scraping and automation across
+        the product, and ran the research server feeding its marketing data.</li>
+
+        <li><span class="lead">Emotyx</span> — created and deployed the Python backend network
+        extracting actionable customer-understanding insights from real-time CCTV footage,
+        including footage management and recording.</li>
+
+        <li><span class="lead">Attendance Management System</span> — owned the entire back-end code
+        structure for student and attendance records, and supported the AI image-processing work.</li>
+
+        <li><span class="lead">Also delivered</span> — a GPT-3.5 minutes-to-meeting generator that
+        transcribed calls and wrote up minutes; shell tooling verifying API endpoint data and
+        hardening it against SQL injection, shipped as a Postman collection; a Selenium scraper
+        collecting marketing data across multiple social networks; a back-end network for the
+        Learning &amp; Development team; a scraping service for Talent Acquisition; and the
+        back-end and detection module for PPE-kit detection.</li>
+      </ul>
+    </div>
+
+    <h2>Education</h2>
+    <div class="stack-item">
+      <p class="stack-title">B.Tech, Computer Science</p>
+      <p class="stack-meta">Sree Chitra Thirunal College of Engineering, Thiruvananthapuram · 2019</p>
+    </div>
+    <div class="stack-item">
+      <p class="stack-title">Higher Secondary, Computer Science</p>
+      <p class="stack-meta">CBSE, Kendriya Vidyalaya Pattom, Thiruvananthapuram · 2015</p>
+    </div>
+
+    <h2>Certification &amp; Writing</h2>
+    <div class="stack-item">
+      <p class="stack-title">Python: Programming Efficiently</p>
+      <p class="stack-meta">LinkedIn Learning</p>
+    </div>
+    <div class="stack-item">
+      <p class="stack-title">How I Created My First Discord Bot Using JavaScript</p>
+      <p class="stack-meta">Technical article · Medium</p>
+    </div>
+
+    <h2>Interests</h2>
+    <div class="stack-item">
+      <p class="stack-meta" style="font-size:9.6pt;color:#23272e;">Competitive Dota 2 — ranked on the
+      SEA leaderboards. Reading, gaming, and taking apart systems to work out where they break.</p>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
