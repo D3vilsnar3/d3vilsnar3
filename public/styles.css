@@ -130,6 +130,11 @@ strong { color: var(--fg); font-weight: 600; }
 }
 .nav-menu a:hover { color: var(--accent); }
 .nav-menu .theme-toggle { margin: 12px 0 0; }
+.nav-menu .nav-cta {
+  color: var(--accent);
+  font-weight: 600;
+  border-bottom-color: var(--accent);
+}
 
 /* ============ Full-page starfield ============ */
 #particles, #asteroids {
