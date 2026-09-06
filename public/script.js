@@ -43,15 +43,25 @@ const root = document.documentElement;
     if (done) return;
     root.classList.add("intro-settling");
 
+    // Anchor the flight by TOP-LEFT, not centre. The floating name is
+    // shrink-wrapped to its text while the hero <h1> is a full-width block,
+    // so matching centres left their left edges ~35px apart on narrow
+    // screens and the text visibly jumped sideways at the hand-off.
     const from = introName.getBoundingClientRect();
+    introName.style.left = from.left + "px";
+    introName.style.top = from.top + "px";
+    introName.style.transform = "none";
+    introName.style.transformOrigin = "top left";
+    void introName.offsetWidth;                     // commit before animating
+
     const to = heroName.getBoundingClientRect();
-    const scale = Math.min(1, to.height / from.height);
-    const dx = (to.left + to.width / 2) - (from.left + from.width / 2);
-    const dy = (to.top + to.height / 2) - (from.top + from.height / 2);
+    const fromFont = parseFloat(getComputedStyle(introName).fontSize);
+    const toFont = parseFloat(getComputedStyle(heroName).fontSize);
+    const scale = toFont / fromFont;                // glyphs match exactly
 
     introName.classList.add("flying");
     introName.style.transform =
-      `translate(-50%, -50%) translate(${dx}px, ${dy}px) scale(${scale})`;
+      `translate(${to.left - from.left}px, ${to.top - from.top}px) scale(${scale})`;
 
     setTimeout(finish, 1600);
   }, 1750);

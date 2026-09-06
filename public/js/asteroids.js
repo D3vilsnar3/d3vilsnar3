@@ -21,7 +21,8 @@
   var bullets = [], rocks = [], debris = [];
   var visible = true;
   var scriptedUntil = 0;   // straight commanded path (intro flyby)
-  var confineShip = false; // after the intro the ship keeps to the top band
+  var confineShip = false;    // hard-clamped inside the top band
+  var returningToBand = false; // flying back up to it under its own power
 
   /* The ship stays inside the strip it used to occupy as a banner —
      200px on desktop, 140px on mobile — even though the asteroid field
@@ -164,13 +165,32 @@
       ship.vy += Math.sin(ship.angle) * 210 * dt;
     }
     ship.vx *= 0.995; ship.vy *= 0.995;
+    // normal patrol speed is a slow drift; the flight home is much brisker
+    var maxSpeed = returningToBand ? 230 : 46;
     var sp = Math.hypot(ship.vx, ship.vy);
-    if (sp > 46) { ship.vx = (ship.vx / sp) * 46; ship.vy = (ship.vy / sp) * 46; }
+    if (sp > maxSpeed) { ship.vx = (ship.vx / sp) * maxSpeed; ship.vy = (ship.vy / sp) * maxSpeed; }
 
     ship.x += ship.vx * dt;
     ship.y += ship.vy * dt;
 
-    if (confineShip) {
+    if (returningToBand) {
+      // fly home under thrust rather than snapping there: aim at a point in
+      // the band and accelerate, handing over to the hard clamp on arrival
+      var homeY = shipBand() * 0.55;
+      var aim = Math.atan2(homeY - ship.y, (W * 0.5) - ship.x);
+      var d2 = Math.atan2(Math.sin(aim - ship.angle), Math.cos(aim - ship.angle));
+      ship.angle += d2 * Math.min(1, dt * 4.5);
+      ship.vx = Math.cos(ship.angle) * 230;
+      ship.vy = Math.sin(ship.angle) * 230;
+      ship.thrust = true;
+      if (ship.y <= shipBand()) {
+        returningToBand = false;
+        confineShip = true;
+        // bleed the return speed off into a normal drift
+        ship.vx *= 0.18; ship.vy *= 0.18;
+      }
+      wrap(ship);
+    } else if (confineShip) {
       // stay in the upper band: wrap horizontally, gently bounce vertically
       var lo = 34, hi = shipBand();
       if (ship.x < -24) ship.x = W + 24;
@@ -397,8 +417,8 @@
     },
     // after the intro, keep the ship patrolling the top band of the page
     confineToTop: function () {
-      confineShip = true;
-      ship.y = Math.min(ship.y, shipBand() - 20);
+      if (ship.y <= shipBand()) { confineShip = true; returningToBand = false; }
+      else { returningToBand = true; confineShip = false; }
     },
     resize: function () { resize(); },
     // exposed for verification: where the ship currently is
