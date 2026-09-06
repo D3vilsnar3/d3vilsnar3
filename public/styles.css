@@ -347,7 +347,7 @@ main { max-width: var(--content-max); margin: 0 auto; padding: 0 24px; }
 .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
 /* anchored sections shouldn't land underneath the sticky top bar */
-#capabilities, #about, #systems, #experience, #contact {
+#capabilities, #about, #systems, #experience, #blog, #contact {
   scroll-margin-top: 64px;
 }
 
