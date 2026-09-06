@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Systems — Govind Pradeep</title>
+<meta name="description" content="Autonomous agents, production computer-vision pipelines and scraping systems, built end to end and run in production." />
+<link rel="canonical" href="https://d3vilsnar3.com/systems/" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="inner">
+
+<canvas id="particles" aria-hidden="true"></canvas>
+<canvas id="asteroids" aria-hidden="true"></canvas>
+
+<header class="topbar">
+  <a href="/" class="topbar-name">govind pradeep</a>
+  <button type="button" class="hamburger" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav class="nav-menu" id="navMenu" aria-label="Sections" hidden>
+  <a href="/capabilities/">capabilities</a>
+  <a href="/systems/" class="is-active">systems</a>
+  <a href="/experience/">experience</a>
+  <a href="/about/">about</a>
+  <a href="/blog/">blog</a>
+  <a href="/contact/">contact</a>
+  <a class="nav-cta" href="/book">let's talk for 30m</a>
+  <span class="theme-toggle" role="group" aria-label="Theme">
+    <span class="dim">theme:</span>
+    <button type="button" class="theme-opt" data-theme-choice="dark">dark</button>
+    <button type="button" class="theme-opt" data-theme-choice="light">light</button>
+  </span>
+</nav>
+
+<main id="top">
+
+  <section class="block" id="systems">
+<p class="cmd"><span class="prompt">$</span> ps aux --systems</p>
+    <p class="section-note"># six systems, live or run to completion — not demos</p>
+
+    <div class="listing">
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Marketplace Negotiation Agent</span></p>
+        <p class="pipeline">Capture listing <span class="arrow">-&gt;</span> Vision model prices it <span class="arrow">-&gt;</span> Negotiates autonomously</p>
+        <p class="entry-body">A browser extension plus a local server drives an operator's own
+        authenticated session on a large consumer marketplace: assesses item condition from
+        photos, prices accordingly, then negotiates with sellers autonomously — with rate-limit
+        detection and messaging guards built after real incidents, not speculative edge cases.</p>
+        <p class="entry-metric"># runs continuously on a cloud instance, negotiating in parallel</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Sports Capture Quality Control</span></p>
+        <p class="pipeline">Device upload <span class="arrow">-&gt;</span> Parameter + CNN checks <span class="arrow">-&gt;</span> AI fallback <span class="arrow">-&gt;</span> Annotated video</p>
+        <p class="entry-body">Two production AWS Lambdas validate every capture a device
+        uploads: parameter checks, then CNN/ONNX visual verification (Bedrock Nemotron where no
+        model was trained for the mode), then a rendered debug video for anyone reviewing the
+        shot.</p>
+        <p class="entry-metric"># 86% recall on range-mode ball-impact detection · ~16s avg render time</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Launch Monitor ML Suite</span></p>
+        <p class="pipeline">Collect 1,218 exports <span class="arrow">-&gt;</span> Engineer features <span class="arrow">-&gt;</span> Train 3 models <span class="arrow">-&gt;</span> Ship to iOS</p>
+        <p class="entry-body">Scraped bulk sensor exports from a third-party sports launch-monitor
+        portal, then trained neural nets that predict spin rate, spin axis, and club speed from the
+        metrics that are easy to measure — shipped as CoreML models for on-device iOS inference.</p>
+        <p class="entry-metric"># club speed error cut from 20.5 km/h (legacy) to 1.99 km/h</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Tournament Data Agent</span></p>
+        <p class="pipeline">Discover pages <span class="arrow">-&gt;</span> AI extraction <span class="arrow">-&gt;</span> Read flyer images <span class="arrow">-&gt;</span> Merge &amp; dedupe</p>
+        <p class="entry-body">An autonomous agent discovers charity sports-event pages across a
+        tournament-management platform, decides for itself how far to navigate to reach rosters,
+        extracts structured data with a vision-capable model, and reads promotional flyer images
+        via OCR when the details were never real HTML text.</p>
+        <p class="entry-metric"># 178 tournaments extracted end to end from unstructured event pages</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Professional Network Automator</span></p>
+        <p class="pipeline">Browse leads <span class="arrow">-&gt;</span> Human-paced engagement <span class="arrow">-&gt;</span> Email alerting</p>
+        <p class="entry-body">Runs locally and on a cloud instance independently, working through a
+        lead list on a professional network and engaging with the content worth engaging with —
+        randomized human-like pacing, daily caps, and crash-alert email built in after the
+        process silently went down more than once.</p>
+        <p class="entry-metric"># 1,541 items tracked · 98.8% success rate</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Web Scraping Fleet</span></p>
+        <p class="pipeline">Browser extension <span class="arrow">-&gt;</span> Local server <span class="arrow">-&gt;</span> Deduplicated dataset</p>
+        <p class="entry-body">Five independent scrapers, each a purpose-built Chrome extension
+        paired with a local server: association-executive directories, a speaker marketplace, a
+        member community feed, and a professional network — each with its own dedup and resume
+        logic.</p>
+        <p class="entry-metric"># 22,000+ profiles and posts collected across 5 platforms</p>
+      </article>
+    </div>
+
+    <p class="cmd cmd-spaced"><span class="prompt">$</span> cat archive/accubits-systems.log</p>
+    <p class="section-note"># shipped 2019–2023 at accubits technologies, for real clients</p>
+
+    <div class="listing">
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Deep Listening</span></p>
+        <p class="pipeline">Surveys &amp; uploads <span class="arrow">-&gt;</span> Multi-modal extraction <span class="arrow">-&gt;</span> Fine-tuned LLM <span class="arrow">-&gt;</span> Vector retrieval</p>
+        <p class="entry-body">A multi-modal information-extraction platform. Hugging Face models
+        handled object detection, tag generation, and image description on images; translation
+        and transcription on audio; both combined for video; summarization and keyword extraction
+        on text. A fine-tuned LLaMA drove additional extraction and chat, backed by a vector
+        database for retrieval.</p>
+        <p class="entry-metric"># text, image, audio and video in one extraction pipeline</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">CipBot</span></p>
+        <p class="pipeline">WhatsApp <span class="arrow">-&gt;</span> Structured chat flow <span class="arrow">-&gt;</span> Client database <span class="arrow">-&gt;</span> Admin panel</p>
+        <p class="entry-body">An intelligent chatbot connecting Cipla's procurement team with its
+        vendors, deployed on WhatsApp. A structured chat flow surfaced internal database records,
+        with role-based options per user type and an admin panel for reviewing interactions and
+        data traffic.</p>
+        <p class="entry-metric"># built on Rasa, live on WhatsApp for a pharma procurement team</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Trajectus IVR</span></p>
+        <p class="pipeline">Phone call <span class="arrow">-&gt;</span> Voice IVR <span class="arrow">-&gt;</span> Medical query handling</p>
+        <p class="entry-body">An IVR-based chatbot handling medical query calls, built on Google
+        DialogFlow. Delivered as outsourced work for Computer Instruments (CI).</p>
+        <p class="entry-metric"># voice-first, not text — a different failure surface entirely</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Coglide — Cori &amp; Gx</span></p>
+        <p class="pipeline">Inbound email <span class="arrow">-&gt;</span> Contact extraction <span class="arrow">-&gt;</span> Extension sync <span class="arrow">-&gt;</span> Marketing database</p>
+        <p class="entry-body">"Cori", an email service extracting contact details out of inbound
+        mail, plus "Gx", a browser extension syncing data from diverse marketing websites into
+        Coglide's own database. Also owned the data scraping and automation work across the
+        product, and ran the research server that fed its marketing data.</p>
+        <p class="entry-metric"># the earliest version of the scraping work that runs through everything since</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Emotyx</span></p>
+        <p class="pipeline">Live CCTV <span class="arrow">-&gt;</span> Backend network <span class="arrow">-&gt;</span> Customer insights</p>
+        <p class="entry-body">Backend network structure for software extracting intelligent,
+        actionable insights from real-time CCTV footage for customer understanding — built and
+        deployed in Python, handling the managing and recording of the footage itself.</p>
+        <p class="entry-metric"># real-time video in production, not batch analysis</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Attendance Management System</span></p>
+        <p class="pipeline">Student records <span class="arrow">-&gt;</span> Python backend <span class="arrow">-&gt;</span> Image processing</p>
+        <p class="entry-body">Owned the entire back-end code structure for managing student and
+        attendance records, and supported the AI development around its image processing.</p>
+        <p class="entry-metric"># full backend ownership, end to end</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Other Projects</span></p>
+        <p class="entry-body">A GPT-3.5 minutes-to-meeting generator that transcribed calls and
+        wrote up the minutes. Shell tooling to verify API endpoint data and harden it against SQL
+        injection, shipped as a Postman collection. A Selenium scraper collecting marketing data
+        across multiple social networks. A back-end network for the Learning &amp; Development
+        team, and a scraping service for Talent Acquisition to surface new candidates. Plus the
+        back-end and detection module for PPE (Personal Protective Equipment) kit detection.</p>
+        <p class="entry-metric"># the long tail — smaller builds, same instinct</p>
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>&copy; 2026 Govind Pradeep</span>
+</footer>
+
+<script src="/js/particles.js"></script>
+<script src="/js/asteroids.js"></script>
+<script src="/script.js"></script>
+</body>
+</html>

@@ -8,7 +8,11 @@ const root = document.documentElement;
 (function intro() {
   const introName = document.getElementById("introName");
   const heroName = document.querySelector("#hero h1");
-  if (!introName || !heroName) return;
+  // inner pages have no intro overlay — just settle the ship and move on
+  if (!introName || !heroName) {
+    if (window.GPAsteroids) window.GPAsteroids.confineToTop();
+    return;
+  }
 
   const settle = () => {
     if (window.GPAsteroids) window.GPAsteroids.confineToTop();
@@ -228,3 +232,27 @@ if (statEls.length) {
   );
   statEls.forEach((el) => observer.observe(el));
 }
+
+
+/* ---------- experience timeline: fill the rail as you scroll ---------- */
+(function timelineRail() {
+  const fill = document.getElementById("railFill");
+  const rail = fill && fill.parentElement;
+  if (!fill || !rail) return;
+
+  function update() {
+    const r = rail.getBoundingClientRect();
+    const vh = window.innerHeight;
+    // 0 when the rail's top reaches the middle of the screen, 1 at its bottom
+    const progress = (vh * 0.5 - r.top) / r.height;
+    fill.style.transform = `scaleY(${Math.max(0, Math.min(1, progress))})`;
+  }
+
+  let ticking = false;
+  function onScroll() {
+    if (!ticking) { requestAnimationFrame(() => { update(); ticking = false; }); ticking = true; }
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
+  update();
+})();

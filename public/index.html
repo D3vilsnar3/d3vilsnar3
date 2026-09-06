@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Govind Pradeep — Senior Automation &amp; AI Systems Engineer</title>
+<title>Govind Pradeep — Senior Automation & AI Systems Engineer</title>
 <meta name="description" content="Govind Pradeep — Senior Automation & AI Systems Engineer. Builds systems that act on their own: autonomous agents, computer vision, and production ML pipelines." />
+<link rel="canonical" href="https://d3vilsnar3.com/" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 
@@ -16,19 +17,19 @@
 <canvas id="asteroids" aria-hidden="true"></canvas>
 
 <header class="topbar">
-  <a href="#top" class="topbar-name">govind pradeep</a>
+  <a href="/" class="topbar-name">govind pradeep</a>
   <button type="button" class="hamburger" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
 </header>
 
 <nav class="nav-menu" id="navMenu" aria-label="Sections" hidden>
-  <a href="#capabilities">capabilities</a>
-  <a href="#systems">systems</a>
-  <a href="#experience">experience</a>
-  <a href="#about">about</a>
-  <a href="#blog">blog</a>
-  <a href="#contact">contact</a>
+  <a href="/capabilities/">capabilities</a>
+  <a href="/systems/">systems</a>
+  <a href="/experience/">experience</a>
+  <a href="/about/">about</a>
+  <a href="/blog/">blog</a>
+  <a href="/contact/">contact</a>
   <a class="nav-cta" href="/book">let's talk for 30m</a>
   <span class="theme-toggle" role="group" aria-label="Theme">
     <span class="dim">theme:</span>
@@ -37,15 +38,12 @@
   </span>
 </nav>
 
-
-<!-- full-screen intro: the name sits over the game, then both settle into place -->
 <div class="intro-name" id="introName" aria-hidden="true">govind pradeep</div>
 
 <main id="top">
 
-  <!-- ============ whoami ============ -->
   <section class="block" id="hero">
-    <p class="cmd"><span class="prompt">$</span> whoami</p>
+<p class="cmd"><span class="prompt">$</span> whoami</p>
     <div class="out">
       <h1>govind pradeep</h1>
       <p class="role">senior automation &amp; ai systems engineer</p>
@@ -58,7 +56,7 @@
     </div>
 
     <div class="btn-row">
-      <a class="btn btn-primary" href="#systems">my work</a>
+      <a class="btn btn-primary" href="/systems/">my work</a>
       <a class="btn btn-ghost" href="resume/Govind_Pradeep_Resume.pdf" download>download resume</a>
     </div>
 
@@ -89,9 +87,8 @@
 
   <hr class="rule">
 
-  <!-- ============ capabilities ============ -->
   <section class="block" id="capabilities">
-    <p class="cmd"><span class="prompt">$</span> ls -la capabilities/</p>
+<p class="cmd"><span class="prompt">$</span> ls -la capabilities/</p>
 
     <div class="listing">
 
@@ -161,9 +158,8 @@
 
   <hr class="rule">
 
-  <!-- ============ systems ============ -->
   <section class="block" id="systems">
-    <p class="cmd"><span class="prompt">$</span> ps aux --systems</p>
+<p class="cmd"><span class="prompt">$</span> ps aux --systems</p>
     <p class="section-note"># six systems, live or run to completion — not demos</p>
 
     <div class="listing">
@@ -305,73 +301,114 @@
 
   <hr class="rule">
 
-  <!-- ============ experience ============ -->
   <section class="block" id="experience">
     <p class="cmd"><span class="prompt">$</span> cat experience.log</p>
+    <h1 class="page-title">Where I've been building</h1>
 
-    <div class="listing">
+    <ol class="timeline">
+      <div class="timeline-rail" aria-hidden="true"><i id="railFill"></i></div>
 
-      <article class="entry">
-        <p class="entry-head"><span class="log-date">[2024 — present]</span> senior automation &amp; ai engineer <span class="dim">@ asimovx</span></p>
-        <ul class="log-list">
-          <li>design and ship the browser-automation, scraping, and Bedrock-backed agent
-          systems detailed under <a href="#systems">systems/</a> above — end to end, from first
-          prototype to production</li>
-          <li><strong>lead a team of annotators</strong> producing ground-truth data for
-          the client's computer-vision pipeline, and built the desktop tooling (impactAnnotator,
-          rangeAnnotator) the team uses daily — including per-person attribution and a
-          correction/verification workflow</li>
-          <li>own the production Lambda pipeline behind the client's capture data — ingest,
-          quality-check, align, score, and report, across 9 functions on AWS</li>
-        </ul>
-      </article>
+      <li class="tl-item">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <article class="tl-card">
+          <p class="tl-badge">Most recent</p>
+          <div class="tl-head">
+            <div>
+              <h2 class="tl-role">Senior Automation &amp; AI Engineer</h2>
+              <p class="tl-org">AsimovX</p>
+            </div>
+            <div class="tl-when">
+              <span class="tl-dates">Feb 2024 <span class="dim">to</span> Present</span>
+              <span class="tl-place">Remote</span>
+            </div>
+          </div>
+          <ul class="tl-points">
+            <li>Own the production AWS pipeline behind GolfTrak's shot data — nine Lambda
+            functions spanning ingest, quality control, alignment, scoring, daily reporting
+            and alerting.</li>
+            <li>Built the automated shot quality-control system: parameter checks, then
+            CNN/ONNX visual verification with an AI fallback, plus a rendered annotated video
+            for human review. <strong>86% recall</strong> on range-mode ball-impact detection.</li>
+            <li><strong>Lead a team of annotators</strong> producing ground-truth data, and built
+            the desktop tooling they use daily — per-person attribution, a correction and
+            verification workflow, and live physics feedback.</li>
+            <li>Trained and shipped three neural networks predicting spin rate, spin axis and
+            club speed on <strong>~2.4M rows</strong>, cutting club-speed error from 20.5 km/h to
+            <strong>1.99 km/h</strong>.</li>
+            <li>Built autonomous agents that negotiate, extract and scrape unattended, plus a
+            fleet of five production scrapers collecting <strong>22,000+ records</strong>.</li>
+          </ul>
+          <ul class="tl-chips">
+            <li>AWS Bedrock</li><li>Playwright</li><li>Lambda</li><li>DynamoDB</li>
+            <li>ONNX</li><li>CoreML</li><li>Flask</li><li>SwiftUI</li>
+          </ul>
+        </article>
+      </li>
 
-      <article class="entry">
-        <p class="entry-head"><span class="log-date">[2019 — 2023]</span> ai engineer <span class="dim">@ accubits technologies, trivandrum</span></p>
-        <ul class="log-list">
-          <li><strong>deep listening</strong> — a multi-modal extraction platform: Hugging Face
-          models for object detection, tagging, and description on images; translation and
-          transcription on audio; combined image/audio handling for video; summarization and
-          keyword extraction on text; a fine-tuned LLaMA with vector-database retrieval for
-          chat and further extraction</li>
-          <li><strong>cipbot</strong> — a Rasa-built WhatsApp chatbot connecting Cipla's
-          procurement team with vendors through a structured chat flow, with role-based options
-          and an admin panel for traffic and interactions</li>
-          <li><strong>trajectus</strong> (Computer Instruments, outsourced) — a DialogFlow IVR
-          chatbot handling medical query calls</li>
-          <li><strong>coglide</strong> — the "cori" email service extracting contact details
-          from inbound mail, a "gx" browser extension syncing data from marketing websites, and
-          the data scraping/automation behind both</li>
-          <li><strong>emotyx</strong> — a backend extracting actionable customer-understanding
-          insights from real-time CCTV footage</li>
-          <li><strong>attendance management system</strong> — full backend for student and
-          attendance records, plus image-processing support</li>
-          <li>also: a GPT-3.5 meeting-minutes generator, a Selenium scraper across multiple
-          social networks for marketing data, SQL-injection-hardened API verification tooling,
-          and a PPE-kit detection module</li>
-        </ul>
-      </article>
+      <li class="tl-item">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <article class="tl-card">
+          <div class="tl-head">
+            <div>
+              <h2 class="tl-role">AI Engineer</h2>
+              <p class="tl-org">Accubits Technologies</p>
+            </div>
+            <div class="tl-when">
+              <span class="tl-dates">Aug 2019 <span class="dim">to</span> Dec 2023</span>
+              <span class="tl-place">Trivandrum</span>
+            </div>
+          </div>
+          <ul class="tl-points">
+            <li><strong>Deep Listening</strong> — a multi-modal extraction platform: object
+            detection, tagging and description on images; translation and transcription on
+            audio; summarization and keyword extraction on text; a fine-tuned LLaMA with
+            vector-database retrieval.</li>
+            <li><strong>CipBot</strong> — a Rasa-built WhatsApp chatbot connecting Cipla's
+            procurement team with vendors, with role-based flows and an admin panel.</li>
+            <li><strong>Trajectus</strong> (Computer Instruments) — a DialogFlow IVR chatbot
+            handling medical query calls.</li>
+            <li><strong>Coglide</strong> — the "Cori" email service extracting contact details
+            from inbound mail, a "Gx" browser extension syncing marketing data, and the
+            scraping and automation behind both.</li>
+            <li><strong>Emotyx</strong> — a backend extracting actionable customer insights
+            from real-time CCTV footage.</li>
+            <li>Also delivered a GPT-3.5 meeting-minutes generator, SQL-injection-hardened API
+            verification tooling, a Selenium scraper across social networks, and a PPE-kit
+            detection module.</li>
+          </ul>
+          <ul class="tl-chips">
+            <li>Hugging Face</li><li>Fine-tuned LLaMA</li><li>Rasa</li><li>DialogFlow</li>
+            <li>Python</li><li>Selenium</li><li>GPT-3.5</li>
+          </ul>
+        </article>
+      </li>
 
-      <article class="entry">
-        <p class="entry-head"><span class="log-date">[2019]</span> b.tech, computer science <span class="dim">— sree chitra thirunal college of engineering, thiruvananthapuram</span></p>
-      </article>
-
-      <article class="entry">
-        <p class="entry-head"><span class="log-date">[2015]</span> higher secondary, computer science <span class="dim">— cbse, kendriya vidyalaya pattom, thiruvananthapuram</span></p>
-      </article>
-
-      <article class="entry">
-        <p class="entry-head"><span class="log-date">[cert]</span> python: programming efficiently <span class="dim">— linkedin learning</span></p>
-      </article>
-
-    </div>
+      <li class="tl-item">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <article class="tl-card">
+          <div class="tl-head">
+            <div>
+              <h2 class="tl-role">B.Tech, Computer Science</h2>
+              <p class="tl-org">Sree Chitra Thirunal College of Engineering</p>
+            </div>
+            <div class="tl-when">
+              <span class="tl-dates">2019</span>
+              <span class="tl-place">Thiruvananthapuram</span>
+            </div>
+          </div>
+          <ul class="tl-points">
+            <li>Higher Secondary, Computer Science — CBSE, Kendriya Vidyalaya Pattom, 2015.</li>
+            <li>Certification: <strong>Python: Programming Efficiently</strong> — LinkedIn Learning.</li>
+          </ul>
+        </article>
+      </li>
+    </ol>
   </section>
 
   <hr class="rule">
 
-  <!-- ============ about ============ -->
   <section class="block" id="about">
-    <p class="cmd"><span class="prompt">$</span> cat about-me.txt</p>
+<p class="cmd"><span class="prompt">$</span> cat about-me.txt</p>
     <div class="out">
       <p class="entry-body">Maybe I'm lazy — but that's exactly what made me automate everything.
       Most of what's on this page started as "this manual work is stupid, I could automate it"
@@ -391,11 +428,8 @@
 
   <hr class="rule">
 
-  <hr class="rule">
-
-  <!-- ============ blog ============ -->
   <section class="block" id="blog">
-    <p class="cmd"><span class="prompt">$</span> ls blog/</p>
+<p class="cmd"><span class="prompt">$</span> ls blog/</p>
 
     <div class="listing">
       <article class="entry">
@@ -407,9 +441,10 @@
     </div>
   </section>
 
-  <!-- ============ contact ============ -->
+  <hr class="rule">
+
   <section class="block" id="contact">
-    <p class="cmd"><span class="prompt">$</span> whois govind</p>
+<p class="cmd"><span class="prompt">$</span> whois govind</p>
 
     <div class="out whois">
       <div class="whois-row"><span class="whois-sym">◆</span><span class="whois-key">name</span><span>govind pradeep</span></div>
@@ -430,12 +465,11 @@
 </main>
 
 <footer class="footer">
-  <span>© 2026 Govind Pradeep</span>
+  <span>&copy; 2026 Govind Pradeep</span>
 </footer>
 
-<script src="js/particles.js"></script>
-<script src="js/asteroids.js"></script>
-<script src="js/fluid.js"></script>
-<script src="script.js"></script>
+<script src="/js/particles.js"></script>
+<script src="/js/asteroids.js"></script>
+<script src="/script.js"></script>
 </body>
 </html>

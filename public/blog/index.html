@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Blog — Govind Pradeep</title>
+<meta name="description" content="Writing on automation, AI engineering and things built along the way." />
+<link rel="canonical" href="https://d3vilsnar3.com/blog/" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="inner">
+
+<canvas id="particles" aria-hidden="true"></canvas>
+<canvas id="asteroids" aria-hidden="true"></canvas>
+
+<header class="topbar">
+  <a href="/" class="topbar-name">govind pradeep</a>
+  <button type="button" class="hamburger" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav class="nav-menu" id="navMenu" aria-label="Sections" hidden>
+  <a href="/capabilities/">capabilities</a>
+  <a href="/systems/">systems</a>
+  <a href="/experience/">experience</a>
+  <a href="/about/">about</a>
+  <a href="/blog/" class="is-active">blog</a>
+  <a href="/contact/">contact</a>
+  <a class="nav-cta" href="/book">let's talk for 30m</a>
+  <span class="theme-toggle" role="group" aria-label="Theme">
+    <span class="dim">theme:</span>
+    <button type="button" class="theme-opt" data-theme-choice="dark">dark</button>
+    <button type="button" class="theme-opt" data-theme-choice="light">light</button>
+  </span>
+</nav>
+
+<main id="top">
+
+  <section class="block" id="blog">
+<p class="cmd"><span class="prompt">$</span> ls blog/</p>
+
+    <div class="listing">
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[post]</span> <span class="path">How I Created My First Discord Bot Using JavaScript</span></p>
+        <p class="entry-body">A walkthrough of building a Discord bot from scratch in
+        JavaScript — setting it up, wiring the event handlers, and getting it running.</p>
+        <p class="entry-metric"><a href="https://medium.com/@thewholeworldfun/how-i-created-my-first-discord-bot-using-javascript-b6d48385751a" target="_blank" rel="noopener">Read on Medium &rarr;</a></p>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>&copy; 2026 Govind Pradeep</span>
+</footer>
+
+<script src="/js/particles.js"></script>
+<script src="/js/asteroids.js"></script>
+<script src="/script.js"></script>
+</body>
+</html>

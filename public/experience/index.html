@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Experience — Govind Pradeep</title>
+<meta name="description" content="Senior Automation & AI Engineer at AsimovX, previously AI Engineer at Accubits Technologies." />
+<link rel="canonical" href="https://d3vilsnar3.com/experience/" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="inner">
+
+<canvas id="particles" aria-hidden="true"></canvas>
+<canvas id="asteroids" aria-hidden="true"></canvas>
+
+<header class="topbar">
+  <a href="/" class="topbar-name">govind pradeep</a>
+  <button type="button" class="hamburger" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav class="nav-menu" id="navMenu" aria-label="Sections" hidden>
+  <a href="/capabilities/">capabilities</a>
+  <a href="/systems/">systems</a>
+  <a href="/experience/" class="is-active">experience</a>
+  <a href="/about/">about</a>
+  <a href="/blog/">blog</a>
+  <a href="/contact/">contact</a>
+  <a class="nav-cta" href="/book">let's talk for 30m</a>
+  <span class="theme-toggle" role="group" aria-label="Theme">
+    <span class="dim">theme:</span>
+    <button type="button" class="theme-opt" data-theme-choice="dark">dark</button>
+    <button type="button" class="theme-opt" data-theme-choice="light">light</button>
+  </span>
+</nav>
+
+<main id="top">
+
+  <section class="block" id="experience">
+    <p class="cmd"><span class="prompt">$</span> cat experience.log</p>
+    <h1 class="page-title">Where I've been building</h1>
+
+    <ol class="timeline">
+      <div class="timeline-rail" aria-hidden="true"><i id="railFill"></i></div>
+
+      <li class="tl-item">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <article class="tl-card">
+          <p class="tl-badge">Most recent</p>
+          <div class="tl-head">
+            <div>
+              <h2 class="tl-role">Senior Automation &amp; AI Engineer</h2>
+              <p class="tl-org">AsimovX</p>
+            </div>
+            <div class="tl-when">
+              <span class="tl-dates">Feb 2024 <span class="dim">to</span> Present</span>
+              <span class="tl-place">Remote</span>
+            </div>
+          </div>
+          <ul class="tl-points">
+            <li>Own the production AWS pipeline behind GolfTrak's shot data — nine Lambda
+            functions spanning ingest, quality control, alignment, scoring, daily reporting
+            and alerting.</li>
+            <li>Built the automated shot quality-control system: parameter checks, then
+            CNN/ONNX visual verification with an AI fallback, plus a rendered annotated video
+            for human review. <strong>86% recall</strong> on range-mode ball-impact detection.</li>
+            <li><strong>Lead a team of annotators</strong> producing ground-truth data, and built
+            the desktop tooling they use daily — per-person attribution, a correction and
+            verification workflow, and live physics feedback.</li>
+            <li>Trained and shipped three neural networks predicting spin rate, spin axis and
+            club speed on <strong>~2.4M rows</strong>, cutting club-speed error from 20.5 km/h to
+            <strong>1.99 km/h</strong>.</li>
+            <li>Built autonomous agents that negotiate, extract and scrape unattended, plus a
+            fleet of five production scrapers collecting <strong>22,000+ records</strong>.</li>
+          </ul>
+          <ul class="tl-chips">
+            <li>AWS Bedrock</li><li>Playwright</li><li>Lambda</li><li>DynamoDB</li>
+            <li>ONNX</li><li>CoreML</li><li>Flask</li><li>SwiftUI</li>
+          </ul>
+        </article>
+      </li>
+
+      <li class="tl-item">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <article class="tl-card">
+          <div class="tl-head">
+            <div>
+              <h2 class="tl-role">AI Engineer</h2>
+              <p class="tl-org">Accubits Technologies</p>
+            </div>
+            <div class="tl-when">
+              <span class="tl-dates">Aug 2019 <span class="dim">to</span> Dec 2023</span>
+              <span class="tl-place">Trivandrum</span>
+            </div>
+          </div>
+          <ul class="tl-points">
+            <li><strong>Deep Listening</strong> — a multi-modal extraction platform: object
+            detection, tagging and description on images; translation and transcription on
+            audio; summarization and keyword extraction on text; a fine-tuned LLaMA with
+            vector-database retrieval.</li>
+            <li><strong>CipBot</strong> — a Rasa-built WhatsApp chatbot connecting Cipla's
+            procurement team with vendors, with role-based flows and an admin panel.</li>
+            <li><strong>Trajectus</strong> (Computer Instruments) — a DialogFlow IVR chatbot
+            handling medical query calls.</li>
+            <li><strong>Coglide</strong> — the "Cori" email service extracting contact details
+            from inbound mail, a "Gx" browser extension syncing marketing data, and the
+            scraping and automation behind both.</li>
+            <li><strong>Emotyx</strong> — a backend extracting actionable customer insights
+            from real-time CCTV footage.</li>
+            <li>Also delivered a GPT-3.5 meeting-minutes generator, SQL-injection-hardened API
+            verification tooling, a Selenium scraper across social networks, and a PPE-kit
+            detection module.</li>
+          </ul>
+          <ul class="tl-chips">
+            <li>Hugging Face</li><li>Fine-tuned LLaMA</li><li>Rasa</li><li>DialogFlow</li>
+            <li>Python</li><li>Selenium</li><li>GPT-3.5</li>
+          </ul>
+        </article>
+      </li>
+
+      <li class="tl-item">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <article class="tl-card">
+          <div class="tl-head">
+            <div>
+              <h2 class="tl-role">B.Tech, Computer Science</h2>
+              <p class="tl-org">Sree Chitra Thirunal College of Engineering</p>
+            </div>
+            <div class="tl-when">
+              <span class="tl-dates">2019</span>
+              <span class="tl-place">Thiruvananthapuram</span>
+            </div>
+          </div>
+          <ul class="tl-points">
+            <li>Higher Secondary, Computer Science — CBSE, Kendriya Vidyalaya Pattom, 2015.</li>
+            <li>Certification: <strong>Python: Programming Efficiently</strong> — LinkedIn Learning.</li>
+          </ul>
+        </article>
+      </li>
+    </ol>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>&copy; 2026 Govind Pradeep</span>
+</footer>
+
+<script src="/js/particles.js"></script>
+<script src="/js/asteroids.js"></script>
+<script src="/script.js"></script>
+</body>
+</html>
