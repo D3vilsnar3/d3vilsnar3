@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Govind Pradeep — Senior Automation &amp; AI Systems Engineer</title>
+<meta name="description" content="Govind Pradeep — Senior Automation & AI Systems Engineer. Builds systems that act on their own: autonomous agents, computer vision, and production ML pipelines." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a href="#top" class="topbar-name">govind pradeep</a>
+  <button type="button" class="hamburger" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav class="nav-menu" id="navMenu" aria-label="Sections" hidden>
+  <a href="#capabilities">capabilities</a>
+  <a href="#about">about</a>
+  <a href="#systems">systems</a>
+  <a href="#experience">experience</a>
+  <a href="#contact">contact</a>
+  <span class="theme-toggle" role="group" aria-label="Theme">
+    <span class="dim">theme:</span>
+    <button type="button" class="theme-opt" data-theme-choice="dark">dark</button>
+    <button type="button" class="theme-opt" data-theme-choice="light">light</button>
+  </span>
+</nav>
+
+<div class="asteroids-banner" aria-hidden="true">
+  <canvas id="asteroids"></canvas>
+</div>
+
+<main id="top">
+
+  <!-- ============ whoami ============ -->
+  <section class="block" id="hero">
+    <p class="cmd"><span class="prompt">$</span> whoami</p>
+    <div class="out">
+      <h1>govind pradeep</h1>
+      <p class="role">senior automation &amp; ai systems engineer</p>
+      <p class="muted-line">remote-friendly — works with teams anywhere</p>
+    </div>
+
+    <p class="cmd"><span class="prompt">$</span> cat intro.txt</p>
+    <div class="out">
+      <p class="typewriter" id="introText" data-text="I build systems that act on their own — browsers that navigate and decide, computer-vision models that catch what a human would miss, pipelines that turn manual, repetitive work into something that runs itself. ~7 years focused on automation and applied AI: designing autonomous agents, training and shipping models, and building the infrastructure that lets them run unsupervised."></p>
+    </div>
+
+    <p class="cmd"><span class="prompt">$</span> tail -f systems.log --summary</p>
+    <div class="out stat-log">
+      <div class="stat-line">
+        <span class="tag tag-ok">[ok]</span>
+        <span class="stat-num" data-count="2200000" data-end="2500000" data-suffix="">0</span>
+        <span class="stat-desc">rows of data scraped &amp; processed</span>
+      </div>
+      <div class="stat-line">
+        <span class="tag tag-ok">[ok]</span>
+        <span class="stat-num" data-count="120" data-end="150" data-suffix="">0</span>
+        <span class="stat-desc">APIs &amp; endpoints built across those systems</span>
+      </div>
+      <div class="stat-line">
+        <span class="tag tag-ok">[ok]</span>
+        <span class="stat-num" data-count="40" data-suffix="+">0</span>
+        <span class="stat-desc">projects shipped — AsimovX &amp; Accubits</span>
+      </div>
+      <div class="stat-line">
+        <span class="tag tag-ok">[ok]</span>
+        <span class="stat-num" data-count="7" data-suffix=" yrs">0</span>
+        <span class="stat-desc">professional AI &amp; automation engineering</span>
+      </div>
+    </div>
+
+    <p class="cmd"><span class="prompt">$</span> ./next-steps.sh</p>
+    <div class="out options">
+      <a class="opt opt-primary" href="#systems"><span class="caret">&gt;</span> my work</a>
+      <button type="button" class="opt" title="Coming soon"><span class="caret">&gt;</span> download resume</button>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ============ capabilities ============ -->
+  <section class="block" id="capabilities">
+    <p class="cmd"><span class="prompt">$</span> ls -la capabilities/</p>
+
+    <div class="listing">
+
+      <article class="entry">
+        <p class="entry-head"><span class="dir">drwxr-xr-x</span> <span class="path">ai-and-llm-integration/</span></p>
+        <p class="entry-body">AWS Bedrock (Nova Pro, Nemotron) for vision, extraction, and
+        decision-making agents; Hugging Face models across text, image, audio, and video; a
+        fine-tuned LLaMA with vector-database retrieval; Rasa and DialogFlow conversational
+        systems; GPT-3.5 for structured generation.</p>
+        <p class="entry-tags">--tags aws-bedrock nova-pro nemotron hugging-face fine-tuned-llama rag rasa dialogflow</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="dir">drwxr-xr-x</span> <span class="path">computer-vision-and-ml/</span></p>
+        <p class="entry-body">CNN models for object and impact detection, trained in
+        Keras/TensorFlow, converted to ONNX and CoreML for production and on-device inference.
+        Benchmarked against ground truth, not just validation accuracy — including the
+        domain-shift gap between training data and real sensor data.</p>
+        <p class="entry-tags">--tags keras tensorflow onnx-runtime coreml object-detection model-benchmarking</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="dir">drwxr-xr-x</span> <span class="path">team-leadership-and-qa-tooling/</span></p>
+        <p class="entry-body">Lead a team of annotators on a sports-tech client's ground-truth pipeline —
+        and built the desktop tools they use every day (impactAnnotator, rangeAnnotator):
+        per-user attribution, correction/verification workflows, and live physics feedback so a
+        correction's effect is visible immediately instead of discovered downstream.</p>
+        <p class="entry-tags">--tags team-leadership qa-workflow-design internal-tooling annotator-attribution</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="dir">drwxr-xr-x</span> <span class="path">cloud-and-backend-infrastructure/</span></p>
+        <p class="entry-body">AWS Lambda, DynamoDB, S3, SES, EC2, and ECR running a real
+        production data pipeline end to end — ingest, process, align, score, report, alert.
+        Flask and Express servers as the glue between browser automation, models, and storage.</p>
+        <p class="entry-tags">--tags aws-lambda dynamodb s3 ecr ec2 flask express docker</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="dir">drwxr-xr-x</span> <span class="path">data-engineering-at-scale/</span></p>
+        <p class="entry-body">Structured extraction and deduplication pipelines across dozens
+        of thousands of records — union-find merge logic, fingerprint-based dedup, incremental
+        resume, and atomic writes with shrink-guards so a bad run can't silently destroy good
+        data.</p>
+        <p class="entry-tags">--tags etl dedup-merge-logic structured-extraction atomic-writes</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="dir">drwxr-xr-x</span> <span class="path">browser-automation-and-scraping/</span></p>
+        <p class="entry-body">Playwright and Chrome extensions (Manifest V3) driving real, logged-in
+        sessions — not APIs. Human-paced clicking, virtualized-list handling, session portability
+        across machines, and recovery logic built from watching real automations fail and fixing
+        the actual cause.</p>
+        <p class="entry-tags">--tags playwright selenium chrome-extensions-mv3 cdp-control anti-bot session-portability</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="dir">drwxr-xr-x</span> <span class="path">mobile-and-on-device/</span></p>
+        <p class="entry-body">SwiftUI apps calling Bedrock directly from the device via Cognito
+        temporary credentials — no backend server in the critical path — plus on-device WKWebView
+        automation for the same tasks a server would otherwise drive.</p>
+        <p class="entry-tags">--tags swiftui cognito-identity on-device-inference</p>
+      </article>
+
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ============ about ============ -->
+  <section class="block" id="about">
+    <p class="cmd"><span class="prompt">$</span> cat about-me.txt</p>
+    <div class="out">
+      <p class="entry-body">I like building things more than talking about building things. Most of
+      what's on this page started as "this manual work is stupid, I could automate it" and turned
+      into something that runs on its own. That's the part I enjoy — the moment a system stops
+      needing me.</p>
+      <p class="entry-body">Off the clock I read a lot, and I'm a fairly serious gamer. Mostly
+      <strong>Dota 2</strong>, where I play as <strong>devilsnare</strong> — currently rank
+      <strong>4300</strong> on the
+      <a href="https://www.dota2.com/leaderboards/#sea" target="_blank" rel="noopener">SEA
+      leaderboards</a>, which takes about as much stubbornness as debugging someone else's
+      Selenium script at 2am. Same instinct, different arena: learn the system, find where it
+      breaks, get better at it.</p>
+      <p class="entry-body">I also write occasionally — here's
+      <a href="https://medium.com/@thewholeworldfun/how-i-created-my-first-discord-bot-using-javascript-b6d48385751a" target="_blank" rel="noopener">how
+      I built my first Discord bot in JavaScript</a>.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ============ systems ============ -->
+  <section class="block" id="systems">
+    <p class="cmd"><span class="prompt">$</span> ps aux --systems</p>
+    <p class="section-note"># six systems, live or run to completion — not demos</p>
+
+    <div class="listing">
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">marketplace-negotiation-agent</span></p>
+        <p class="pipeline">listing-capture <span class="arrow">-&gt;</span> vision-model:assess+price <span class="arrow">-&gt;</span> autonomous-negotiation</p>
+        <p class="entry-body">A browser extension plus a local server drives an operator's own
+        authenticated session on a large consumer marketplace: assesses item condition from
+        photos, prices accordingly, then negotiates with sellers autonomously — with rate-limit
+        detection and messaging guards built after real incidents, not speculative edge cases.</p>
+        <p class="entry-metric"># runs continuously on a cloud instance, negotiating in parallel</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">sports-capture-qc</span></p>
+        <p class="pipeline">s3-upload <span class="arrow">-&gt;</span> parameter+cnn-checks <span class="arrow">-&gt;</span> bedrock-fallback <span class="arrow">-&gt;</span> annotated-mp4</p>
+        <p class="entry-body">Two production AWS Lambdas validate every capture a device
+        uploads: parameter checks, then CNN/ONNX visual verification (Bedrock Nemotron where no
+        model was trained for the mode), then a rendered debug video for anyone reviewing the
+        shot.</p>
+        <p class="entry-metric"># 86% recall on range-mode ball-impact detection · ~16s avg render time</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">launch-monitor-ml-suite</span></p>
+        <p class="pipeline">scrape-1218-exports <span class="arrow">-&gt;</span> feature-engineering <span class="arrow">-&gt;</span> train-3-models <span class="arrow">-&gt;</span> coreml-to-ios</p>
+        <p class="entry-body">Scraped bulk sensor exports from a third-party sports launch-monitor
+        portal, then trained neural nets that predict spin rate, spin axis, and club speed from the
+        metrics that are easy to measure — shipped as CoreML models for on-device iOS inference.</p>
+        <p class="entry-metric"># club speed error cut from 20.5 km/h (legacy) to 1.99 km/h</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">tournament-data-agent</span></p>
+        <p class="pipeline">search-discovery <span class="arrow">-&gt;</span> bedrock-extraction <span class="arrow">-&gt;</span> vision-ocr-enrichment <span class="arrow">-&gt;</span> dedup-merge</p>
+        <p class="entry-body">An autonomous agent discovers charity sports-event pages across a
+        tournament-management platform, decides for itself how far to navigate to reach rosters,
+        extracts structured data with a vision-capable model, and reads promotional flyer images
+        via OCR when the details were never real HTML text.</p>
+        <p class="entry-metric"># 178 tournaments extracted end to end from unstructured event pages</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">professional-network-automator</span></p>
+        <p class="pipeline">browse-leads <span class="arrow">-&gt;</span> human-paced-interaction <span class="arrow">-&gt;</span> ses-alerting</p>
+        <p class="entry-body">Runs locally and on a cloud instance independently, working through a
+        lead list on a professional network and engaging with the content worth engaging with —
+        randomized human-like pacing, daily caps, and crash-alert email built in after the
+        process silently went down more than once.</p>
+        <p class="entry-metric"># 1,541 items tracked · 98.8% success rate</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">web-scraping-fleet</span></p>
+        <p class="pipeline">chrome-extension <span class="arrow">-&gt;</span> local-flask-server <span class="arrow">-&gt;</span> deduped-dataset</p>
+        <p class="entry-body">Five independent scrapers, each a purpose-built Chrome extension
+        paired with a local server: association-executive directories, a speaker marketplace, a
+        member community feed, and a professional network — each with its own dedup and resume
+        logic.</p>
+        <p class="entry-metric"># 22,000+ profiles and posts collected across 5 platforms</p>
+      </article>
+    </div>
+
+    <p class="cmd cmd-spaced"><span class="prompt">$</span> cat archive/accubits-systems.log</p>
+    <p class="section-note"># shipped 2019–2023 at accubits technologies, for real clients</p>
+
+    <div class="listing">
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">deep-listening</span></p>
+        <p class="pipeline">surveys+uploads <span class="arrow">-&gt;</span> multi-modal-extraction <span class="arrow">-&gt;</span> fine-tuned-llama <span class="arrow">-&gt;</span> vector-retrieval</p>
+        <p class="entry-body">A multi-modal information-extraction platform. Hugging Face models
+        handled object detection, tag generation, and image description on images; translation
+        and transcription on audio; both combined for video; summarization and keyword extraction
+        on text. A fine-tuned LLaMA drove additional extraction and chat, backed by a vector
+        database for retrieval.</p>
+        <p class="entry-metric"># text, image, audio and video in one extraction pipeline</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">cipbot</span></p>
+        <p class="pipeline">whatsapp <span class="arrow">-&gt;</span> rasa-chat-flow <span class="arrow">-&gt;</span> cipla-database <span class="arrow">-&gt;</span> admin-panel</p>
+        <p class="entry-body">An intelligent chatbot connecting Cipla's procurement team with its
+        vendors, deployed on WhatsApp. A structured chat flow surfaced internal database records,
+        with role-based options per user type and an admin panel for reviewing interactions and
+        data traffic.</p>
+        <p class="entry-metric"># built on Rasa, live on WhatsApp for a pharma procurement team</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">trajectus-ivr</span></p>
+        <p class="pipeline">phone-call <span class="arrow">-&gt;</span> dialogflow-ivr <span class="arrow">-&gt;</span> medical-query-handling</p>
+        <p class="entry-body">An IVR-based chatbot handling medical query calls, built on Google
+        DialogFlow. Delivered as outsourced work for Computer Instruments (CI).</p>
+        <p class="entry-metric"># voice-first, not text — a different failure surface entirely</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">coglide — cori + gx</span></p>
+        <p class="pipeline">inbound-email <span class="arrow">-&gt;</span> contact-extraction <span class="arrow">-&gt;</span> browser-extension-sync <span class="arrow">-&gt;</span> marketing-db</p>
+        <p class="entry-body">"Cori", an email service extracting contact details out of inbound
+        mail, plus "Gx", a browser extension syncing data from diverse marketing websites into
+        Coglide's own database. Also owned the data scraping and automation work across the
+        product, and ran the research server that fed its marketing data.</p>
+        <p class="entry-metric"># the earliest version of the scraping work that runs through everything since</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">emotyx</span></p>
+        <p class="pipeline">live-cctv <span class="arrow">-&gt;</span> backend-network <span class="arrow">-&gt;</span> customer-insights</p>
+        <p class="entry-body">Backend network structure for software extracting intelligent,
+        actionable insights from real-time CCTV footage for customer understanding — built and
+        deployed in Python, handling the managing and recording of the footage itself.</p>
+        <p class="entry-metric"># real-time video in production, not batch analysis</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">attendance-management-system</span></p>
+        <p class="pipeline">student-records <span class="arrow">-&gt;</span> python-backend <span class="arrow">-&gt;</span> image-processing-assist</p>
+        <p class="entry-body">Owned the entire back-end code structure for managing student and
+        attendance records, and supported the AI development around its image processing.</p>
+        <p class="entry-metric"># full backend ownership, end to end</p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">assorted/</span></p>
+        <p class="entry-body">A GPT-3.5 minutes-to-meeting generator that transcribed calls and
+        wrote up the minutes. Shell tooling to verify API endpoint data and harden it against SQL
+        injection, shipped as a Postman collection. A Selenium scraper collecting marketing data
+        across multiple social networks. A back-end network for the Learning &amp; Development
+        team, and a scraping service for Talent Acquisition to surface new candidates. Plus the
+        back-end and detection module for PPE (Personal Protective Equipment) kit detection.</p>
+        <p class="entry-metric"># the long tail — smaller builds, same instinct</p>
+      </article>
+
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ============ experience ============ -->
+  <section class="block" id="experience">
+    <p class="cmd"><span class="prompt">$</span> cat experience.log</p>
+
+    <div class="listing">
+
+      <article class="entry">
+        <p class="entry-head"><span class="log-date">[2024 — present]</span> senior automation &amp; ai engineer <span class="dim">@ asimovx</span></p>
+        <ul class="log-list">
+          <li>design and ship the browser-automation, scraping, and Bedrock-backed agent
+          systems detailed under <a href="#systems">systems/</a> above — end to end, from first
+          prototype to production</li>
+          <li><strong>lead a team of annotators</strong> producing ground-truth data for
+          the client's computer-vision pipeline, and built the desktop tooling (impactAnnotator,
+          rangeAnnotator) the team uses daily — including per-person attribution and a
+          correction/verification workflow</li>
+          <li>own the production Lambda pipeline behind the client's capture data — ingest,
+          quality-check, align, score, and report, across 9 functions on AWS</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="log-date">[2019 — 2023]</span> ai engineer <span class="dim">@ accubits technologies, trivandrum</span></p>
+        <ul class="log-list">
+          <li><strong>deep listening</strong> — a multi-modal extraction platform: Hugging Face
+          models for object detection, tagging, and description on images; translation and
+          transcription on audio; combined image/audio handling for video; summarization and
+          keyword extraction on text; a fine-tuned LLaMA with vector-database retrieval for
+          chat and further extraction</li>
+          <li><strong>cipbot</strong> — a Rasa-built WhatsApp chatbot connecting Cipla's
+          procurement team with vendors through a structured chat flow, with role-based options
+          and an admin panel for traffic and interactions</li>
+          <li><strong>trajectus</strong> (Computer Instruments, outsourced) — a DialogFlow IVR
+          chatbot handling medical query calls</li>
+          <li><strong>coglide</strong> — the "cori" email service extracting contact details
+          from inbound mail, a "gx" browser extension syncing data from marketing websites, and
+          the data scraping/automation behind both</li>
+          <li><strong>emotyx</strong> — a backend extracting actionable customer-understanding
+          insights from real-time CCTV footage</li>
+          <li><strong>attendance management system</strong> — full backend for student and
+          attendance records, plus image-processing support</li>
+          <li>also: a GPT-3.5 meeting-minutes generator, a Selenium scraper across multiple
+          social networks for marketing data, SQL-injection-hardened API verification tooling,
+          and a PPE-kit detection module</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="log-date">[2019]</span> b.tech, computer science <span class="dim">— sree chitra thirunal college of engineering, thiruvananthapuram</span></p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="log-date">[2015]</span> higher secondary, computer science <span class="dim">— cbse, kendriya vidyalaya pattom, thiruvananthapuram</span></p>
+      </article>
+
+      <article class="entry">
+        <p class="entry-head"><span class="log-date">[cert]</span> python: programming efficiently <span class="dim">— linkedin learning</span></p>
+      </article>
+
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ============ contact ============ -->
+  <section class="block" id="contact">
+    <p class="cmd"><span class="prompt">$</span> whois govind</p>
+
+    <div class="out whois">
+      <div class="whois-row"><span class="whois-key">name</span><span>govind pradeep</span></div>
+      <div class="whois-row"><span class="whois-key">email</span><a href="mailto:govindpradeep1998@gmail.com">govindpradeep1998@gmail.com</a></div>
+      <div class="whois-row"><span class="whois-key">phone</span><a href="tel:+918075671785">+91 80756 71785</a></div>
+      <div class="whois-row"><span class="whois-key">linkedin</span><a href="https://www.linkedin.com/in/devilasenare/" target="_blank" rel="noopener">linkedin.com/in/devilasenare</a></div>
+      <div class="whois-row"><span class="whois-key">writing</span><a href="https://medium.com/@thewholeworldfun/how-i-created-my-first-discord-bot-using-javascript-b6d48385751a" target="_blank" rel="noopener">medium — building a discord bot in javascript</a></div>
+      <div class="whois-row"><span class="whois-key">dota 2</span><a href="https://www.dota2.com/leaderboards/#sea" target="_blank" rel="noopener">devilsnare — rank 4300, sea leaderboards</a></div>
+      <div class="whois-row"><span class="whois-key">location</span><span>remote-friendly — open to travel</span></div>
+      <div class="whois-row"><span class="whois-key">booking</span><span class="dim">&lt;coming soon&gt;</span></div>
+    </div>
+
+    <p class="cmd"><span class="prompt">$</span> ./get-in-touch.sh</p>
+    <div class="out options">
+      <a class="opt opt-primary" href="mailto:govindpradeep1998@gmail.com"><span class="caret">&gt;</span> email me</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>© 2026 Govind Pradeep</span>
+</footer>
+
+<script src="js/asteroids.js"></script>
+<script src="js/fluid.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
