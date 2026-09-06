@@ -94,64 +94,64 @@
     <div class="listing">
 
       <article class="entry">
-        <p class="entry-head"><span class="dir">drwxr-xr-x</span> <span class="path">ai-and-llm-integration/</span></p>
+        <p class="entry-head"><span class="path">AI &amp; LLM Integration</span></p>
         <p class="entry-body">AWS Bedrock (Nova Pro, Nemotron) for vision, extraction, and
         decision-making agents; Hugging Face models across text, image, audio, and video; a
         fine-tuned LLaMA with vector-database retrieval; Rasa and DialogFlow conversational
         systems; GPT-3.5 for structured generation.</p>
-        <p class="entry-tags">--tags aws-bedrock nova-pro nemotron hugging-face fine-tuned-llama rag rasa dialogflow</p>
+        <p class="entry-tags">AWS Bedrock · Nova Pro · Nemotron · Hugging Face · Fine-tuned LLaMA · RAG · Rasa · DialogFlow</p>
       </article>
 
       <article class="entry">
-        <p class="entry-head"><span class="dir">drwxr-xr-x</span> <span class="path">computer-vision-and-ml/</span></p>
+        <p class="entry-head"><span class="path">Computer Vision &amp; Machine Learning</span></p>
         <p class="entry-body">CNN models for object and impact detection, trained in
         Keras/TensorFlow, converted to ONNX and CoreML for production and on-device inference.
         Benchmarked against ground truth, not just validation accuracy — including the
         domain-shift gap between training data and real sensor data.</p>
-        <p class="entry-tags">--tags keras tensorflow onnx-runtime coreml object-detection model-benchmarking</p>
+        <p class="entry-tags">Keras · TensorFlow · ONNX Runtime · CoreML · Object detection · Model benchmarking</p>
       </article>
 
       <article class="entry">
-        <p class="entry-head"><span class="dir">drwxr-xr-x</span> <span class="path">team-leadership-and-qa-tooling/</span></p>
+        <p class="entry-head"><span class="path">Team Leadership &amp; QA Tooling</span></p>
         <p class="entry-body">Lead a team of annotators on a sports-tech client's ground-truth pipeline —
         and built the desktop tools they use every day (impactAnnotator, rangeAnnotator):
         per-user attribution, correction/verification workflows, and live physics feedback so a
         correction's effect is visible immediately instead of discovered downstream.</p>
-        <p class="entry-tags">--tags team-leadership qa-workflow-design internal-tooling annotator-attribution</p>
+        <p class="entry-tags">Team leadership · QA workflow design · Internal tooling · Annotator attribution</p>
       </article>
 
       <article class="entry">
-        <p class="entry-head"><span class="dir">drwxr-xr-x</span> <span class="path">cloud-and-backend-infrastructure/</span></p>
+        <p class="entry-head"><span class="path">Cloud &amp; Backend Infrastructure</span></p>
         <p class="entry-body">AWS Lambda, DynamoDB, S3, SES, EC2, and ECR running a real
         production data pipeline end to end — ingest, process, align, score, report, alert.
         Flask and Express servers as the glue between browser automation, models, and storage.</p>
-        <p class="entry-tags">--tags aws-lambda dynamodb s3 ecr ec2 flask express docker</p>
+        <p class="entry-tags">AWS Lambda · DynamoDB · S3 · ECR · EC2 · Flask · Express · Docker</p>
       </article>
 
       <article class="entry">
-        <p class="entry-head"><span class="dir">drwxr-xr-x</span> <span class="path">data-engineering-at-scale/</span></p>
+        <p class="entry-head"><span class="path">Data Engineering at Scale</span></p>
         <p class="entry-body">Structured extraction and deduplication pipelines across dozens
         of thousands of records — union-find merge logic, fingerprint-based dedup, incremental
         resume, and atomic writes with shrink-guards so a bad run can't silently destroy good
         data.</p>
-        <p class="entry-tags">--tags etl dedup-merge-logic structured-extraction atomic-writes</p>
+        <p class="entry-tags">ETL · Deduplication &amp; merge logic · Structured extraction · Atomic writes</p>
       </article>
 
       <article class="entry">
-        <p class="entry-head"><span class="dir">drwxr-xr-x</span> <span class="path">browser-automation-and-scraping/</span></p>
+        <p class="entry-head"><span class="path">Browser Automation &amp; Scraping</span></p>
         <p class="entry-body">Playwright and Chrome extensions (Manifest V3) driving real, logged-in
         sessions — not APIs. Human-paced clicking, virtualized-list handling, session portability
         across machines, and recovery logic built from watching real automations fail and fixing
         the actual cause.</p>
-        <p class="entry-tags">--tags playwright selenium chrome-extensions-mv3 cdp-control anti-bot session-portability</p>
+        <p class="entry-tags">Playwright · Selenium · Chrome Extensions · CDP control · Anti-bot resilience · Session portability</p>
       </article>
 
       <article class="entry">
-        <p class="entry-head"><span class="dir">drwxr-xr-x</span> <span class="path">mobile-and-on-device/</span></p>
+        <p class="entry-head"><span class="path">Mobile &amp; On-Device AI</span></p>
         <p class="entry-body">SwiftUI apps calling Bedrock directly from the device via Cognito
         temporary credentials — no backend server in the critical path — plus on-device WKWebView
         automation for the same tasks a server would otherwise drive.</p>
-        <p class="entry-tags">--tags swiftui cognito-identity on-device-inference</p>
+        <p class="entry-tags">SwiftUI · Cognito Identity · On-device inference</p>
       </article>
 
     </div>
@@ -167,8 +167,8 @@
     <div class="listing">
 
       <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">marketplace-negotiation-agent</span></p>
-        <p class="pipeline">listing-capture <span class="arrow">-&gt;</span> vision-model:assess+price <span class="arrow">-&gt;</span> autonomous-negotiation</p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Marketplace Negotiation Agent</span></p>
+        <p class="pipeline">Capture listing <span class="arrow">-&gt;</span> Vision model prices it <span class="arrow">-&gt;</span> Negotiates autonomously</p>
         <p class="entry-body">A browser extension plus a local server drives an operator's own
         authenticated session on a large consumer marketplace: assesses item condition from
         photos, prices accordingly, then negotiates with sellers autonomously — with rate-limit
@@ -177,8 +177,8 @@
       </article>
 
       <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">sports-capture-qc</span></p>
-        <p class="pipeline">s3-upload <span class="arrow">-&gt;</span> parameter+cnn-checks <span class="arrow">-&gt;</span> bedrock-fallback <span class="arrow">-&gt;</span> annotated-mp4</p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Sports Capture Quality Control</span></p>
+        <p class="pipeline">Device upload <span class="arrow">-&gt;</span> Parameter + CNN checks <span class="arrow">-&gt;</span> AI fallback <span class="arrow">-&gt;</span> Annotated video</p>
         <p class="entry-body">Two production AWS Lambdas validate every capture a device
         uploads: parameter checks, then CNN/ONNX visual verification (Bedrock Nemotron where no
         model was trained for the mode), then a rendered debug video for anyone reviewing the
@@ -187,8 +187,8 @@
       </article>
 
       <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">launch-monitor-ml-suite</span></p>
-        <p class="pipeline">scrape-1218-exports <span class="arrow">-&gt;</span> feature-engineering <span class="arrow">-&gt;</span> train-3-models <span class="arrow">-&gt;</span> coreml-to-ios</p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Launch Monitor ML Suite</span></p>
+        <p class="pipeline">Collect 1,218 exports <span class="arrow">-&gt;</span> Engineer features <span class="arrow">-&gt;</span> Train 3 models <span class="arrow">-&gt;</span> Ship to iOS</p>
         <p class="entry-body">Scraped bulk sensor exports from a third-party sports launch-monitor
         portal, then trained neural nets that predict spin rate, spin axis, and club speed from the
         metrics that are easy to measure — shipped as CoreML models for on-device iOS inference.</p>
@@ -196,8 +196,8 @@
       </article>
 
       <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">tournament-data-agent</span></p>
-        <p class="pipeline">search-discovery <span class="arrow">-&gt;</span> bedrock-extraction <span class="arrow">-&gt;</span> vision-ocr-enrichment <span class="arrow">-&gt;</span> dedup-merge</p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Tournament Data Agent</span></p>
+        <p class="pipeline">Discover pages <span class="arrow">-&gt;</span> AI extraction <span class="arrow">-&gt;</span> Read flyer images <span class="arrow">-&gt;</span> Merge &amp; dedupe</p>
         <p class="entry-body">An autonomous agent discovers charity sports-event pages across a
         tournament-management platform, decides for itself how far to navigate to reach rosters,
         extracts structured data with a vision-capable model, and reads promotional flyer images
@@ -206,8 +206,8 @@
       </article>
 
       <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">professional-network-automator</span></p>
-        <p class="pipeline">browse-leads <span class="arrow">-&gt;</span> human-paced-interaction <span class="arrow">-&gt;</span> ses-alerting</p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Professional Network Automator</span></p>
+        <p class="pipeline">Browse leads <span class="arrow">-&gt;</span> Human-paced engagement <span class="arrow">-&gt;</span> Email alerting</p>
         <p class="entry-body">Runs locally and on a cloud instance independently, working through a
         lead list on a professional network and engaging with the content worth engaging with —
         randomized human-like pacing, daily caps, and crash-alert email built in after the
@@ -216,8 +216,8 @@
       </article>
 
       <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">web-scraping-fleet</span></p>
-        <p class="pipeline">chrome-extension <span class="arrow">-&gt;</span> local-flask-server <span class="arrow">-&gt;</span> deduped-dataset</p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Web Scraping Fleet</span></p>
+        <p class="pipeline">Browser extension <span class="arrow">-&gt;</span> Local server <span class="arrow">-&gt;</span> Deduplicated dataset</p>
         <p class="entry-body">Five independent scrapers, each a purpose-built Chrome extension
         paired with a local server: association-executive directories, a speaker marketplace, a
         member community feed, and a professional network — each with its own dedup and resume
@@ -232,8 +232,8 @@
     <div class="listing">
 
       <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">deep-listening</span></p>
-        <p class="pipeline">surveys+uploads <span class="arrow">-&gt;</span> multi-modal-extraction <span class="arrow">-&gt;</span> fine-tuned-llama <span class="arrow">-&gt;</span> vector-retrieval</p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Deep Listening</span></p>
+        <p class="pipeline">Surveys &amp; uploads <span class="arrow">-&gt;</span> Multi-modal extraction <span class="arrow">-&gt;</span> Fine-tuned LLM <span class="arrow">-&gt;</span> Vector retrieval</p>
         <p class="entry-body">A multi-modal information-extraction platform. Hugging Face models
         handled object detection, tag generation, and image description on images; translation
         and transcription on audio; both combined for video; summarization and keyword extraction
@@ -243,8 +243,8 @@
       </article>
 
       <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">cipbot</span></p>
-        <p class="pipeline">whatsapp <span class="arrow">-&gt;</span> rasa-chat-flow <span class="arrow">-&gt;</span> cipla-database <span class="arrow">-&gt;</span> admin-panel</p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">CipBot</span></p>
+        <p class="pipeline">WhatsApp <span class="arrow">-&gt;</span> Structured chat flow <span class="arrow">-&gt;</span> Client database <span class="arrow">-&gt;</span> Admin panel</p>
         <p class="entry-body">An intelligent chatbot connecting Cipla's procurement team with its
         vendors, deployed on WhatsApp. A structured chat flow surfaced internal database records,
         with role-based options per user type and an admin panel for reviewing interactions and
@@ -253,16 +253,16 @@
       </article>
 
       <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">trajectus-ivr</span></p>
-        <p class="pipeline">phone-call <span class="arrow">-&gt;</span> dialogflow-ivr <span class="arrow">-&gt;</span> medical-query-handling</p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Trajectus IVR</span></p>
+        <p class="pipeline">Phone call <span class="arrow">-&gt;</span> Voice IVR <span class="arrow">-&gt;</span> Medical query handling</p>
         <p class="entry-body">An IVR-based chatbot handling medical query calls, built on Google
         DialogFlow. Delivered as outsourced work for Computer Instruments (CI).</p>
         <p class="entry-metric"># voice-first, not text — a different failure surface entirely</p>
       </article>
 
       <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">coglide — cori + gx</span></p>
-        <p class="pipeline">inbound-email <span class="arrow">-&gt;</span> contact-extraction <span class="arrow">-&gt;</span> browser-extension-sync <span class="arrow">-&gt;</span> marketing-db</p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Coglide — Cori &amp; Gx</span></p>
+        <p class="pipeline">Inbound email <span class="arrow">-&gt;</span> Contact extraction <span class="arrow">-&gt;</span> Extension sync <span class="arrow">-&gt;</span> Marketing database</p>
         <p class="entry-body">"Cori", an email service extracting contact details out of inbound
         mail, plus "Gx", a browser extension syncing data from diverse marketing websites into
         Coglide's own database. Also owned the data scraping and automation work across the
@@ -271,8 +271,8 @@
       </article>
 
       <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">emotyx</span></p>
-        <p class="pipeline">live-cctv <span class="arrow">-&gt;</span> backend-network <span class="arrow">-&gt;</span> customer-insights</p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Emotyx</span></p>
+        <p class="pipeline">Live CCTV <span class="arrow">-&gt;</span> Backend network <span class="arrow">-&gt;</span> Customer insights</p>
         <p class="entry-body">Backend network structure for software extracting intelligent,
         actionable insights from real-time CCTV footage for customer understanding — built and
         deployed in Python, handling the managing and recording of the footage itself.</p>
@@ -280,15 +280,15 @@
       </article>
 
       <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">attendance-management-system</span></p>
-        <p class="pipeline">student-records <span class="arrow">-&gt;</span> python-backend <span class="arrow">-&gt;</span> image-processing-assist</p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Attendance Management System</span></p>
+        <p class="pipeline">Student records <span class="arrow">-&gt;</span> Python backend <span class="arrow">-&gt;</span> Image processing</p>
         <p class="entry-body">Owned the entire back-end code structure for managing student and
         attendance records, and supported the AI development around its image processing.</p>
         <p class="entry-metric"># full backend ownership, end to end</p>
       </article>
 
       <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">assorted/</span></p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Other Projects</span></p>
         <p class="entry-body">A GPT-3.5 minutes-to-meeting generator that transcribed calls and
         wrote up the minutes. Shell tooling to verify API endpoint data and harden it against SQL
         injection, shipped as a Postman collection. A Selenium scraper collecting marketing data
@@ -402,7 +402,6 @@
       <div class="whois-row"><span class="whois-sym">☎</span><span class="whois-key">phone</span><a href="tel:+919061905172">+91 90619 05172</a></div>
       <div class="whois-row"><span class="whois-sym">⬢</span><span class="whois-key">linkedin</span><a href="https://www.linkedin.com/in/devilasenare/" target="_blank" rel="noopener">linkedin.com/in/devilasenare</a></div>
       <div class="whois-row"><span class="whois-sym">✎</span><span class="whois-key">writing</span><a href="https://medium.com/@thewholeworldfun/how-i-created-my-first-discord-bot-using-javascript-b6d48385751a" target="_blank" rel="noopener">medium — building a discord bot in javascript</a></div>
-      <div class="whois-row"><span class="whois-sym">⚔</span><span class="whois-key">dota 2</span><a href="https://www.dota2.com/leaderboards/#sea" target="_blank" rel="noopener">devilsnare — rank 4300, sea leaderboards</a></div>
       <div class="whois-row"><span class="whois-sym">⌖</span><span class="whois-key">location</span><span>bangalore, india — remote-friendly, open to travel</span></div>
       <div class="whois-row"><span class="whois-sym">◷</span><span class="whois-key">booking</span><span class="dim">&lt;coming soon&gt;</span></div>
     </div>
