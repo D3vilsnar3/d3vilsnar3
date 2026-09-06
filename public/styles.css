@@ -131,22 +131,75 @@ strong { color: var(--fg); font-weight: 600; }
 .nav-menu a:hover { color: var(--accent); }
 .nav-menu .theme-toggle { margin: 12px 0 0; }
 
-/* ============ Asteroids banner ============ */
-.asteroids-banner {
-  width: 100%;
-  height: 200px;
-  border-bottom: 1px solid var(--rule);
-  background: var(--bg);
-  overflow: hidden;
+/* ============ Full-page starfield ============ */
+#particles, #asteroids {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
 }
-.asteroids-banner canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
+#particles { z-index: 0; }
+#asteroids { z-index: 1; }
+/* Content sits above the starfield. .topbar / .nav-menu / .intro-name are
+   already positioned with their own z-index, so they're left alone here —
+   overriding their position would break the sticky header. */
+main, .footer {
+  position: relative;
+  z-index: 2;
 }
-@media (max-width: 600px) {
-  .asteroids-banner { height: 140px; }
+
+/* ============ Contact row symbols ============ */
+.whois-sym {
+  color: var(--prompt);
+  width: 1.4em;
+  flex: none;
+  text-align: center;
 }
+
+/* ============ Intro sequence ============ */
+/* During the intro the banner is promoted to a full-screen fixed stage with
+   the name centred over it; it then animates down into its normal position
+   in the flow. `.intro-active` is only on <html> while that is running. */
+.intro-active body { overflow: hidden; }
+.intro-active .topbar,
+.intro-active main,
+.intro-active .footer {
+  opacity: 0;
+}
+/* the starfield stays, the page just gets out of the way */
+.intro-active.intro-settling .topbar,
+.intro-active.intro-settling main,
+.intro-active.intro-settling .footer {
+  opacity: 1;
+  transition: opacity 0.9s ease 0.35s;
+}
+
+.intro-name {
+  position: fixed;
+  z-index: 95;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+  margin: 0;
+  font-size: clamp(30px, 8.5vw, 92px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+}
+.intro-active .intro-name { opacity: 1; }
+.intro-name.flying {
+  transition: transform 1.45s cubic-bezier(0.45, 0.02, 0.15, 1) 0.14s,
+              opacity 0.35s ease 1.25s;
+}
+.intro-name.gone { opacity: 0; }
+
+/* the real hero name stays hidden until the flying one lands on it */
+.intro-active #hero h1 { visibility: hidden; }
 
 .theme-toggle {
   margin-left: auto;
@@ -218,6 +271,17 @@ main { max-width: var(--content-max); margin: 0 auto; padding: 0 24px; }
 /* generic scroll-triggered typing reveal, shared by the intro and every
    descriptive text block on the page */
 .type-target.typing::after {
+  content: "▌";
+  color: var(--prompt);
+  animation: blink 1s steps(1) infinite;
+  margin-left: 2px;
+}
+
+/* The intro line keeps its cursor permanently — during typing and after it
+   finishes — so the terminal reads as a live session rather than a
+   finished screenshot. Higher specificity than the .typing rule above, so
+   only one cursor ever renders. */
+#introText::after {
   content: "▌";
   color: var(--prompt);
   animation: blink 1s steps(1) infinite;

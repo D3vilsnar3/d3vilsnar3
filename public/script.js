@@ -1,5 +1,62 @@
 const root = document.documentElement;
 
+/* ---------- page-load intro ----------
+   The asteroid field already covers the whole page, so nothing has to resize:
+   the name simply sits centred over it while the ship makes a scripted pass
+   through it, then the name travels up into its hero position and the page
+   fades in behind it. Runs once per session; any input skips to the end. */
+(function intro() {
+  const introName = document.getElementById("introName");
+  const heroName = document.querySelector("#hero h1");
+  if (!introName || !heroName) return;
+
+  const settle = () => {
+    if (window.GPAsteroids) window.GPAsteroids.confineToTop();
+  };
+
+  let played = false;
+  try { played = sessionStorage.getItem("gp-intro") === "1"; } catch (e) {}
+  if (played) { introName.remove(); settle(); return; }
+  try { sessionStorage.setItem("gp-intro", "1"); } catch (e) {}
+
+  root.classList.add("intro-active");
+
+  let done = false;
+  const finish = () => {
+    if (done) return;
+    done = true;
+    introName.remove();
+    root.classList.remove("intro-active", "intro-settling");
+    settle();
+  };
+  ["click", "keydown", "wheel", "touchstart"].forEach((ev) =>
+    window.addEventListener(ev, finish, { once: true, passive: true })
+  );
+
+  // fly the ship straight through the centred name
+  requestAnimationFrame(() => {
+    if (window.GPAsteroids) window.GPAsteroids.flyby(1.7);
+  });
+
+  // then send the name up to its real position and bring the page in
+  setTimeout(() => {
+    if (done) return;
+    root.classList.add("intro-settling");
+
+    const from = introName.getBoundingClientRect();
+    const to = heroName.getBoundingClientRect();
+    const scale = Math.min(1, to.height / from.height);
+    const dx = (to.left + to.width / 2) - (from.left + from.width / 2);
+    const dy = (to.top + to.height / 2) - (from.top + from.height / 2);
+
+    introName.classList.add("flying");
+    introName.style.transform =
+      `translate(-50%, -50%) translate(${dx}px, ${dy}px) scale(${scale})`;
+
+    setTimeout(finish, 1600);
+  }, 1750);
+})();
+
 /* ---------- hamburger nav ---------- */
 const navToggle = document.getElementById("navToggle");
 const navMenu = document.getElementById("navMenu");

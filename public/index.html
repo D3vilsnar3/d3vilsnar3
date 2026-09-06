@@ -12,6 +12,9 @@
 </head>
 <body>
 
+<canvas id="particles" aria-hidden="true"></canvas>
+<canvas id="asteroids" aria-hidden="true"></canvas>
+
 <header class="topbar">
   <a href="#top" class="topbar-name">govind pradeep</a>
   <button type="button" class="hamburger" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
@@ -32,9 +35,9 @@
   </span>
 </nav>
 
-<div class="asteroids-banner" aria-hidden="true">
-  <canvas id="asteroids"></canvas>
-</div>
+
+<!-- full-screen intro: the name sits over the game, then both settle into place -->
+<div class="intro-name" id="introName" aria-hidden="true">govind pradeep</div>
 
 <main id="top">
 
@@ -394,14 +397,14 @@
     <p class="cmd"><span class="prompt">$</span> whois govind</p>
 
     <div class="out whois">
-      <div class="whois-row"><span class="whois-key">name</span><span>govind pradeep</span></div>
-      <div class="whois-row"><span class="whois-key">email</span><a href="mailto:govindpradeep1998@gmail.com">govindpradeep1998@gmail.com</a></div>
-      <div class="whois-row"><span class="whois-key">phone</span><a href="tel:+919061905172">+91 90619 05172</a></div>
-      <div class="whois-row"><span class="whois-key">linkedin</span><a href="https://www.linkedin.com/in/devilasenare/" target="_blank" rel="noopener">linkedin.com/in/devilasenare</a></div>
-      <div class="whois-row"><span class="whois-key">writing</span><a href="https://medium.com/@thewholeworldfun/how-i-created-my-first-discord-bot-using-javascript-b6d48385751a" target="_blank" rel="noopener">medium — building a discord bot in javascript</a></div>
-      <div class="whois-row"><span class="whois-key">dota 2</span><a href="https://www.dota2.com/leaderboards/#sea" target="_blank" rel="noopener">devilsnare — rank 4300, sea leaderboards</a></div>
-      <div class="whois-row"><span class="whois-key">location</span><span>bangalore, india — remote-friendly, open to travel</span></div>
-      <div class="whois-row"><span class="whois-key">booking</span><span class="dim">&lt;coming soon&gt;</span></div>
+      <div class="whois-row"><span class="whois-sym">◆</span><span class="whois-key">name</span><span>govind pradeep</span></div>
+      <div class="whois-row"><span class="whois-sym">✉</span><span class="whois-key">email</span><a href="mailto:govindpradeep1998@gmail.com">govindpradeep1998@gmail.com</a></div>
+      <div class="whois-row"><span class="whois-sym">☎</span><span class="whois-key">phone</span><a href="tel:+919061905172">+91 90619 05172</a></div>
+      <div class="whois-row"><span class="whois-sym">⬢</span><span class="whois-key">linkedin</span><a href="https://www.linkedin.com/in/devilasenare/" target="_blank" rel="noopener">linkedin.com/in/devilasenare</a></div>
+      <div class="whois-row"><span class="whois-sym">✎</span><span class="whois-key">writing</span><a href="https://medium.com/@thewholeworldfun/how-i-created-my-first-discord-bot-using-javascript-b6d48385751a" target="_blank" rel="noopener">medium — building a discord bot in javascript</a></div>
+      <div class="whois-row"><span class="whois-sym">⚔</span><span class="whois-key">dota 2</span><a href="https://www.dota2.com/leaderboards/#sea" target="_blank" rel="noopener">devilsnare — rank 4300, sea leaderboards</a></div>
+      <div class="whois-row"><span class="whois-sym">⌖</span><span class="whois-key">location</span><span>bangalore, india — remote-friendly, open to travel</span></div>
+      <div class="whois-row"><span class="whois-sym">◷</span><span class="whois-key">booking</span><span class="dim">&lt;coming soon&gt;</span></div>
     </div>
 
     <div class="btn-row">
@@ -415,6 +418,7 @@
   <span>© 2026 Govind Pradeep</span>
 </footer>
 
+<script src="js/particles.js"></script>
 <script src="js/asteroids.js"></script>
 <script src="js/fluid.js"></script>
 <script src="script.js"></script>
