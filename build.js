@@ -129,7 +129,13 @@ for (const page of PAGES) {
     body = PAGES.map((p) => sectionWrap(p.slug || "hero", read(p.file)))
       .join('\n\n  <hr class="rule">\n\n');
   } else {
-    body = sectionWrap(page.slug, read(page.file));
+    // on its own page the section heading is the h1; inside home it stays an
+    // h2 so the hero remains the single h1 there
+    body = sectionWrap(
+      page.slug,
+      read(page.file).replace('<h2 class="page-title">', '<h1 class="page-title">')
+                     .replace("</h2>", "</h1>")
+    );
   }
   const dir = page.slug === "" ? OUT : path.join(OUT, page.slug);
   fs.mkdirSync(dir, { recursive: true });
@@ -137,4 +143,28 @@ for (const page of PAGES) {
   console.log(`  ${href(page.slug).padEnd(16)} ${page.slug === "" ? "(all sections)" : "<- src/pages/" + page.file}`);
   built++;
 }
+/* ---- sitemap + robots, so search engines can find every page ---- */
+const today = new Date().toISOString().slice(0, 10);
+const urls = PAGES.map((p) => `  <url>
+    <loc>https://d3vilsnar3.com${href(p.slug)}</loc>
+    <lastmod>${today}</lastmod>
+    <priority>${p.slug === "" ? "1.0" : "0.8"}</priority>
+  </url>`).join("\n");
+
+fs.writeFileSync(path.join(OUT, "sitemap.xml"),
+`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+</urlset>
+`);
+
+fs.writeFileSync(path.join(OUT, "robots.txt"),
+`User-agent: *
+Allow: /
+
+Sitemap: https://d3vilsnar3.com/sitemap.xml
+`);
+console.log("  /sitemap.xml     (" + PAGES.length + " urls)");
+console.log("  /robots.txt");
+
 console.log(`\nbuilt ${built} pages into public/`);
