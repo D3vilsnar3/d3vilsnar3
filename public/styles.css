@@ -693,3 +693,425 @@ body[data-page="inner"] main { padding-top: 26px; }
   .contact-cards { grid-template-columns: 1fr; }
   .link-list li { flex-wrap: wrap; gap: 6px 10px; }
 }
+
+/* ============ Endless side-scroll (home #systems only) ============
+   marquee.js wraps each listing's entries in .marquee-track and clones them
+   until the strip is wider than the viewport, then translates it. The strip
+   runs full-bleed and fades at both ends so it reads as continuous rather
+   than as a row that starts and stops at the content column. */
+.marquee {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 2px 0;
+  cursor: grab;
+  /* a fixed fade, not a percentage — 7% of a phone is barely 27px and the
+     strip just looked cut off rather than continuing past the edge */
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 72px, #000 calc(100% - 72px), transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 72px, #000 calc(100% - 72px), transparent 100%);
+}
+.marquee.is-dragging { cursor: grabbing; }
+.marquee.is-dragging * { user-select: none; }
+
+.marquee-track {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 30px;
+  padding-left: 24px;
+  will-change: transform;
+}
+
+/* the cards themselves: a fixed measure, with the terminal-style left rule
+   doing the separating that vertical spacing used to do */
+.marquee .entry {
+  flex: 0 0 auto;
+  width: min(400px, 78vw);
+  padding-left: 18px;
+  border-left: 1px solid var(--rule);
+}
+.marquee .entry-body {
+  max-width: none;
+  font-size: 15px;
+  line-height: 1.65;
+}
+.marquee .entry-head { font-size: 15.5px; }
+/* the decorative line-art is sized for a full-width entry — rein it in so it
+   stays inside its own card */
+.marquee .entry::before {
+  width: 150px;
+  height: 150px;
+  top: -12px;
+  right: 0;
+}
+
+/* prefers-reduced-motion: no clones, no animation — just a row you can push */
+.marquee-static {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+}
+.marquee-static .entry {
+  flex: 0 0 auto;
+  width: min(400px, 78vw);
+  padding-left: 18px;
+  border-left: 1px solid var(--rule);
+  scroll-snap-align: start;
+}
+.marquee-static .entry-body { max-width: none; font-size: 15px; }
+
+/* ============ Full-view sections (home only) ============
+   Each section fills a screen and the page settles on section starts as you
+   scroll. `proximity`, not `mandatory`: capabilities, systems and experience
+   run past a single screen (experience is ~4 screens on a phone), and
+   mandatory snapping fights you the whole way through content that tall.
+   With proximity the long sections just scroll normally and the snap only
+   takes hold once you're near a boundary.
+
+   Height is viewport minus the sticky top bar, and scroll-padding-top keeps
+   a snapped heading from landing underneath it. */
+/* Desktop only. On a phone this did more harm than good: only one section
+   fits the screen anyway, so snapping had nothing to snap to, and pinning
+   every section to 100vh meant the browser's collapsing address bar resized
+   all of them mid-scroll, which is what made the page feel like it was
+   fighting your finger. Below 900px the page is left to scroll normally. */
+@media (min-width: 900px) {
+  html[data-snap] {
+    scroll-snap-type: y proximity;
+    scroll-padding-top: 63px;
+  }
+  html[data-snap] main > section.block {
+    scroll-snap-align: start;
+    min-height: calc(100vh - 63px);
+    /* short sections (blog is under half a screen) would otherwise sit against
+       the top with dead space beneath; centring makes the full view deliberate */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  /* tall sections keep their normal top-down flow — there is nothing to centre
+     once the content is already past a screen */
+  html[data-snap] main > section.block > * { flex: none; }
+}
+html[data-snap] { scroll-padding-top: 63px; }
+
+/* The sections carry scroll-margin-top: 64px for anchor jumps. Left in place
+   it stacks on the container's scroll-padding-top and parks each snapped
+   section 127px down, leaving a dead band under the sticky bar. Those are ID
+   selectors, so the override has to out-specify them: :is() takes the
+   specificity of its most specific argument, which is enough here without
+   reaching for !important. */
+html[data-snap] :is(#hero, #capabilities, #systems, #experience, #about, #blog, #contact) {
+  scroll-margin-top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-snap] { scroll-snap-type: none; }
+}
+
+/* ============ Employer logos in the timeline ============
+   The source marks are white-on-transparent, built for dark backgrounds. The
+   Accubits wordmark is monochrome, but the AsimovX mark carries a purple that a
+   CSS invert would flatten to grey — so each ships a pre-recoloured light-theme
+   twin instead, and the theme swaps which one is displayed. */
+.tl-org--logo { margin: 2px 0 0; line-height: 0; }
+.tl-logo { display: block; width: auto; }
+.tl-logo--asimovx { height: 24px; }
+.tl-logo--accubits { height: 19px; }
+
+.theme-light-only { display: none; }
+:root[data-theme="light"] .theme-dark-only { display: none; }
+:root[data-theme="light"] .theme-light-only { display: block; }
+
+/* the logo doubles as the link to the company's own site */
+.tl-org-link {
+  display: inline-block;
+  line-height: 0;
+  text-decoration: none;
+  border: none;
+  opacity: 0.92;
+  transition: opacity 0.15s ease;
+}
+.tl-org-link:hover, .tl-org-link:focus-visible { opacity: 1; }
+
+/* ============ Process table (home #systems) ============
+   The section opens with `$ ps aux --systems`, so it renders as an actual
+   process table: every system on one screen, scannable down the metric
+   column. The prose write-ups live on /systems/. */
+.tag-run { color: var(--accent); }
+
+.proc {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  table-layout: auto;
+}
+.proc thead th {
+  text-align: left;
+  font-weight: 500;
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dim);
+  padding: 0 14px 8px 0;
+  border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+}
+.proc td {
+  padding: 7px 14px 7px 0;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: baseline;
+}
+.proc tbody tr:last-child td { border-bottom: none; }
+.proc tbody tr { transition: background 0.12s ease; }
+.proc tbody tr:hover { background: var(--hover-bg); }
+
+.proc-status { width: 1%; white-space: nowrap; }
+.proc-name { color: var(--fg); font-weight: 600; }
+.proc-pipe { color: var(--muted); font-size: 13px; }
+.proc-metric { color: var(--accent); white-space: nowrap; }
+.proc .arrow { color: var(--dim); margin: 0 2px; }
+
+.proc-more { margin: 14px 0 0; font-size: 13.5px; }
+.proc-more a { color: var(--link); text-decoration: none; border-bottom: 1px dashed var(--dim); }
+.proc-more a:hover { color: var(--accent); border-color: var(--accent); }
+
+#systems .cmd-spaced { margin-top: 30px; }
+
+/* Narrow screens can't carry four columns. Each row becomes a small stacked
+   block instead — same data, same order, no horizontal scrolling. */
+@media (max-width: 720px) {
+  .proc, .proc tbody, .proc tr, .proc td { display: block; width: auto; }
+  .proc thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .proc tbody tr {
+    padding: 11px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .proc tbody tr:last-child { border-bottom: none; }
+  .proc td { padding: 0; border-bottom: none; }
+  .proc-status { display: inline-block !important; width: auto; margin-right: 8px; }
+  .proc-name { display: inline !important; }
+  .proc-pipe { margin-top: 4px; }
+  .proc-metric { margin-top: 3px; white-space: normal; }
+}
+
+/* ============ Capability index (home #capabilities) ============
+   Home carries the inventory only — each area and what it is built on. The
+   paragraph explaining each one lives on /capabilities/. */
+.cap-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+@media (min-width: 760px) {
+  .cap-grid { grid-template-columns: 1fr 1fr; column-gap: 44px; row-gap: 20px; }
+}
+.cap {
+  display: block;
+  text-decoration: none;
+  padding: 6px 10px 7px;
+  margin: -6px -10px -7px;
+  border-left: 2px solid transparent;
+  border-radius: 2px;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+.cap:hover, .cap:focus-visible {
+  background: var(--hover-bg);
+  border-left-color: var(--accent);
+  transform: translateX(3px);
+}
+.cap:hover .cap-name, .cap:focus-visible .cap-name { color: var(--accent); }
+
+.cap-name {
+  display: block;
+  margin: 0 0 3px;
+  color: var(--fg);
+  font-weight: 600;
+  font-size: 15px;
+}
+.cap-tags {
+  display: block;
+  margin: 0;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+/* the way back from a standalone page to the section it came from */
+.backlink { margin: 0 0 20px; }
+.backlink a { color: var(--muted); text-decoration: none; }
+.backlink a:hover, .backlink a:focus-visible { color: var(--accent); }
+.backlink a:hover .prompt, .backlink a:hover .dim { color: var(--accent); }
+
+/* On home, these two section titles summarise a fuller page — so the title
+   itself is the way in. The arrow only appears on hover/focus so the heading
+   still reads as a heading at rest. */
+.title-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.title-link:hover, .title-link:focus-visible {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.title-link::after {
+  content: " ->";
+  color: var(--dim);
+  font-size: 0.5em;
+  vertical-align: middle;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.title-link:hover::after, .title-link:focus-visible::after {
+  color: var(--accent);
+  opacity: 1;
+}
+
+/* Every row in the process table links to that system's write-up. The anchor
+   sits in the name cell so it is a real, keyboard-reachable link, then a
+   stretched overlay makes the whole row the hit area. */
+.proc tbody tr { position: relative; cursor: pointer; }
+.proc-link { color: inherit; text-decoration: none; }
+.proc-link::after { content: ""; position: absolute; inset: 0; }
+.proc tbody tr:hover .proc-link,
+.proc-link:focus-visible { color: var(--accent); }
+.proc tbody tr:hover .proc-metric { color: var(--accent); }
+
+/* Landing on a deep link: mark the entry that was asked for, and keep it
+   clear of the sticky top bar. */
+.entry { scroll-margin-top: 80px; }
+.entry:target { animation: entryFlash 2.4s ease-out 1; }
+@keyframes entryFlash {
+  0%, 55% { background: var(--hover-bg); box-shadow: -14px 0 0 var(--hover-bg), 14px 0 0 var(--hover-bg); }
+  100%    { background: transparent; box-shadow: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cap { transition: none; }
+  .cap:hover, .cap:focus-visible { transform: none; }
+  .entry:target { animation: none; background: var(--hover-bg); }
+}
+
+/* a plain arrow in front of the command, so the link reads as "back" at a
+   glance to anyone who doesn't parse `cd ..` */
+.back-arrow {
+  display: inline-block;
+  margin-right: 9px;
+  font-size: 15px;
+  color: var(--muted);
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+.backlink a:hover .back-arrow,
+.backlink a:focus-visible .back-arrow {
+  color: var(--accent);
+  transform: translateX(-3px);
+}
+
+/* ============ Scroll reveal ============
+   reveal.js marks blocks it is about to animate; they settle into place the
+   first time they scroll into view, then the classes are stripped again so
+   nothing is left overriding the element's own styles.
+
+   Keyframes rather than a transition on purpose: several of these elements
+   already carry their own `transition` (table rows animate their hover
+   background, cards their hover lift) at a higher specificity, which would
+   win and leave the entrance snapping into place instead of easing. */
+.reveal { opacity: 0; }
+.reveal.is-in { animation: revealY 0.55s cubic-bezier(0.4, 0, 0.2, 1) both; }
+.reveal.reveal-x.is-in { animation-name: revealX; }
+
+@keyframes revealY {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes revealX {
+  from { opacity: 0; transform: translateX(-6px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; }
+  .reveal.is-in { animation: none; }
+}
+
+
+/* ============ Top bar: contact CTA beside the hamburger ============ */
+.topbar-right { display: flex; align-items: center; gap: 14px; }
+.topbar-cta {
+  font-size: 12.5px;
+  color: var(--prompt);
+  text-decoration: none;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 5px 11px;
+  white-space: nowrap;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+.topbar-cta:hover, .topbar-cta:focus-visible {
+  color: var(--bg);
+  background: var(--prompt);
+  border-color: var(--prompt);
+}
+@media (max-width: 420px) {
+  .topbar-cta { padding: 4px 8px; font-size: 11.5px; }
+}
+
+/* ============ Nav: sections left, quick links right ============ */
+/* The bar itself still spans the window, so its background and bottom rule
+   run edge to edge - but its contents line up with the same centred column
+   the rest of the page uses. Without that the two groups were pinned to the
+   window edges with a vast hole between them on a wide screen. */
+.nav-menu { display: block; padding: 8px 0 16px; }
+.nav-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* split down the middle of the column */
+  gap: 40px;
+  align-items: start;
+}
+.nav-main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.nav-side {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+  text-align: left;
+  padding-left: 24px;
+  border-left: 1px solid var(--rule);
+  flex: none;
+}
+.nav-side-title {
+  margin: 0 0 4px;
+  font-size: 11px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.nav-side a {
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 14px;
+  padding: 3px 0;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s ease;
+}
+.nav-side a:hover, .nav-side a:focus-visible { color: var(--accent); }
+.nav-side .ext { color: var(--dim); font-size: 11px; margin-left: 5px; }
+.nav-side a:hover .ext { color: var(--accent); }
+
+/* on a phone the two columns stack rather than squeeze */
+@media (max-width: 560px) {
+  .nav-inner { grid-template-columns: 1fr; gap: 14px; }
+  .nav-side {
+    padding-left: 0;
+    padding-top: 12px;
+    border-left: none;
+    border-top: 1px solid var(--rule);
+    width: 100%;
+  }
+}

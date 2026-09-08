@@ -136,11 +136,17 @@ function typewriterReveal(el, speed) {
   el.textContent = "";
   el.classList.add("typing");
   let i = 0;
+  /* Browsers clamp nested setTimeout to ~4ms, so simply lowering `speed` stops
+     buying anything past that floor. Tick on a steady frame instead and type
+     however many characters that frame is worth — genuinely faster, and
+     smoother than fighting the timer. */
+  const TICK = 16;
+  const perTick = Math.max(1, Math.round(TICK / speed));
   function step() {
     if (i <= text.length) {
       el.textContent = text.slice(0, i);
-      i++;
-      setTimeout(step, speed);
+      i += perTick;
+      setTimeout(step, TICK);
     } else {
       el.innerHTML = html;
       el.classList.remove("typing");
@@ -156,7 +162,7 @@ if (typeTargets.length) {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const isIntro = entry.target.id === "introText";
-          typewriterReveal(entry.target, isIntro ? 14 : 6);
+          typewriterReveal(entry.target, isIntro ? 6 : 3);
           typeObserver.unobserve(entry.target);
         }
       });
@@ -269,4 +275,164 @@ if (statEls.length) {
   }
   tick();
   setInterval(tick, 20000);
+})();
+
+
+/* ---------- park the ship in whatever space a section leaves ----------
+   Some sections (the intro, writing, about) only fill the left of a wide
+   screen, leaving a column of nothing on the right. Where that gap is big
+   enough the ship is handed it and patrols there instead of the strip along
+   the top; everywhere else it goes back to the top band.
+
+   The gap is measured from the actual text, not from the block boxes - the
+   blocks are full-width by definition, so their rects would always report no
+   space at all. Desktop only: a phone has no spare column to give. */
+(function shipParking() {
+  if (!window.GPAsteroids || !window.GPAsteroids.setZone) return;
+
+  const sections = [...document.querySelectorAll("main > section.block")];
+  if (!sections.length) return;
+
+  const wide = window.matchMedia("(min-width: 1000px)");
+  const MIN_GAP = 380;           // narrower than this and the ship is cramped
+  const GUTTER = 44;             // breathing room between the text and the ship
+  let gaps = new Map();
+
+  function textRight(section) {
+    const range = document.createRange();
+    let max = 0;
+    const walker = document.createTreeWalker(section, NodeFilter.SHOW_TEXT);
+    let n;
+    while ((n = walker.nextNode())) {
+      if (!n.nodeValue.trim()) continue;
+      range.selectNodeContents(n);
+      const r = range.getBoundingClientRect();
+      if (r.width && r.right > max) max = r.right;
+    }
+    // logos, tables and other replaced boxes are content too
+    section.querySelectorAll("img, table, canvas").forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.width && r.right > max) max = r.right;
+    });
+    return max;
+  }
+
+  function measure() {
+    gaps = new Map();
+    if (!wide.matches) return;
+    sections.forEach((s) => {
+      const right = textRight(s);
+      const free = window.innerWidth - right;
+      if (right > 0 && free >= MIN_GAP) {
+        gaps.set(s.id, { x0: right + GUTTER, x1: window.innerWidth - 40 });
+      }
+    });
+  }
+
+  let current = null;
+  function apply() {
+    if (!wide.matches) {
+      if (current !== null) { current = null; window.GPAsteroids.setZone(null); }
+      return;
+    }
+    const mid = window.innerHeight / 2;
+    let active = null;
+    for (const s of sections) {
+      const r = s.getBoundingClientRect();
+      if (r.top <= mid && r.bottom >= mid) { active = s; break; }
+    }
+    const gap = active && gaps.get(active.id);
+    const key = gap ? active.id : null;
+    if (key === current) return;
+    current = key;
+    window.GPAsteroids.setZone(
+      gap ? { x0: gap.x0, y0: 130, x1: gap.x1, y1: window.innerHeight - 130 } : null
+    );
+  }
+
+  let queued = false;
+  function onScroll() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => { queued = false; apply(); });
+  }
+
+  let resizeTimer;
+  function refresh() { measure(); current = "?"; apply(); }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(refresh, 180);
+  }, { passive: true });
+  if (wide.addEventListener) wide.addEventListener("change", refresh);
+
+  // wait for the webfont, so the width measured is the final one
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
+  setTimeout(refresh, 600);
+
+  window.GPShipParking = {
+    gaps: function () { return Object.fromEntries(gaps); },
+    current: function () { return current; }
+  };
+})();
+
+
+/* ---------- clicking the name replays the page-load intro ----------
+   The intro is gated on a sessionStorage flag so it only plays once a visit.
+   Clearing the flag and reloading is what actually replays it: from an inner
+   page a plain navigation is enough, but on the home page dropping a #hash
+   alone would not reload, so the hash is stripped first and the load forced. */
+(function replayIntro() {
+  const name = document.getElementById("replayIntro");
+  if (!name) return;
+  name.addEventListener("click", (e) => {
+    e.preventDefault();
+    try { sessionStorage.removeItem("gp-intro"); } catch (err) {}
+    if (window.location.pathname === "/") {
+      history.replaceState(null, "", "/");
+      window.location.reload();
+    } else {
+      window.location.href = "/";
+    }
+  });
+})();
+
+
+/* ---------- keep a #hash landing accurate after the page settles ----------
+   The browser jumps to the fragment early, then the page keeps growing above
+   it - the webfont swaps in, and the hero types its intro line out, which
+   alone adds a couple of hundred pixels. Scroll anchoring then faithfully
+   preserves the stale position, so the section ends up sitting well below the
+   sticky bar instead of under it.
+
+   One correction is not enough because the growth arrives in stages, so this
+   re-aims for a short window and then gets out of the way - immediately, if
+   the reader starts scrolling for themselves. */
+(function anchorSettle() {
+  if (!window.location.hash) return;
+
+  var userMoved = false;
+  ["wheel", "touchstart", "keydown"].forEach(function (ev) {
+    window.addEventListener(ev, function () { userMoved = true; }, { once: true, passive: true });
+  });
+
+  var deadline = Date.now() + 2800;
+  var timer = window.setInterval(function () {
+    if (userMoved || Date.now() > deadline) { window.clearInterval(timer); return; }
+    var el;
+    try { el = document.getElementById(decodeURIComponent(window.location.hash.slice(1))); }
+    catch (e) { window.clearInterval(timer); return; }
+    if (!el) return;
+    /* Where this target should come to rest: the scrollport's own padding,
+       plus whatever scroll-margin the element carries. Entries set 80px of
+       their own and inner pages set no padding, so neither number alone is
+       the answer. Comparing against the real resting offset also avoids
+       mistaking scroll anchoring's held position for a correct one. */
+    var pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+    var margin = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+    if (Math.abs(el.getBoundingClientRect().top - (pad + margin)) > 4) {
+      el.scrollIntoView({ block: "start", behavior: "instant" });
+    }
+  }, 110);
 })();

@@ -17,13 +17,18 @@
 <canvas id="asteroids" aria-hidden="true"></canvas>
 
 <header class="topbar">
-  <a href="/" class="topbar-name">govind pradeep</a>
-  <button type="button" class="hamburger" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
+  <a href="/" class="topbar-name" id="replayIntro">Govind Pradeep</a>
+  <div class="topbar-right">
+    <a class="topbar-cta" href="/contact/">contact me</a>
+    <button type="button" class="hamburger" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
 
 <nav class="nav-menu" id="navMenu" aria-label="Sections" hidden>
+  <div class="nav-inner">
+  <div class="nav-main">
   <a href="/capabilities/">capabilities</a>
   <a href="/systems/">systems</a>
   <a href="/experience/">experience</a>
@@ -31,14 +36,23 @@
   <a href="/blog/">blog</a>
   <a href="/contact/" class="is-active">contact</a>
   <a class="nav-cta" href="/book">let's talk for 30m</a>
-  <span class="theme-toggle" role="group" aria-label="Theme">
-    <span class="dim">theme:</span>
-    <button type="button" class="theme-opt" data-theme-choice="dark">dark</button>
-    <button type="button" class="theme-opt" data-theme-choice="light">light</button>
-  </span>
+    <span class="theme-toggle" role="group" aria-label="Theme">
+      <span class="dim">theme:</span>
+      <button type="button" class="theme-opt" data-theme-choice="dark">dark</button>
+      <button type="button" class="theme-opt" data-theme-choice="light">light</button>
+    </span>
+  </div>
+  <div class="nav-side">
+    <p class="nav-side-title">quick links</p>
+    <a href="https://www.linkedin.com/in/devilasenare/" target="_blank" rel="noopener noreferrer">linkedin <span class="ext" aria-hidden="true">-&gt;</span></a>
+    <a href="https://github.com/D3vilsnar3" target="_blank" rel="noopener noreferrer">github <span class="ext" aria-hidden="true">-&gt;</span></a>
+    <a href="/resume/Govind_Pradeep_Resume.pdf" download>resume <span class="ext" aria-hidden="true">pdf</span></a>
+  </div>
+  </div>
 </nav>
 
 <main id="top">
+<p class="cmd backlink"><a href="/#contact"><span class="back-arrow" aria-hidden="true">&#8592;</span><span class="prompt">$</span> cd ..<span class="dim"> # back to the home page</span></a></p>
 
   <section class="block" id="contact">
     <p class="cmd"><span class="prompt">$</span> whois govind</p>
@@ -103,6 +117,7 @@
 <script src="/js/particles.js"></script>
 <script src="/js/asteroids.js"></script>
 <script src="/js/fluid.js"></script>
+<script src="/js/reveal.js"></script>
 <script src="/script.js"></script>
 </body>
 </html>
