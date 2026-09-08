@@ -115,7 +115,7 @@ function layout(page, body) {
 <canvas id="asteroids" aria-hidden="true"></canvas>
 
 <header class="topbar">
-  <a href="/" class="topbar-name" id="replayIntro">Govind Pradeep</a>
+  <a href="/" class="topbar-name" id="replayIntro"><img class="topbar-logo" src="/icon-32.png" alt="" width="32" height="32" decoding="async"><span>Govind Pradeep</span></a>
   <div class="topbar-right">
     <a class="topbar-cta" href="/contact/">contact me</a>
     <button type="button" class="hamburger" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">

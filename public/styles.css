@@ -78,6 +78,9 @@ strong { color: var(--fg); font-weight: 600; }
   padding: 16px 24px;
 }
 .topbar-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-size: 16px;
   font-weight: 600;
   color: var(--fg);
@@ -262,7 +265,17 @@ main { max-width: var(--content-max); margin: 0 auto; padding: 0 24px; }
   font-weight: 700;
   letter-spacing: -0.01em;
 }
-.role { margin: 0 0 6px; color: var(--accent); font-size: 19px; }
+/* The tagline is the line the eye lands on after the name; the formal job
+   title sits under it, smaller, with the remote note folded onto the same
+   line so the hero stays three lines deep rather than four. */
+.tagline {
+  margin: 0 0 9px;
+  color: var(--prompt);
+  font-size: clamp(19px, 3.2vw, 25px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.role { margin: 0 0 6px; color: var(--accent); font-size: 16px; line-height: 1.5; }
 
 .typewriter {
   color: var(--fg);
@@ -1114,4 +1127,18 @@ html[data-snap] :is(#hero, #capabilities, #systems, #experience, #about, #blog, 
     border-top: 1px solid var(--rule);
     width: 100%;
   }
+}
+
+/* the site mark sits ahead of the name; alt="" because the name beside it
+   already carries the text */
+.topbar-logo {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  display: block;
+  flex: none;
+}
+@media (max-width: 420px) {
+  .topbar-logo { width: 20px; height: 20px; }
+  .topbar-name { gap: 8px; }
 }
