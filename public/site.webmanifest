@@ -1,0 +1,11 @@
+{
+  "name": "Govind Pradeep",
+  "short_name": "Govind Pradeep",
+  "icons": [
+    { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ],
+  "theme_color": "#08090b",
+  "background_color": "#08090b",
+  "display": "browser"
+}
