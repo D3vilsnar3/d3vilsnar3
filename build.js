@@ -111,6 +111,7 @@ ${body}
 
 <script src="/js/particles.js"></script>
 <script src="/js/asteroids.js"></script>
+<script src="/js/fluid.js"></script>
 <script src="/script.js"></script>
 </body>
 </html>
