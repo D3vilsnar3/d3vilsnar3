@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-snap>
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -17,13 +17,18 @@
 <canvas id="asteroids" aria-hidden="true"></canvas>
 
 <header class="topbar">
-  <a href="/" class="topbar-name">govind pradeep</a>
-  <button type="button" class="hamburger" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
+  <a href="/" class="topbar-name" id="replayIntro">Govind Pradeep</a>
+  <div class="topbar-right">
+    <a class="topbar-cta" href="/contact/">contact me</a>
+    <button type="button" class="hamburger" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
 
 <nav class="nav-menu" id="navMenu" aria-label="Sections" hidden>
+  <div class="nav-inner">
+  <div class="nav-main">
   <a href="/capabilities/">capabilities</a>
   <a href="/systems/">systems</a>
   <a href="/experience/">experience</a>
@@ -31,21 +36,29 @@
   <a href="/blog/">blog</a>
   <a href="/contact/">contact</a>
   <a class="nav-cta" href="/book">let's talk for 30m</a>
-  <span class="theme-toggle" role="group" aria-label="Theme">
-    <span class="dim">theme:</span>
-    <button type="button" class="theme-opt" data-theme-choice="dark">dark</button>
-    <button type="button" class="theme-opt" data-theme-choice="light">light</button>
-  </span>
+    <span class="theme-toggle" role="group" aria-label="Theme">
+      <span class="dim">theme:</span>
+      <button type="button" class="theme-opt" data-theme-choice="dark">dark</button>
+      <button type="button" class="theme-opt" data-theme-choice="light">light</button>
+    </span>
+  </div>
+  <div class="nav-side">
+    <p class="nav-side-title">quick links</p>
+    <a href="https://www.linkedin.com/in/devilasenare/" target="_blank" rel="noopener noreferrer">linkedin <span class="ext" aria-hidden="true">-&gt;</span></a>
+    <a href="https://github.com/D3vilsnar3" target="_blank" rel="noopener noreferrer">github <span class="ext" aria-hidden="true">-&gt;</span></a>
+    <a href="/resume/Govind_Pradeep_Resume.pdf" download>resume <span class="ext" aria-hidden="true">pdf</span></a>
+  </div>
+  </div>
 </nav>
 
-<div class="intro-name" id="introName" aria-hidden="true">govind pradeep</div>
+<div class="intro-name" id="introName" aria-hidden="true">Govind Pradeep</div>
 
 <main id="top">
 
   <section class="block" id="hero">
 <p class="cmd"><span class="prompt">$</span> whoami</p>
     <div class="out">
-      <h1>govind pradeep</h1>
+      <h1>Govind Pradeep</h1>
       <p class="role">senior automation &amp; ai systems engineer</p>
       <p class="muted-line">remote-friendly — works with teams anywhere</p>
     </div>
@@ -59,8 +72,15 @@
       <a class="btn btn-primary" href="/systems/">my work</a>
       <a class="btn btn-ghost" href="resume/Govind_Pradeep_Resume.pdf" download>download resume</a>
     </div>
+  </section>
 
-    <p class="cmd"><span class="prompt">$</span> tail -f systems.log --summary</p>
+  <hr class="rule">
+
+  <section class="block" id="stats">
+<p class="cmd"><span class="prompt">$</span> tail -f systems.log --summary</p>
+    <h2 class="page-title">By the numbers</h2>
+    <p class="section-note"># what the last seven years add up to</p>
+
     <div class="out stat-log">
       <div class="stat-line">
         <span class="tag tag-ok">[ok]</span>
@@ -82,6 +102,21 @@
         <span class="stat-num" data-count="2200000" data-end="2500000" data-suffix="">0</span>
         <span class="stat-desc">rows of data scraped &amp; processed</span>
       </div>
+      <div class="stat-line">
+        <span class="tag tag-ok">[ok]</span>
+        <span class="stat-num" data-count="9" data-suffix="">0</span>
+        <span class="stat-desc">browser extensions built end to end</span>
+      </div>
+      <div class="stat-line">
+        <span class="tag tag-ok">[ok]</span>
+        <span class="stat-num" data-count="9" data-suffix="">0</span>
+        <span class="stat-desc">AWS Lambda functions in one production pipeline</span>
+      </div>
+      <div class="stat-line">
+        <span class="tag tag-ok">[ok]</span>
+        <span class="stat-num" data-count="3" data-suffix="">0</span>
+        <span class="stat-desc">trained models shipped to on-device iOS</span>
+      </div>
     </div>
   </section>
 
@@ -89,216 +124,158 @@
 
   <section class="block" id="capabilities">
 <p class="cmd"><span class="prompt">$</span> ls -la capabilities/</p>
-    <h2 class="page-title">What I build with</h2>
+    <h2 class="page-title"><a class="title-link" href="/capabilities/">What I build with</a></h2>
+    <p class="section-note"># seven areas, and what each one is actually built on</p>
 
-    <div class="listing">
-
-      <article class="entry">
-        <p class="entry-head"><span class="path">AI &amp; LLM Integration</span></p>
-        <p class="entry-body">AWS Bedrock (Nova Pro, Nemotron) for vision, extraction, and
-        decision-making agents; Hugging Face models across text, image, audio, and video; a
-        fine-tuned LLaMA with vector-database retrieval; Rasa and DialogFlow conversational
-        systems; GPT-3.5 for structured generation.</p>
-        <p class="entry-tags">AWS Bedrock · Nova Pro · Nemotron · Hugging Face · Fine-tuned LLaMA · RAG · Rasa · DialogFlow</p>
-      </article>
-
-      <article class="entry">
-        <p class="entry-head"><span class="path">Computer Vision &amp; Machine Learning</span></p>
-        <p class="entry-body">CNN models for object and impact detection, trained in
-        Keras/TensorFlow, converted to ONNX and CoreML for production and on-device inference.
-        Benchmarked against ground truth, not just validation accuracy — including the
-        domain-shift gap between training data and real sensor data.</p>
-        <p class="entry-tags">Keras · TensorFlow · ONNX Runtime · CoreML · Object detection · Model benchmarking</p>
-      </article>
-
-      <article class="entry">
-        <p class="entry-head"><span class="path">Team Leadership &amp; QA Tooling</span></p>
-        <p class="entry-body">Lead a team of annotators on a sports-tech client's ground-truth pipeline —
-        and built the desktop tools they use every day (impactAnnotator, rangeAnnotator):
-        per-user attribution, correction/verification workflows, and live physics feedback so a
-        correction's effect is visible immediately instead of discovered downstream.</p>
-        <p class="entry-tags">Team leadership · QA workflow design · Internal tooling · Annotator attribution</p>
-      </article>
-
-      <article class="entry">
-        <p class="entry-head"><span class="path">Cloud &amp; Backend Infrastructure</span></p>
-        <p class="entry-body">AWS Lambda, DynamoDB, S3, SES, EC2, and ECR running a real
-        production data pipeline end to end — ingest, process, align, score, report, alert.
-        Flask and Express servers as the glue between browser automation, models, and storage.</p>
-        <p class="entry-tags">AWS Lambda · DynamoDB · S3 · ECR · EC2 · Flask · Express · Docker</p>
-      </article>
-
-      <article class="entry">
-        <p class="entry-head"><span class="path">Data Engineering at Scale</span></p>
-        <p class="entry-body">Structured extraction and deduplication pipelines across dozens
-        of thousands of records — union-find merge logic, fingerprint-based dedup, incremental
-        resume, and atomic writes with shrink-guards so a bad run can't silently destroy good
-        data.</p>
-        <p class="entry-tags">ETL · Deduplication &amp; merge logic · Structured extraction · Atomic writes</p>
-      </article>
-
-      <article class="entry">
-        <p class="entry-head"><span class="path">Browser Automation &amp; Scraping</span></p>
-        <p class="entry-body">Playwright and Chrome extensions (Manifest V3) driving real, logged-in
-        sessions — not APIs. Human-paced clicking, virtualized-list handling, session portability
-        across machines, and recovery logic built from watching real automations fail and fixing
-        the actual cause.</p>
-        <p class="entry-tags">Playwright · Selenium · Chrome Extensions · CDP control · Anti-bot resilience · Session portability</p>
-      </article>
-
-      <article class="entry">
-        <p class="entry-head"><span class="path">Mobile &amp; On-Device AI</span></p>
-        <p class="entry-body">SwiftUI apps calling Bedrock directly from the device via Cognito
-        temporary credentials — no backend server in the critical path — plus on-device WKWebView
-        automation for the same tasks a server would otherwise drive.</p>
-        <p class="entry-tags">SwiftUI · Cognito Identity · On-device inference</p>
-      </article>
-
+    <div class="cap-grid">
+      <a class="cap" href="/capabilities/#ai-and-llm-integration">
+        <span class="cap-name">AI &amp; LLM Integration</span>
+        <span class="cap-tags">AWS Bedrock · Nova Pro · Nemotron · Hugging Face · Fine-tuned LLaMA · RAG · Rasa · DialogFlow</span>
+      </a>
+      <a class="cap" href="/capabilities/#computer-vision-and-machine-learning">
+        <span class="cap-name">Computer Vision &amp; Machine Learning</span>
+        <span class="cap-tags">Keras · TensorFlow · ONNX Runtime · CoreML · Object detection · Model benchmarking</span>
+      </a>
+      <a class="cap" href="/capabilities/#team-leadership-and-qa-tooling">
+        <span class="cap-name">Team Leadership &amp; QA Tooling</span>
+        <span class="cap-tags">Team leadership · QA workflow design · Internal tooling · Annotator attribution</span>
+      </a>
+      <a class="cap" href="/capabilities/#cloud-and-backend-infrastructure">
+        <span class="cap-name">Cloud &amp; Backend Infrastructure</span>
+        <span class="cap-tags">AWS Lambda · DynamoDB · S3 · ECR · EC2 · Flask · Express · Docker</span>
+      </a>
+      <a class="cap" href="/capabilities/#data-engineering-at-scale">
+        <span class="cap-name">Data Engineering at Scale</span>
+        <span class="cap-tags">ETL · Deduplication &amp; merge logic · Structured extraction · Atomic writes</span>
+      </a>
+      <a class="cap" href="/capabilities/#browser-automation-and-scraping">
+        <span class="cap-name">Browser Automation &amp; Scraping</span>
+        <span class="cap-tags">Playwright · Selenium · Chrome Extensions · CDP control · Anti-bot resilience · Session portability</span>
+      </a>
+      <a class="cap" href="/capabilities/#mobile-and-on-device-ai">
+        <span class="cap-name">Mobile &amp; On-Device AI</span>
+        <span class="cap-tags">SwiftUI · Cognito Identity · On-device inference</span>
+      </a>
     </div>
+
+    <p class="proc-more"><a href="/capabilities/">what each one means in practice <span class="arrow">-&gt;</span></a></p>
   </section>
 
   <hr class="rule">
 
   <section class="block" id="systems">
 <p class="cmd"><span class="prompt">$</span> ps aux --systems</p>
-    <h2 class="page-title">Systems I've built</h2>
-    <p class="section-note"># six systems, live or run to completion — not demos</p>
+    <h2 class="page-title"><a class="title-link" href="/systems/">Systems I've built</a></h2>
+    <p class="section-note"># thirteen systems, live or run to completion — not demos</p>
 
-    <div class="listing">
-
-      <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Marketplace Negotiation Agent</span></p>
-        <p class="pipeline">Capture listing <span class="arrow">-&gt;</span> Vision model prices it <span class="arrow">-&gt;</span> Negotiates autonomously</p>
-        <p class="entry-body">A browser extension plus a local server drives an operator's own
-        authenticated session on a large consumer marketplace: assesses item condition from
-        photos, prices accordingly, then negotiates with sellers autonomously — with rate-limit
-        detection and messaging guards built after real incidents, not speculative edge cases.</p>
-        <p class="entry-metric"># runs continuously on a cloud instance, negotiating in parallel</p>
-      </article>
-
-      <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Sports Capture Quality Control</span></p>
-        <p class="pipeline">Device upload <span class="arrow">-&gt;</span> Parameter + CNN checks <span class="arrow">-&gt;</span> AI fallback <span class="arrow">-&gt;</span> Annotated video</p>
-        <p class="entry-body">Two production AWS Lambdas validate every capture a device
-        uploads: parameter checks, then CNN/ONNX visual verification (Bedrock Nemotron where no
-        model was trained for the mode), then a rendered debug video for anyone reviewing the
-        shot.</p>
-        <p class="entry-metric"># 86% recall on range-mode ball-impact detection · ~16s avg render time</p>
-      </article>
-
-      <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Launch Monitor ML Suite</span></p>
-        <p class="pipeline">Collect 1,218 exports <span class="arrow">-&gt;</span> Engineer features <span class="arrow">-&gt;</span> Train 3 models <span class="arrow">-&gt;</span> Ship to iOS</p>
-        <p class="entry-body">Scraped bulk sensor exports from a third-party sports launch-monitor
-        portal, then trained neural nets that predict spin rate, spin axis, and club speed from the
-        metrics that are easy to measure — shipped as CoreML models for on-device iOS inference.</p>
-        <p class="entry-metric"># club speed error cut from 20.5 km/h (legacy) to 1.99 km/h</p>
-      </article>
-
-      <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Tournament Data Agent</span></p>
-        <p class="pipeline">Discover pages <span class="arrow">-&gt;</span> AI extraction <span class="arrow">-&gt;</span> Read flyer images <span class="arrow">-&gt;</span> Merge &amp; dedupe</p>
-        <p class="entry-body">An autonomous agent discovers charity sports-event pages across a
-        tournament-management platform, decides for itself how far to navigate to reach rosters,
-        extracts structured data with a vision-capable model, and reads promotional flyer images
-        via OCR when the details were never real HTML text.</p>
-        <p class="entry-metric"># 178 tournaments extracted end to end from unstructured event pages</p>
-      </article>
-
-      <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Professional Network Automator</span></p>
-        <p class="pipeline">Browse leads <span class="arrow">-&gt;</span> Human-paced engagement <span class="arrow">-&gt;</span> Email alerting</p>
-        <p class="entry-body">Runs locally and on a cloud instance independently, working through a
-        lead list on a professional network and engaging with the content worth engaging with —
-        randomized human-like pacing, daily caps, and crash-alert email built in after the
-        process silently went down more than once.</p>
-        <p class="entry-metric"># 1,541 items tracked · 98.8% success rate</p>
-      </article>
-
-      <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Web Scraping Fleet</span></p>
-        <p class="pipeline">Browser extension <span class="arrow">-&gt;</span> Local server <span class="arrow">-&gt;</span> Deduplicated dataset</p>
-        <p class="entry-body">Five independent scrapers, each a purpose-built Chrome extension
-        paired with a local server: association-executive directories, a speaker marketplace, a
-        member community feed, and a professional network — each with its own dedup and resume
-        logic.</p>
-        <p class="entry-metric"># 22,000+ profiles and posts collected across 5 platforms</p>
-      </article>
-    </div>
+    <table class="proc">
+      <thead>
+        <tr>
+          <th scope="col" class="proc-status">status</th>
+          <th scope="col" class="proc-name">system</th>
+          <th scope="col" class="proc-pipe">pipeline</th>
+          <th scope="col" class="proc-metric">metric</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="proc-status"><span class="tag tag-run">[run]</span></td>
+          <td class="proc-name"><a class="proc-link" href="/systems/#marketplace-negotiation-agent">Marketplace Negotiation Agent</a></td>
+          <td class="proc-pipe">capture <span class="arrow">-&gt;</span> price <span class="arrow">-&gt;</span> negotiate</td>
+          <td class="proc-metric">negotiates in parallel, unattended</td>
+        </tr>
+        <tr>
+          <td class="proc-status"><span class="tag tag-ok">[ok]</span></td>
+          <td class="proc-name"><a class="proc-link" href="/systems/#sports-capture-quality-control">Sports Capture Quality Control</a></td>
+          <td class="proc-pipe">upload <span class="arrow">-&gt;</span> checks <span class="arrow">-&gt;</span> AI fallback <span class="arrow">-&gt;</span> video</td>
+          <td class="proc-metric">86% recall · ~16s render</td>
+        </tr>
+        <tr>
+          <td class="proc-status"><span class="tag tag-ok">[ok]</span></td>
+          <td class="proc-name"><a class="proc-link" href="/systems/#launch-monitor-ml-suite">Launch Monitor ML Suite</a></td>
+          <td class="proc-pipe">collect <span class="arrow">-&gt;</span> engineer <span class="arrow">-&gt;</span> train <span class="arrow">-&gt;</span> ship to iOS</td>
+          <td class="proc-metric">20.5 <span class="arrow">-&gt;</span> 1.99 km/h error</td>
+        </tr>
+        <tr>
+          <td class="proc-status"><span class="tag tag-ok">[ok]</span></td>
+          <td class="proc-name"><a class="proc-link" href="/systems/#tournament-data-agent">Tournament Data Agent</a></td>
+          <td class="proc-pipe">discover <span class="arrow">-&gt;</span> extract <span class="arrow">-&gt;</span> read flyers <span class="arrow">-&gt;</span> dedupe</td>
+          <td class="proc-metric">178 tournaments extracted</td>
+        </tr>
+        <tr>
+          <td class="proc-status"><span class="tag tag-ok">[ok]</span></td>
+          <td class="proc-name"><a class="proc-link" href="/systems/#professional-network-automator">Professional Network Automator</a></td>
+          <td class="proc-pipe">browse <span class="arrow">-&gt;</span> engage <span class="arrow">-&gt;</span> alert</td>
+          <td class="proc-metric">1,541 items · 98.8% success</td>
+        </tr>
+        <tr>
+          <td class="proc-status"><span class="tag tag-ok">[ok]</span></td>
+          <td class="proc-name"><a class="proc-link" href="/systems/#web-scraping-fleet">Web Scraping Fleet</a></td>
+          <td class="proc-pipe">extension <span class="arrow">-&gt;</span> local server <span class="arrow">-&gt;</span> dataset</td>
+          <td class="proc-metric">22,000+ records · 5 platforms</td>
+        </tr>
+      </tbody>
+    </table>
 
     <p class="cmd cmd-spaced"><span class="prompt">$</span> cat archive/accubits-systems.log</p>
     <p class="section-note"># shipped 2019–2023 at accubits technologies, for real clients</p>
 
-    <div class="listing">
+    <table class="proc">
+      <thead>
+        <tr>
+          <th scope="col" class="proc-status">status</th>
+          <th scope="col" class="proc-name">system</th>
+          <th scope="col" class="proc-pipe">pipeline</th>
+          <th scope="col" class="proc-metric">metric</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="proc-status"><span class="tag tag-ok">[ok]</span></td>
+          <td class="proc-name"><a class="proc-link" href="/systems/#deep-listening">Deep Listening</a></td>
+          <td class="proc-pipe">ingest <span class="arrow">-&gt;</span> extract <span class="arrow">-&gt;</span> LLM <span class="arrow">-&gt;</span> retrieve</td>
+          <td class="proc-metric">text, image, audio and video</td>
+        </tr>
+        <tr>
+          <td class="proc-status"><span class="tag tag-ok">[ok]</span></td>
+          <td class="proc-name"><a class="proc-link" href="/systems/#cipbot">CipBot</a></td>
+          <td class="proc-pipe">WhatsApp <span class="arrow">-&gt;</span> chat flow <span class="arrow">-&gt;</span> database</td>
+          <td class="proc-metric">Rasa · live for a pharma team</td>
+        </tr>
+        <tr>
+          <td class="proc-status"><span class="tag tag-ok">[ok]</span></td>
+          <td class="proc-name"><a class="proc-link" href="/systems/#trajectus-ivr">Trajectus IVR</a></td>
+          <td class="proc-pipe">call <span class="arrow">-&gt;</span> voice IVR <span class="arrow">-&gt;</span> query handling</td>
+          <td class="proc-metric">voice-first, not text</td>
+        </tr>
+        <tr>
+          <td class="proc-status"><span class="tag tag-ok">[ok]</span></td>
+          <td class="proc-name"><a class="proc-link" href="/systems/#coglide-cori-and-gx">Coglide — Cori &amp; Gx</a></td>
+          <td class="proc-pipe">email <span class="arrow">-&gt;</span> extract <span class="arrow">-&gt;</span> sync <span class="arrow">-&gt;</span> database</td>
+          <td class="proc-metric">where the scraping work began</td>
+        </tr>
+        <tr>
+          <td class="proc-status"><span class="tag tag-ok">[ok]</span></td>
+          <td class="proc-name"><a class="proc-link" href="/systems/#emotyx">Emotyx</a></td>
+          <td class="proc-pipe">live CCTV <span class="arrow">-&gt;</span> backend <span class="arrow">-&gt;</span> insights</td>
+          <td class="proc-metric">real-time video, not batch</td>
+        </tr>
+        <tr>
+          <td class="proc-status"><span class="tag tag-ok">[ok]</span></td>
+          <td class="proc-name"><a class="proc-link" href="/systems/#attendance-management-system">Attendance Management System</a></td>
+          <td class="proc-pipe">records <span class="arrow">-&gt;</span> backend <span class="arrow">-&gt;</span> image processing</td>
+          <td class="proc-metric">full backend ownership</td>
+        </tr>
+        <tr>
+          <td class="proc-status"><span class="tag tag-ok">[ok]</span></td>
+          <td class="proc-name"><a class="proc-link" href="/systems/#other-projects">Other Projects</a></td>
+          <td class="proc-pipe"><span class="dim">—</span></td>
+          <td class="proc-metric">the long tail, same instinct</td>
+        </tr>
+      </tbody>
+    </table>
 
-      <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Deep Listening</span></p>
-        <p class="pipeline">Surveys &amp; uploads <span class="arrow">-&gt;</span> Multi-modal extraction <span class="arrow">-&gt;</span> Fine-tuned LLM <span class="arrow">-&gt;</span> Vector retrieval</p>
-        <p class="entry-body">A multi-modal information-extraction platform. Hugging Face models
-        handled object detection, tag generation, and image description on images; translation
-        and transcription on audio; both combined for video; summarization and keyword extraction
-        on text. A fine-tuned LLaMA drove additional extraction and chat, backed by a vector
-        database for retrieval.</p>
-        <p class="entry-metric"># text, image, audio and video in one extraction pipeline</p>
-      </article>
-
-      <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">CipBot</span></p>
-        <p class="pipeline">WhatsApp <span class="arrow">-&gt;</span> Structured chat flow <span class="arrow">-&gt;</span> Client database <span class="arrow">-&gt;</span> Admin panel</p>
-        <p class="entry-body">An intelligent chatbot connecting Cipla's procurement team with its
-        vendors, deployed on WhatsApp. A structured chat flow surfaced internal database records,
-        with role-based options per user type and an admin panel for reviewing interactions and
-        data traffic.</p>
-        <p class="entry-metric"># built on Rasa, live on WhatsApp for a pharma procurement team</p>
-      </article>
-
-      <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Trajectus IVR</span></p>
-        <p class="pipeline">Phone call <span class="arrow">-&gt;</span> Voice IVR <span class="arrow">-&gt;</span> Medical query handling</p>
-        <p class="entry-body">An IVR-based chatbot handling medical query calls, built on Google
-        DialogFlow. Delivered as outsourced work for Computer Instruments (CI).</p>
-        <p class="entry-metric"># voice-first, not text — a different failure surface entirely</p>
-      </article>
-
-      <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Coglide — Cori &amp; Gx</span></p>
-        <p class="pipeline">Inbound email <span class="arrow">-&gt;</span> Contact extraction <span class="arrow">-&gt;</span> Extension sync <span class="arrow">-&gt;</span> Marketing database</p>
-        <p class="entry-body">"Cori", an email service extracting contact details out of inbound
-        mail, plus "Gx", a browser extension syncing data from diverse marketing websites into
-        Coglide's own database. Also owned the data scraping and automation work across the
-        product, and ran the research server that fed its marketing data.</p>
-        <p class="entry-metric"># the earliest version of the scraping work that runs through everything since</p>
-      </article>
-
-      <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Emotyx</span></p>
-        <p class="pipeline">Live CCTV <span class="arrow">-&gt;</span> Backend network <span class="arrow">-&gt;</span> Customer insights</p>
-        <p class="entry-body">Backend network structure for software extracting intelligent,
-        actionable insights from real-time CCTV footage for customer understanding — built and
-        deployed in Python, handling the managing and recording of the footage itself.</p>
-        <p class="entry-metric"># real-time video in production, not batch analysis</p>
-      </article>
-
-      <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Attendance Management System</span></p>
-        <p class="pipeline">Student records <span class="arrow">-&gt;</span> Python backend <span class="arrow">-&gt;</span> Image processing</p>
-        <p class="entry-body">Owned the entire back-end code structure for managing student and
-        attendance records, and supported the AI development around its image processing.</p>
-        <p class="entry-metric"># full backend ownership, end to end</p>
-      </article>
-
-      <article class="entry">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Other Projects</span></p>
-        <p class="entry-body">A GPT-3.5 minutes-to-meeting generator that transcribed calls and
-        wrote up the minutes. Shell tooling to verify API endpoint data and harden it against SQL
-        injection, shipped as a Postman collection. A Selenium scraper collecting marketing data
-        across multiple social networks. A back-end network for the Learning &amp; Development
-        team, and a scraping service for Talent Acquisition to surface new candidates. Plus the
-        back-end and detection module for PPE (Personal Protective Equipment) kit detection.</p>
-        <p class="entry-metric"># the long tail — smaller builds, same instinct</p>
-      </article>
-
-    </div>
+    <p class="proc-more"><a href="/systems/">read the full write-ups <span class="arrow">-&gt;</span></a></p>
   </section>
 
   <hr class="rule">
@@ -317,15 +294,19 @@
           <div class="tl-head">
             <div>
               <h2 class="tl-role">Senior Automation &amp; AI Engineer</h2>
-              <p class="tl-org">AsimovX</p>
+              <p class="tl-org tl-org--logo">
+                <a class="tl-org-link" href="https://asimovx.com/" target="_blank" rel="noopener noreferrer">
+                  <img class="tl-logo tl-logo--asimovx theme-dark-only" src="/img/asimovx.png" alt="AsimovX" width="324" height="60" loading="lazy" decoding="async">
+                  <img class="tl-logo tl-logo--asimovx theme-light-only" src="/img/asimovx-light.png" alt="AsimovX" width="324" height="60" loading="lazy" decoding="async">
+                </a>
+              </p>
             </div>
             <div class="tl-when">
               <span class="tl-dates">Feb 2024 <span class="dim">to</span> Present</span>
-              <span class="tl-place">Remote</span>
             </div>
           </div>
           <ul class="tl-points">
-            <li>Own the production AWS pipeline behind GolfTrak's shot data — nine Lambda
+            <li>Own the production AWS pipeline behind a sports-technology product's shot data — nine Lambda
             functions spanning ingest, quality control, alignment, scoring, daily reporting
             and alerting.</li>
             <li>Built the automated shot quality-control system: parameter checks, then
@@ -353,11 +334,15 @@
           <div class="tl-head">
             <div>
               <h2 class="tl-role">AI Engineer</h2>
-              <p class="tl-org">Accubits Technologies</p>
+              <p class="tl-org tl-org--logo">
+                <a class="tl-org-link" href="https://accubits.com/" target="_blank" rel="noopener noreferrer">
+                  <img class="tl-logo tl-logo--accubits theme-dark-only" src="/img/accubits.png" alt="Accubits Technologies" width="122" height="29" loading="lazy" decoding="async">
+                  <img class="tl-logo tl-logo--accubits theme-light-only" src="/img/accubits-light.png" alt="Accubits Technologies" width="122" height="29" loading="lazy" decoding="async">
+                </a>
+              </p>
             </div>
             <div class="tl-when">
               <span class="tl-dates">Aug 2019 <span class="dim">to</span> Dec 2023</span>
-              <span class="tl-place">Trivandrum</span>
             </div>
           </div>
           <ul class="tl-points">
@@ -399,6 +384,8 @@
             </div>
           </div>
           <ul class="tl-points">
+            <li><strong>Final year project</strong> — a supply chain system built on Hyperledger
+            Sawtooth, a permissioned blockchain framework.</li>
             <li>Higher Secondary, Computer Science — CBSE, Kendriya Vidyalaya Pattom, 2015.</li>
             <li>Certification: <strong>Python: Programming Efficiently</strong> — LinkedIn Learning.</li>
           </ul>
@@ -510,6 +497,7 @@
 <script src="/js/particles.js"></script>
 <script src="/js/asteroids.js"></script>
 <script src="/js/fluid.js"></script>
+<script src="/js/reveal.js"></script>
 <script src="/script.js"></script>
 </body>
 </html>
