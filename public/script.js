@@ -39,7 +39,7 @@ const root = document.documentElement;
 
   // fly the ship straight through the centred name
   requestAnimationFrame(() => {
-    if (window.GPAsteroids) window.GPAsteroids.flyby(1.7);
+    if (window.GPAsteroids) window.GPAsteroids.flyby(2.6);
   });
 
   // then send the name up to its real position and bring the page in
@@ -67,8 +67,8 @@ const root = document.documentElement;
     introName.style.transform =
       `translate(${to.left - from.left}px, ${to.top - from.top}px) scale(${scale})`;
 
-    setTimeout(finish, 1600);
-  }, 1750);
+    setTimeout(finish, 2000);
+  }, 2700);
 })();
 
 /* ---------- hamburger nav ---------- */
@@ -101,6 +101,7 @@ function applyTheme(theme) {
   themeButtons.forEach((btn) => {
     btn.setAttribute("aria-pressed", String(btn.dataset.themeChoice === theme));
   });
+  window.dispatchEvent(new Event("gp-theme-change"));
 }
 
 let savedTheme = "dark";

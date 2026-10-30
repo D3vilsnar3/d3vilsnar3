@@ -65,6 +65,23 @@
   /* ---------- ship ---------- */
   var ship = { x: 0, y: 0, angle: 0, vx: 0, vy: 0, cooldown: 0, thrust: false, spriteIdx: 0 };
 
+  /* ---------- cursor-chase mode ----------
+     Desktop/fine-pointer only: once the real mouse moves, the ship abandons
+     its ambient patrol, roams the whole page and seeks the pointer directly
+     — a reversal in the cursor's direction means the seek target flips too,
+     which the ship's eased turn-rate plays out as a banked U-turn rather
+     than an instant snap. Idle for a few seconds and it flies itself back
+     to the ambient band. */
+  var curX = 0, curY = 0;
+  var cursorActive = false, lastMoveT = 0;
+  var CURSOR_IDLE_MS = 4000;
+  // flying through a rock at speed destroys the ship too, not just the
+  // rock: it bursts, respawns somewhere random, and blinks (briefly
+  // invulnerable) the way a fresh life does in an arcade game
+  var shipInvulnUntil = 0;
+  var SHIP_RESPAWN_BLINK_MS = 1400;
+  var SHIP_BLINK_PERIOD_MS = 110;
+
   function randomShipSprite() { return (Math.random() * SHIP_COUNT) | 0; }
 
   function resetShip() {
@@ -204,12 +221,112 @@
     return best;
   }
 
+  /* A clean kill: the ship is facing the rock, not just overlapping it, so
+     this is a deliberate shot rather than a crash. */
+  function breakRock(r, j) {
+    burst(r.x, r.y, r.size);
+    if (r.size > 14) {
+      rocks.push(makeRock(r.x, r.y, r.size * 0.56));
+      rocks.push(makeRock(r.x, r.y, r.size * 0.56));
+    }
+    rocks.splice(j, 1);
+  }
+
+  /* Flying straight through a rock (easy to do once the cursor — and so the
+     ship — is moving fast) destroys the ship too: it bursts apart, respawns
+     at a random point, and blinks through a brief invulnerable window. */
+  function destroyShip() {
+    burst(ship.x, ship.y, 26);
+    ship.x = Math.random() * W;
+    ship.y = Math.random() * H;
+    ship.vx = 0; ship.vy = 0;
+    ship.spriteIdx = randomShipSprite();
+    shipInvulnUntil = performance.now() + SHIP_RESPAWN_BLINK_MS;
+  }
+
+  function checkAsteroidCollisions() {
+    if (performance.now() < shipInvulnUntil) return; // mid-respawn blink
+    for (var j = rocks.length - 1; j >= 0; j--) {
+      var r = rocks[j];
+      if (Math.hypot(r.x - ship.x, r.y - ship.y) < r.size * 0.75 + 7) {
+        breakRock(r, j);
+        destroyShip();
+        break; // one hit is enough to trigger a respawn this frame
+      }
+    }
+  }
+
+  /* The nearest rock the ship is currently pointed roughly at, within firing
+     range — this is what lets it shoot while chasing rather than only
+     breaking rocks it physically collides with. */
+  function rockInSights() {
+    var best = null, bestD = Infinity;
+    for (var i = 0; i < rocks.length; i++) {
+      var r = rocks[i];
+      var dx = r.x - ship.x, dy = r.y - ship.y;
+      var dist = Math.hypot(dx, dy);
+      if (dist > 520 || dist >= bestD) continue;
+      var desired = Math.atan2(dy, dx);
+      var diff = Math.abs(Math.atan2(Math.sin(desired - ship.angle), Math.cos(desired - ship.angle)));
+      if (diff < 0.22) { bestD = dist; best = r; }
+    }
+    return best;
+  }
+
+  function updateCursorChase(dt) {
+    // simple seek: the ship always turns to face wherever the cursor
+    // currently is. That alone is what makes a sharp reversal read as a
+    // U-turn — the eased rotation has to sweep through ~180° while thrust
+    // keeps pushing it along its old heading, so it naturally banks around
+    // instead of snapping, without any special-cased "is this a reversal"
+    // logic.
+    var curHeading = Math.atan2(curY - ship.y, curX - ship.x);
+    var diff = Math.atan2(Math.sin(curHeading - ship.angle), Math.cos(curHeading - ship.angle));
+    ship.angle += diff * Math.min(1, dt * 2.8);
+
+    // chase the pointer's position directly — an exponential approach
+    // toward (curX, curY) rather than accel/momentum physics, so it always
+    // converges cleanly with no risk of overshooting and orbiting the
+    // target the way thrust-plus-drag physics can
+    var dist = Math.hypot(curX - ship.x, curY - ship.y);
+    ship.thrust = dist > 18;
+    var followT = Math.min(1, dt * 2.0);
+    var oldX = ship.x, oldY = ship.y;
+    ship.x += (curX - ship.x) * followT;
+    ship.y += (curY - ship.y) * followT;
+    ship.vx = (ship.x - oldX) / dt;
+    ship.vy = (ship.y - oldY) / dt;
+
+    ship.cooldown -= dt;
+    if (ship.cooldown <= 0 && rockInSights()) {
+      ship.cooldown = 0.3 + Math.random() * 0.25;
+      fire(230);
+    }
+
+    checkAsteroidCollisions();
+  }
+
   function update(dt) {
-    if (performance.now() < scriptedUntil) {
+    var now = performance.now();
+    if (now < scriptedUntil) {
       ship.x += ship.vx * dt;
       ship.y += ship.vy * dt;
       ship.thrust = true;
       introStep();
+      stepWorld(dt);
+      return;
+    }
+
+    if (cursorActive && now - lastMoveT > CURSOR_IDLE_MS) {
+      // the pointer's gone quiet — hand back to the ambient patrol, flying
+      // home the same way the intro does rather than snapping into place
+      cursorActive = false;
+      returningToBand = true;
+      confineShip = false;
+    }
+
+    if (cursorActive) {
+      updateCursorChase(dt);
       stepWorld(dt);
       return;
     }
@@ -444,6 +561,13 @@
     ctx.restore();
 
     // ---- ship ----
+    // mid-respawn: flicker on/off like a fresh arcade life instead of
+    // drawing solid, so the brief invulnerable window reads visually
+    var nowShip = performance.now();
+    if (nowShip < shipInvulnUntil &&
+        Math.floor(nowShip / SHIP_BLINK_PERIOD_MS) % 2 === 0) {
+      return;
+    }
     ctx.save();
     ctx.translate(ship.x, ship.y);
     ctx.rotate(ship.angle);
@@ -498,6 +622,15 @@
     visible = !document.hidden;
     last = performance.now();
   });
+
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    window.addEventListener("mousemove", function (e) {
+      curX = e.clientX; curY = e.clientY;
+      cursorActive = true;
+      lastMoveT = performance.now();
+    }, { passive: true });
+  }
 
   resize();
   resetShip();
@@ -573,7 +706,7 @@
                clusterLive: clusterLive, introFired: introFired,
                clusterRocks: rocks.filter(function (r) { return r.cluster; }).length,
                fragments: rocks.filter(function (r) { return r.fade != null; }).length,
-               target: targetRockCount() };
+               target: targetRockCount(), cursorActive: cursorActive };
     }
   };
 })();

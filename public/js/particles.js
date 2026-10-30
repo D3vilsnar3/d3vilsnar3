@@ -21,8 +21,8 @@
     // follow the active theme so the field never fights the page
     var light = document.documentElement.getAttribute("data-theme") === "light";
     return light
-      ? { dot: "10, 143, 99", maxA: 0.30 }
-      : { dot: "98, 217, 168", maxA: 0.42 };
+      ? { dot: "36, 40, 46", maxA: 0.55 }
+      : { dot: "240, 242, 240", maxA: 0.42 };
   }
   var colors = palette();
 

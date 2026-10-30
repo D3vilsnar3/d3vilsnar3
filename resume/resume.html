@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Govind Pradeep — Resume</title>
 <style>
   @page { size: A4; margin: 0; }
@@ -45,6 +46,14 @@
     background: var(--navy);
   }
   .sheet--two { page-break-before: always; }
+
+  /* On-screen only (never in print/PDF output): a fixed 210mm sheet on a
+     narrower viewport just pushes the sidebar off the right edge instead of
+     wrapping, so shrink the whole sheet to fit rather than let it clip. */
+  @media screen and (max-width: 210mm) {
+    body { display: flex; flex-direction: column; align-items: center; }
+    .sheet { zoom: calc(100vw / 210mm); flex-shrink: 0; }
+  }
 
   .col-main { width: calc(100% - var(--side-w) - 8mm); }
 
@@ -165,7 +174,7 @@
 
   <div class="col-main">
     <h1 class="name">Govind<br>Pradeep</h1>
-    <p class="title">Automation &amp; AI Engineer</p>
+    <p class="title">Senior Automation &amp; AI Systems Engineer</p>
     <div class="name-rule"></div>
 
     <h2>Profile</h2>
@@ -181,29 +190,30 @@
       <p class="role-title">Senior Automation &amp; AI Engineer, <span class="role-org">AsimovX</span></p>
       <p class="role-meta">Feb 2024 — Present</p>
       <ul>
+        <li><span class="lead">Shipped Thali</span>, a SwiftUI iOS meal planner with an AI
+        coaching tab and a Swiggy/Instamart ordering partnership — in beta on TestFlight.</li>
+
         <li><span class="lead">Own the production AWS data pipeline behind a sports-technology product's shot data</span>
-        — nine Lambda functions spanning ingest, quality control, alignment, scoring, daily
-        reporting and alerting, backed by DynamoDB and S3.</li>
+        — nine Lambda functions spanning ingest, quality control, alignment, scoring, reporting
+        and alerting.</li>
 
         <li><span class="lead">Built the product's automated shot quality-control system:</span> two
         production Lambdas validating every capture a device uploads — parameter checks, then
-        CNN/ONNX visual verification with a Bedrock Nemotron fallback, plus a rendered annotated
-        video for human review. <strong>86% recall</strong> on range-mode ball-impact detection.</li>
+        CNN/ONNX visual verification with an AI fallback, plus an annotated video for review.
+        <strong>86% recall</strong> on range-mode ball-impact detection.</li>
 
-        <li><span class="lead">Lead a team of annotators</span> producing ground-truth data for the
-        computer-vision pipeline, and built the PyQt5 desktop tooling they use daily — per-user
-        attribution, a correction/verification workflow, and live physics feedback so a correction's
-        effect is visible immediately rather than discovered downstream.</li>
+        <li><span class="lead">Lead a team of annotators</span> producing ground-truth data, and
+        built the PyQt5 desktop tooling they use daily — per-user attribution, a correction
+        workflow, and live physics feedback.</li>
 
         <li><span class="lead">Trained and shipped three neural networks</span> predicting spin rate,
-        spin axis and club speed on a dataset of <strong>~2.4M rows</strong>. Converted to CoreML for
-        on-device iOS inference, cutting club-speed error from <strong>20.5 km/h to 1.99 km/h</strong>
-        against the legacy model.</li>
+        spin axis and club speed on a dataset of <strong>~2.4M rows</strong>, cutting club-speed
+        error from <strong>20.5 km/h to 1.99 km/h</strong> and shipping as CoreML for on-device
+        iOS inference.</li>
 
         <li><span class="lead">Built an autonomous negotiation agent</span> — a browser extension
-        plus Flask service driving an authenticated session, pricing listings from photos via a
-        Bedrock vision model and negotiating unattended. Runs continuously on EC2 with block
-        detection and spam guards built from real incidents.</li>
+        plus Flask service driving an authenticated session, pricing listings from photos and
+        negotiating unattended, with rate-limit and spam guards built from real incidents.</li>
 
         <li><span class="lead">Built a fleet of five production scrapers</span> collecting
         <strong>22,000+ profiles and posts</strong>, each with its own deduplication and

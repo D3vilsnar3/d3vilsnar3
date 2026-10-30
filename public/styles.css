@@ -1,16 +1,16 @@
 /* ============ Tokens — dark (default) ============ */
 :root {
-  --bg: #08090b;
-  --fg: #d3d7de;
-  --muted: #6b7280;
-  --dim: #4b5563;
-  --prompt: #62d9a8;
-  --accent: #ffb454;
-  --link: #7dcfff;
-  --warn: #e0a458;
-  --rule: #1c2027;
-  --hover-bg: #12151a;
-  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --bg: #222124;
+  --fg: #f0f2f0;
+  --muted: #8b909a;
+  --dim: #5b6472;
+  --prompt: #f0f2f0;
+  --accent: #f0f2f0;
+  --link: #c7cad0;
+  --warn: #9aa1ab;
+  --rule: #38373c;
+  --hover-bg: #2b2a2e;
+  --font-main: "Inter Tight", "Inter Tight Fallback", system-ui, sans-serif;
   --content-max: 760px;
 }
 
@@ -31,11 +31,11 @@
   --fg: #24282e;
   --muted: #6b7280;
   --dim: #9aa1ab;
-  --prompt: #0a8f63;
-  --accent: #b5620a;
-  --link: #0b6fa8;
-  --warn: #a3660a;
-  --rule: #dcdad2;
+  --prompt: #24282e;
+  --accent: #24282e;
+  --link: #4b5563;
+  --warn: #6b7280;
+  --rule: #b8b4a9;
   --hover-bg: #eae8e0;
 }
 
@@ -49,7 +49,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--fg);
-  font-family: var(--font-mono);
+  font-family: var(--font-main);
   font-size: 15.5px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -76,6 +76,7 @@ strong { color: var(--fg); font-weight: 600; }
   background: var(--bg);
   border-bottom: 1px solid var(--rule);
   padding: 16px 24px;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 .topbar-name {
   display: inline-flex;
@@ -150,6 +151,13 @@ strong { color: var(--fg); font-weight: 600; }
 #particles { z-index: 0; }
 #asteroids { z-index: 1; }
 #projicons { z-index: 1; }
+/* The rock/ship sprites are tuned for a dark backdrop and read as washed-out
+   pastel on the light background — darken and flatten them to sit quietly
+   behind light-theme content instead of competing with it. */
+:root[data-theme="light"] #asteroids,
+:root[data-theme="light"] #projicons {
+  filter: brightness(0.62) saturate(0.7) contrast(1.05);
+}
 /* Content sits above the starfield. .topbar / .nav-menu / .intro-name are
    already positioned with their own z-index, so they're left alone here —
    overriding their position would break the sticky header. */
@@ -221,7 +229,7 @@ main, .footer {
   background: none;
   border: 1px solid var(--rule);
   color: var(--muted);
-  font-family: var(--font-mono);
+  font-family: var(--font-main);
   font-size: 12.5px;
   padding: 3px 9px;
   cursor: pointer;
@@ -337,7 +345,7 @@ main { max-width: var(--content-max); margin: 0 auto; padding: 0 24px; }
 .btn {
   display: inline-flex;
   align-items: center;
-  font-family: var(--font-mono);
+  font-family: var(--font-main);
   font-size: 14.5px;
   font-weight: 600;
   padding: 12px 22px;
@@ -479,20 +487,34 @@ a:focus-visible, button:focus-visible {
   outline-offset: 2px;
 }
 
-/* ============ Fluid cursor ============ */
-#fluid {
+/* ============ Custom cursor ============
+   A small glowing dot that trails the real pointer, with a fading particle
+   wake drawn behind it. cursor.js adds has-custom-cursor to <html> only once
+   it has confirmed a fine pointer and no reduced-motion preference, so the
+   native cursor is never hidden without a replacement drawn for it. */
+.has-custom-cursor, .has-custom-cursor * {
+  cursor: none !important;
+}
+#cursorDot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--fg);
+  box-shadow: 0 0 10px 2px var(--fg);
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+}
+#cursorTrail {
   position: fixed;
   inset: 0;
-  z-index: 40;
+  z-index: 9998;
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  mix-blend-mode: screen;
-  opacity: 0.8;
-}
-:root[data-theme="light"] #fluid {
-  mix-blend-mode: multiply;
-  opacity: 0.55;
 }
 
 @media (max-width: 600px) {
