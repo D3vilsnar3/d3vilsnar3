@@ -63,7 +63,9 @@
   }
 
   /* ---------- ship ---------- */
-  var ship = { x: 0, y: 0, angle: 0, vx: 0, vy: 0, cooldown: 0, thrust: false };
+  var ship = { x: 0, y: 0, angle: 0, vx: 0, vy: 0, cooldown: 0, thrust: false, spriteIdx: 0 };
+
+  function randomShipSprite() { return (Math.random() * SHIP_COUNT) | 0; }
 
   function resetShip() {
     ship.x = W * 0.5;
@@ -71,41 +73,76 @@
     ship.angle = 0;
     ship.vx = 26;
     ship.vy = 4;
+    ship.spriteIdx = randomShipSprite();
   }
 
-  /* ---------- rocks ----------
-     Four fixed craggy silhouettes in the spirit of the original arcade game,
-     each a set of radius multipliers with deliberate deep notches. */
-  var ROCK_SHAPES = [
-    [1.00, 0.92, 1.06, 0.62, 0.90, 1.04, 0.86, 1.02, 0.66, 0.96, 1.06, 0.88],
-    [0.94, 1.06, 0.82, 0.98, 0.58, 0.92, 1.04, 0.88, 1.06, 0.72, 0.96, 0.90],
-    [1.06, 0.78, 0.96, 1.02, 0.86, 1.06, 0.60, 0.90, 1.00, 0.94, 0.70, 1.02],
-    [0.88, 1.02, 0.64, 1.06, 0.94, 0.84, 1.04, 0.68, 0.98, 1.06, 0.90, 0.76]
-  ];
+  /* ---------- sprites ----------
+     Ships and rocks are drawn from the traced reference artwork
+     (public/sprites/) rather than generated shapes. Each source PNG is
+     loaded once and baked into a tinted offscreen canvas so the per-frame
+     draw is a cheap drawImage with no per-frame filter cost:
+       - ships get a single flat recolour to the site's mint accent.
+       - rocks get several hue-rotated variants of the same shaded art, so
+         picking a random variant per rock gives each one a different tint
+         while keeping its 3-D shading. */
+  var SHIP_COUNT = 9, ROCK_COUNT = 16, ROCK_HUE_VARIANTS = 6;
+  var shipSprites = [], rockSprites = [];
+
+  function tintCanvas(img, filter) {
+    var c = document.createElement("canvas");
+    c.width = img.naturalWidth; c.height = img.naturalHeight;
+    var cctx = c.getContext("2d");
+    if (filter) {
+      cctx.filter = filter;
+      cctx.drawImage(img, 0, 0);
+    } else {
+      // flat recolour: keep the image's alpha mask, fill it solid mint
+      cctx.drawImage(img, 0, 0);
+      cctx.globalCompositeOperation = "source-in";
+      cctx.fillStyle = "rgb(" + MINT + ")";
+      cctx.fillRect(0, 0, c.width, c.height);
+    }
+    return c;
+  }
+
+  for (var si = 0; si < SHIP_COUNT; si++) {
+    (function (idx) {
+      var entry = { img: new Image(), tint: null, ready: false };
+      entry.img.onload = function () {
+        entry.tint = tintCanvas(entry.img, null);
+        entry.ready = true;
+      };
+      entry.img.src = "/sprites/ships/ship-" + idx + ".png";
+      shipSprites[idx] = entry;
+    })(si);
+  }
+
+  for (var ri = 0; ri < ROCK_COUNT; ri++) {
+    (function (idx) {
+      var entry = { img: new Image(), variants: null, ready: false };
+      entry.img.onload = function () {
+        var variants = [];
+        for (var h = 0; h < ROCK_HUE_VARIANTS; h++) {
+          var deg = Math.round((360 / ROCK_HUE_VARIANTS) * h);
+          variants.push(tintCanvas(entry.img,
+            "sepia(1) saturate(600%) hue-rotate(" + deg + "deg) brightness(1.08)"));
+        }
+        entry.variants = variants;
+        entry.ready = true;
+      };
+      entry.img.src = "/sprites/rocks/rock-" + idx + ".png";
+      rockSprites[idx] = entry;
+    })(ri);
+  }
 
   function makeRock(x, y, size) {
-    var shape = ROCK_SHAPES[(Math.random() * ROCK_SHAPES.length) | 0];
-    var n = shape.length, verts = [];
-    for (var i = 0; i < n; i++) {
-      verts.push({
-        a: (i / n) * Math.PI * 2,
-        r: size * shape[i] * (0.94 + Math.random() * 0.12)
-      });
-    }
-    // a couple of interior crater marks give the silhouette some depth
-    var craters = [];
-    var cn = 1 + ((Math.random() * 3) | 0);
-    for (var c = 0; c < cn; c++) {
-      craters.push({
-        a: Math.random() * Math.PI * 2,
-        d: size * (0.15 + Math.random() * 0.4),
-        r: size * (0.08 + Math.random() * 0.16)
-      });
-    }
     var ang = Math.random() * Math.PI * 2;
     var speed = 5 + Math.random() * 11 + (34 - size) * 0.18;
     return {
-      x: x, y: y, size: size, verts: verts, craters: craters,
+      x: x, y: y, size: size,
+      spriteIdx: (Math.random() * ROCK_COUNT) | 0,
+      hueIdx: (Math.random() * ROCK_HUE_VARIANTS) | 0,
+      mirror: Math.random() < 0.5,
       vx: Math.cos(ang) * speed,
       vy: Math.sin(ang) * speed,
       rot: (Math.random() - 0.5) * 0.4,
@@ -363,50 +400,31 @@
     ctx.lineJoin = "round";
     ctx.lineCap = "round";
 
-    // ---- rocks ----
+    // ---- rocks: traced reference art, hue-tinted per instance ----
     for (var i = 0; i < rocks.length; i++) {
       var r = rocks[i];
+      var sprite = rockSprites[r.spriteIdx];
+      if (!sprite || !sprite.ready) continue;
+      var rockImg = sprite.variants[r.hueIdx];
       var fadeMul = r.fade != null ? Math.max(0, Math.min(1, r.fade / 2)) : 1;
-      var a = 0.30 * r.glow * fadeMul;
+      var a = 0.55 * r.glow * fadeMul;
+      var scale = (r.size * 2) / Math.max(rockImg.width, rockImg.height);
+      var dw = rockImg.width * scale, dh = rockImg.height * scale;
       ctx.save();
       ctx.translate(r.x, r.y);
       ctx.rotate(r.spin);
-
-      ctx.beginPath();
-      for (var v = 0; v < r.verts.length; v++) {
-        var vt = r.verts[v];
-        var px = Math.cos(vt.a) * vt.r, py = Math.sin(vt.a) * vt.r;
-        if (v === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
-      }
-      ctx.closePath();
-      // faint interior so rocks read as solid bodies, not wireframe rings
-      ctx.fillStyle = "rgba(" + MINT + "," + (0.030 * fadeMul).toFixed(3) + ")";
-      ctx.fill();
-      ctx.lineWidth = r.size > 22 ? 1.25 : 1;
-      ctx.strokeStyle = "rgba(" + MINT + "," + a.toFixed(3) + ")";
-      ctx.stroke();
-
-      // ---- crater detail ----
-      ctx.strokeStyle = "rgba(" + MINT + "," + (a * 0.5).toFixed(3) + ")";
-      ctx.lineWidth = 0.85;
-      for (var c = 0; c < r.craters.length; c++) {
-        var cr = r.craters[c];
-        ctx.beginPath();
-        ctx.arc(Math.cos(cr.a) * cr.d, Math.sin(cr.a) * cr.d, cr.r, 0, Math.PI * 2);
-        ctx.stroke();
-      }
+      if (r.mirror) ctx.scale(-1, 1);
+      ctx.globalAlpha = a;
+      ctx.drawImage(rockImg, -dw / 2, -dh / 2, dw, dh);
+      ctx.globalAlpha = 1;
       ctx.restore();
     }
 
-    // ---- debris ----
-    ctx.lineWidth = 1;
+    // ---- debris: small square pixels ----
     for (var d = 0; d < debris.length; d++) {
       var db = debris[d];
-      ctx.strokeStyle = "rgba(" + MINT + "," + Math.max(0, db.life * 0.85).toFixed(3) + ")";
-      ctx.beginPath();
-      ctx.moveTo(db.x, db.y);
-      ctx.lineTo(db.x - db.vx * 0.03, db.y - db.vy * 0.03);
-      ctx.stroke();
+      ctx.fillStyle = "rgba(" + MINT + "," + Math.max(0, db.life * 0.85).toFixed(3) + ")";
+      ctx.fillRect(db.x - 1, db.y - 1, 2, 2);
     }
 
     // ---- bullets: glowing tracer ----
@@ -436,32 +454,27 @@
     if (ship.thrust) {
       var f = 8 + Math.random() * 7;
       ctx.beginPath();
-      ctx.moveTo(-7, 4.5);
-      ctx.lineTo(-7 - f, 0);
-      ctx.lineTo(-7, -4.5);
+      ctx.moveTo(-9, 4.5);
+      ctx.lineTo(-9 - f, 0);
+      ctx.lineTo(-9, -4.5);
       ctx.strokeStyle = "rgba(" + AMBER + ",0.85)";
       ctx.lineWidth = 1.3;
       ctx.stroke();
     }
 
-    // hull
-    ctx.beginPath();
-    ctx.moveTo(15, 0);
-    ctx.lineTo(-9, 8.5);
-    ctx.lineTo(-5.5, 0);
-    ctx.lineTo(-9, -8.5);
-    ctx.closePath();
-    ctx.fillStyle = "rgba(8, 12, 10, 0.55)";
-    ctx.fill();
-    ctx.strokeStyle = "rgba(" + MINT + ",0.95)";
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
-
-    // cockpit dot
-    ctx.beginPath();
-    ctx.arc(2.5, 0, 1.5, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(" + MINT + ",0.9)";
-    ctx.fill();
+    // hull: traced reference art, recoloured mint. The source art is drawn
+    // nose-up, but ship.angle is measured nose-right (0 = +x), so the sprite
+    // needs an extra quarter turn to line its nose up with the heading.
+    var shipSprite = shipSprites[ship.spriteIdx];
+    if (shipSprite && shipSprite.ready) {
+      var shipImg = shipSprite.tint;
+      var shipScale = 32 / Math.max(shipImg.width, shipImg.height);
+      var shw = shipImg.width * shipScale, shh = shipImg.height * shipScale;
+      ctx.rotate(Math.PI / 2);
+      ctx.globalAlpha = 0.95;
+      ctx.drawImage(shipImg, -shw / 2, -shh / 2, shw, shh);
+      ctx.globalAlpha = 1;
+    }
     ctx.restore();
   }
 
@@ -526,6 +539,7 @@
       ship.angle = 0;
       ship.vx = (W + 160) / seconds;
       ship.vy = 0;
+      ship.spriteIdx = randomShipSprite();
 
       var now = performance.now();
       introFired = false;

@@ -1,0 +1,22 @@
+<p class="entry-body">Five independent scrapers, each a purpose-built Chrome extension
+paired with a local server: association-executive directories, a speaker marketplace, a
+member community feed, a professional network directory, and a founder community.
+Different sites, same shape of problem — paginated listings behind a login, profile
+pages with dozens of fields, and no public API — so each one got its own extension, but
+the lessons carried from one to the next.</p>
+
+<p class="entry-body">DOM matching leans on text content and ARIA attributes rather than
+CSS class names, which several of these sites hash or regenerate on every build. Every
+scraper is resumable — a crash or a closed tab picks back up from the last known state
+instead of starting over — and every server dedupes on write, usually by a stable ID
+rather than anything positional. One run turned up a real data-quality bug worth
+mentioning: a tag selector keyed to one color code was silently missing any tag
+rendered in a different one, which had been quietly leaving two fields empty on roughly
+two-thirds of one dataset until a spot-check with a screenshot caught it.</p>
+
+<ul class="entry-points">
+  <li>Five scrapers, five different sites, one shared extension + local-server pattern</li>
+  <li>Text/ARIA-based DOM matching — survives hashed CSS class names</li>
+  <li>Resumable multi-stage pipelines with server-side dedup by stable ID</li>
+  <li>22,000+ profiles and posts collected across 5 platforms</li>
+</ul>

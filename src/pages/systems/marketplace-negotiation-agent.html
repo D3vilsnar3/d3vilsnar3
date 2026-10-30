@@ -1,0 +1,19 @@
+<p class="entry-body">A browser extension plus a local server drives an operator's own
+authenticated session on a large consumer marketplace end to end: it captures a listing,
+has a vision model assess the item's condition from photos, prices it accordingly, then
+opens negotiations with sellers and carries the conversation through to a close —
+unattended.</p>
+
+<p class="entry-body">The hard part was never the happy path. Rate-limit detection and
+messaging guards exist because the marketplace started throttling and flagging the
+account on real runs, not because of speculative edge cases imagined up front — each
+guard traces back to an actual incident: a block, a throttle, a seller reporting the
+account. The agent now recognizes those signals and backs off or pauses itself before
+they escalate.</p>
+
+<ul class="entry-points">
+  <li>Vision-model condition assessment and pricing from listing photos</li>
+  <li>Autonomous negotiation over the marketplace's own messaging, not an API</li>
+  <li>Rate-limit and block detection built reactively from real incidents</li>
+  <li>Runs continuously on a cloud instance, negotiating multiple listings in parallel</li>
+</ul>

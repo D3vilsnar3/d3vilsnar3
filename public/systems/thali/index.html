@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Thali — Govind Pradeep</title>
+<meta name="description" content="Thali — in beta on TestFlight" />
+<link rel="canonical" href="https://d3vilsnar3.com/systems/thali/" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#08090b">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="inner">
+
+<canvas id="particles" aria-hidden="true"></canvas>
+<canvas id="asteroids" aria-hidden="true"></canvas>
+<canvas id="projicons" data-icon="plate" aria-hidden="true"></canvas>
+
+
+<header class="topbar">
+  <a href="/" class="topbar-name" id="replayIntro"><img class="topbar-logo" src="/icon-32.png" alt="" width="32" height="32" decoding="async"><span>Govind Pradeep</span></a>
+  <div class="topbar-right">
+    <a class="topbar-cta" href="/contact/">contact me</a>
+    <button type="button" class="hamburger" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="nav-menu" id="navMenu" aria-label="Sections" hidden>
+  <div class="nav-inner">
+  <div class="nav-main">
+  <a href="/capabilities/">capabilities</a>
+  <a href="/systems/" class="is-active">systems</a>
+  <a href="/experience/">experience</a>
+  <a href="/about/">about</a>
+  <a href="/blog/">blog</a>
+  <a href="/contact/">contact</a>
+  <a class="nav-cta" href="/book">let's talk for 30m</a>
+    <span class="theme-toggle" role="group" aria-label="Theme">
+      <span class="dim">theme:</span>
+      <button type="button" class="theme-opt" data-theme-choice="dark">dark</button>
+      <button type="button" class="theme-opt" data-theme-choice="light">light</button>
+    </span>
+  </div>
+  <div class="nav-side">
+    <p class="nav-side-title">quick links</p>
+    <a href="https://www.linkedin.com/in/devilasenare/" target="_blank" rel="noopener noreferrer">linkedin <span class="ext" aria-hidden="true">-&gt;</span></a>
+    <a href="https://github.com/D3vilsnar3" target="_blank" rel="noopener noreferrer">github <span class="ext" aria-hidden="true">-&gt;</span></a>
+    <a href="/resume/Govind_Pradeep_Resume.pdf" download>resume <span class="ext" aria-hidden="true">pdf</span></a>
+  </div>
+  </div>
+</nav>
+
+<main id="top">
+<p class="cmd backlink"><a href="/systems/"><span class="back-arrow" aria-hidden="true">&#8592;</span><span class="prompt">$</span> cd ..<span class="dim"> # back to systems</span></a></p>
+
+  <section class="block" id="thali">
+<p class="entry-head"><span class="tag tag-warn">[wip]</span> <span class="path">Thali</span></p>
+    <p class="pipeline">Natural-language meal log <span class="arrow">-&gt;</span> AI coaching <span class="arrow">-&gt;</span> Order through Swiggy &amp; Instamart</p>
+    <h1 class="page-title">Thali</h1>
+<p class="entry-body">A SwiftUI iOS app for logging meals in plain language and getting
+coached on them, not just tracked. Describe what you ate and the app resolves it to
+nutrition data, keeps a running log, and hands it to an "Ask" tab for coaching — what
+to eat next, how a day is trending, whether a goal is realistic.</p>
+
+<p class="entry-body">The part that turns tracking into action: a full partnership with
+Swiggy and Instamart lets the coaching flow go straight to ordering — food or groceries
+— from inside the same conversation that just told you what to eat. Currently in beta
+on TestFlight, pending Apple's Builders Club review before a public release. Full
+write-up and screens live on its own site —
+<a href="https://thali.asimovx.com" target="_blank" rel="noopener noreferrer">thali.asimovx.com</a>.</p>
+
+<ul class="entry-points">
+  <li>Natural-language meal logging — no manual macro entry</li>
+  <li>An "Ask" tab that coaches against the running log, not a single meal</li>
+  <li>A full Swiggy and Instamart partnership, ordering straight from the coaching conversation</li>
+  <li>Built solo, backend and iOS client both</li>
+</ul>
+    <p class="entry-metric"># in beta on TestFlight</p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>&copy; 2026 Govind Pradeep</span>
+</footer>
+
+<script src="/js/particles.js"></script>
+<script src="/js/asteroids.js"></script>
+<script src="/js/project-icons.js"></script>
+<script src="/js/fluid.js"></script>
+<script src="/js/reveal.js"></script>
+<script src="/script.js"></script>
+</body>
+</html>

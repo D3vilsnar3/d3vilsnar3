@@ -1,0 +1,20 @@
+<p class="entry-body">An autonomous agent discovers charity sports-event pages across a
+tournament-management platform, starting from nothing but a search query, and decides
+for itself how far to navigate from a seed page to reach the data that actually matters
+— tournament metadata and player rosters.</p>
+
+<p class="entry-body">A vision-capable model (Bedrock Nova Pro) does the extraction once
+a page is loaded, and also the navigation judgment: whether to pull player data now or
+follow another link first, up to a handful of hops deep. A second pass handles what HTML
+extraction can't — tournament flyers that are just promotional images — by running them
+through the same model's vision OCR to read event details straight off the poster.
+Seed pages that turn out to share any navigation path get merged rather than double
+counted, which is what takes the raw crawl of 347 seed URLs down to 178 clean,
+deduplicated tournaments.</p>
+
+<ul class="entry-points">
+  <li>Agent-driven discovery and navigation, not a fixed crawl pattern</li>
+  <li>Vision-model extraction, including OCR on promotional flyer images</li>
+  <li>Union-find deduplication across seed URLs sharing a navigation path</li>
+  <li>347 seed pages discovered <span class="arrow">-&gt;</span> 178 tournaments extracted end to end</li>
+</ul>

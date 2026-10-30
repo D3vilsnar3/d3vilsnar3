@@ -1,0 +1,22 @@
+<p class="entry-body">A third-party launch-monitor portal measures ball-flight data during a
+shot, but the hardest metrics to measure directly — spin rate and spin axis — are also
+the most valuable to predict from signals that are cheap to capture. A Chrome extension
+scraped 1,218 bulk shot exports from that portal to build a training set, since the
+only way to know what's predictable from the easy metrics is to have both at scale.</p>
+
+<p class="entry-body">Three neural networks were trained on the resulting dataset — one
+each for club speed, spin rate, and spin axis — then converted to CoreML and shipped for
+on-device iOS inference. Club speed error dropped from a 20.5 km/h legacy estimate to
+1.99 km/h. Spin rate error dropped from roughly 3,978 rpm to 597 rpm on held-out test
+data; spin axis classification reached 72% test accuracy. The model also exposed a real
+gap worth being honest about: accuracy on the internal test set doesn't fully transfer
+to real sensor ground truth yet, which is the next calibration problem rather than a
+solved one.</p>
+
+<ul class="entry-points">
+  <li>1,218 bulk exports scraped via a purpose-built Chrome extension</li>
+  <li>Three Dense neural nets — club speed, spin rate, spin axis — trained on millions of rows</li>
+  <li>Club speed error: 20.5 km/h (legacy) <span class="arrow">-&gt;</span> 1.99 km/h</li>
+  <li>Spin rate error: ~3,978 rpm (legacy) <span class="arrow">-&gt;</span> 597 rpm</li>
+  <li>Converted to CoreML and shipped for on-device iOS inference</li>
+</ul>

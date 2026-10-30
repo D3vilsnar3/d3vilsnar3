@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tournament Data Agent — Govind Pradeep</title>
+<meta name="description" content="Tournament Data Agent — 178 tournaments extracted end to end from unstructured event pages" />
+<link rel="canonical" href="https://d3vilsnar3.com/systems/tournament-data-agent/" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#08090b">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="inner">
+
+<canvas id="particles" aria-hidden="true"></canvas>
+<canvas id="asteroids" aria-hidden="true"></canvas>
+<canvas id="projicons" data-icon="trophy" aria-hidden="true"></canvas>
+
+
+<header class="topbar">
+  <a href="/" class="topbar-name" id="replayIntro"><img class="topbar-logo" src="/icon-32.png" alt="" width="32" height="32" decoding="async"><span>Govind Pradeep</span></a>
+  <div class="topbar-right">
+    <a class="topbar-cta" href="/contact/">contact me</a>
+    <button type="button" class="hamburger" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="nav-menu" id="navMenu" aria-label="Sections" hidden>
+  <div class="nav-inner">
+  <div class="nav-main">
+  <a href="/capabilities/">capabilities</a>
+  <a href="/systems/" class="is-active">systems</a>
+  <a href="/experience/">experience</a>
+  <a href="/about/">about</a>
+  <a href="/blog/">blog</a>
+  <a href="/contact/">contact</a>
+  <a class="nav-cta" href="/book">let's talk for 30m</a>
+    <span class="theme-toggle" role="group" aria-label="Theme">
+      <span class="dim">theme:</span>
+      <button type="button" class="theme-opt" data-theme-choice="dark">dark</button>
+      <button type="button" class="theme-opt" data-theme-choice="light">light</button>
+    </span>
+  </div>
+  <div class="nav-side">
+    <p class="nav-side-title">quick links</p>
+    <a href="https://www.linkedin.com/in/devilasenare/" target="_blank" rel="noopener noreferrer">linkedin <span class="ext" aria-hidden="true">-&gt;</span></a>
+    <a href="https://github.com/D3vilsnar3" target="_blank" rel="noopener noreferrer">github <span class="ext" aria-hidden="true">-&gt;</span></a>
+    <a href="/resume/Govind_Pradeep_Resume.pdf" download>resume <span class="ext" aria-hidden="true">pdf</span></a>
+  </div>
+  </div>
+</nav>
+
+<main id="top">
+<p class="cmd backlink"><a href="/systems/"><span class="back-arrow" aria-hidden="true">&#8592;</span><span class="prompt">$</span> cd ..<span class="dim"> # back to systems</span></a></p>
+
+  <section class="block" id="tournament-data-agent">
+<p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Tournament Data Agent</span></p>
+    <p class="pipeline">Discover pages <span class="arrow">-&gt;</span> AI extraction <span class="arrow">-&gt;</span> Read flyer images <span class="arrow">-&gt;</span> Merge &amp; dedupe</p>
+    <h1 class="page-title">Tournament Data Agent</h1>
+<p class="entry-body">An autonomous agent discovers charity sports-event pages across a
+tournament-management platform, starting from nothing but a search query, and decides
+for itself how far to navigate from a seed page to reach the data that actually matters
+— tournament metadata and player rosters.</p>
+
+<p class="entry-body">A vision-capable model (Bedrock Nova Pro) does the extraction once
+a page is loaded, and also the navigation judgment: whether to pull player data now or
+follow another link first, up to a handful of hops deep. A second pass handles what HTML
+extraction can't — tournament flyers that are just promotional images — by running them
+through the same model's vision OCR to read event details straight off the poster.
+Seed pages that turn out to share any navigation path get merged rather than double
+counted, which is what takes the raw crawl of 347 seed URLs down to 178 clean,
+deduplicated tournaments.</p>
+
+<ul class="entry-points">
+  <li>Agent-driven discovery and navigation, not a fixed crawl pattern</li>
+  <li>Vision-model extraction, including OCR on promotional flyer images</li>
+  <li>Union-find deduplication across seed URLs sharing a navigation path</li>
+  <li>347 seed pages discovered <span class="arrow">-&gt;</span> 178 tournaments extracted end to end</li>
+</ul>
+    <p class="entry-metric"># 178 tournaments extracted end to end from unstructured event pages</p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>&copy; 2026 Govind Pradeep</span>
+</footer>
+
+<script src="/js/particles.js"></script>
+<script src="/js/asteroids.js"></script>
+<script src="/js/project-icons.js"></script>
+<script src="/js/fluid.js"></script>
+<script src="/js/reveal.js"></script>
+<script src="/script.js"></script>
+</body>
+</html>

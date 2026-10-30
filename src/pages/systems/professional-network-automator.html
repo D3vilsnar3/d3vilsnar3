@@ -1,0 +1,24 @@
+<p class="entry-body">Runs locally and independently on a cloud instance, each with its own
+results file, walking a lead list on a professional network and engaging with the
+content worth engaging with — human-paced, not a burst of API calls. Clicks are
+randomized and spaced like a person browsing, leads are deduplicated by a permanent
+member ID rather than on-screen position (the results list virtualizes, so position
+isn't stable), and a daily engagement cap keeps the pace believable — hit the cap and
+the process sleeps in place and resumes from exactly where it stopped, rather than
+restarting from the top.</p>
+
+<p class="entry-body">Two real production bugs only surfaced by cross-checking against
+the live browser, not the logs: a reshared post's description was reading the resharer's
+comment instead of the original post's text, and an already-engaged post's state label
+wasn't what the code assumed, which would have silently undone engagement on every
+pass. Both shipped as fixes once caught. The process also emails on any unhandled
+crash and sends a daily stats summary, after the server silently went down more than
+once with nothing to say about it.</p>
+
+<ul class="entry-points">
+  <li>Human-paced engagement — randomized timing, not an API burst</li>
+  <li>Dedup by permanent member ID, survives a virtualized results list</li>
+  <li>Daily cap with sleep-and-resume, not a restart-from-scratch</li>
+  <li>Crash-alert email plus a daily report, after a prior silent outage</li>
+  <li>1,541 items tracked <span class="dim">·</span> 98.8% success rate</li>
+</ul>

@@ -2,37 +2,107 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://d3vilsnar3.com/</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://d3vilsnar3.com/capabilities/</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://d3vilsnar3.com/systems/</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://d3vilsnar3.com/experience/</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://d3vilsnar3.com/about/</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://d3vilsnar3.com/blog/</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://d3vilsnar3.com/contact/</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://d3vilsnar3.com/systems/thali/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://d3vilsnar3.com/systems/marketplace-negotiation-agent/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://d3vilsnar3.com/systems/sports-capture-quality-control/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://d3vilsnar3.com/systems/launch-monitor-ml-suite/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://d3vilsnar3.com/systems/tournament-data-agent/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://d3vilsnar3.com/systems/professional-network-automator/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://d3vilsnar3.com/systems/web-scraping-fleet/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://d3vilsnar3.com/systems/deep-listening/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://d3vilsnar3.com/systems/cipbot/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://d3vilsnar3.com/systems/trajectus-ivr/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://d3vilsnar3.com/systems/coglide-cori-and-gx/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://d3vilsnar3.com/systems/emotyx/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://d3vilsnar3.com/systems/attendance-management-system/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://d3vilsnar3.com/systems/other-projects/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.6</priority>
   </url>
 </urlset>

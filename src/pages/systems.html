@@ -1,11 +1,20 @@
 <p class="cmd"><span class="prompt">$</span> ps aux --systems</p>
     <h2 class="page-title">Systems I've built</h2>
-    <p class="section-note"># six systems, live or run to completion — not demos</p>
+    <p class="section-note"># seven systems, live or run to completion — not demos</p>
 
     <div class="listing">
 
+      <article class="entry" id="thali">
+        <p class="entry-head"><span class="tag tag-warn">[wip]</span> <span class="path"><a class="entry-link" href="/systems/thali/">Thali</a></span></p>
+        <p class="pipeline">Natural-language meal log <span class="arrow">-&gt;</span> AI coaching <span class="arrow">-&gt;</span> Order through Swiggy &amp; Instamart</p>
+        <p class="entry-body">A SwiftUI iOS meal planner and calorie tracker, currently in beta on
+        TestFlight. Full write-up and screens live on its own site —
+        <a href="https://thali.asimovx.com" target="_blank" rel="noopener noreferrer">thali.asimovx.com</a>.</p>
+        <p class="entry-metric"># in beta on TestFlight</p>
+      </article>
+
       <article class="entry" id="marketplace-negotiation-agent">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Marketplace Negotiation Agent</span></p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path"><a class="entry-link" href="/systems/marketplace-negotiation-agent/">Marketplace Negotiation Agent</a></span></p>
         <p class="pipeline">Capture listing <span class="arrow">-&gt;</span> Vision model prices it <span class="arrow">-&gt;</span> Negotiates autonomously</p>
         <p class="entry-body">A browser extension plus a local server drives an operator's own
         authenticated session on a large consumer marketplace: assesses item condition from
@@ -15,7 +24,7 @@
       </article>
 
       <article class="entry" id="sports-capture-quality-control">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Sports Capture Quality Control</span></p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path"><a class="entry-link" href="/systems/sports-capture-quality-control/">Sports Capture Quality Control</a></span></p>
         <p class="pipeline">Device upload <span class="arrow">-&gt;</span> Parameter + CNN checks <span class="arrow">-&gt;</span> AI fallback <span class="arrow">-&gt;</span> Annotated video</p>
         <p class="entry-body">Two production AWS Lambdas validate every capture a device
         uploads: parameter checks, then CNN/ONNX visual verification (Bedrock Nemotron where no
@@ -25,7 +34,7 @@
       </article>
 
       <article class="entry" id="launch-monitor-ml-suite">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Launch Monitor ML Suite</span></p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path"><a class="entry-link" href="/systems/launch-monitor-ml-suite/">Launch Monitor ML Suite</a></span></p>
         <p class="pipeline">Collect 1,218 exports <span class="arrow">-&gt;</span> Engineer features <span class="arrow">-&gt;</span> Train 3 models <span class="arrow">-&gt;</span> Ship to iOS</p>
         <p class="entry-body">Scraped bulk sensor exports from a third-party sports launch-monitor
         portal, then trained neural nets that predict spin rate, spin axis, and club speed from the
@@ -34,7 +43,7 @@
       </article>
 
       <article class="entry" id="tournament-data-agent">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Tournament Data Agent</span></p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path"><a class="entry-link" href="/systems/tournament-data-agent/">Tournament Data Agent</a></span></p>
         <p class="pipeline">Discover pages <span class="arrow">-&gt;</span> AI extraction <span class="arrow">-&gt;</span> Read flyer images <span class="arrow">-&gt;</span> Merge &amp; dedupe</p>
         <p class="entry-body">An autonomous agent discovers charity sports-event pages across a
         tournament-management platform, decides for itself how far to navigate to reach rosters,
@@ -44,7 +53,7 @@
       </article>
 
       <article class="entry" id="professional-network-automator">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Professional Network Automator</span></p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path"><a class="entry-link" href="/systems/professional-network-automator/">Professional Network Automator</a></span></p>
         <p class="pipeline">Browse leads <span class="arrow">-&gt;</span> Human-paced engagement <span class="arrow">-&gt;</span> Email alerting</p>
         <p class="entry-body">Runs locally and on a cloud instance independently, working through a
         lead list on a professional network and engaging with the content worth engaging with —
@@ -54,7 +63,7 @@
       </article>
 
       <article class="entry" id="web-scraping-fleet">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Web Scraping Fleet</span></p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path"><a class="entry-link" href="/systems/web-scraping-fleet/">Web Scraping Fleet</a></span></p>
         <p class="pipeline">Browser extension <span class="arrow">-&gt;</span> Local server <span class="arrow">-&gt;</span> Deduplicated dataset</p>
         <p class="entry-body">Five independent scrapers, each a purpose-built Chrome extension
         paired with a local server: association-executive directories, a speaker marketplace, a
@@ -70,7 +79,7 @@
     <div class="listing">
 
       <article class="entry" id="deep-listening">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Deep Listening</span></p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path"><a class="entry-link" href="/systems/deep-listening/">Deep Listening</a></span></p>
         <p class="pipeline">Surveys &amp; uploads <span class="arrow">-&gt;</span> Multi-modal extraction <span class="arrow">-&gt;</span> Fine-tuned LLM <span class="arrow">-&gt;</span> Vector retrieval</p>
         <p class="entry-body">A multi-modal information-extraction platform. Hugging Face models
         handled object detection, tag generation, and image description on images; translation
@@ -81,7 +90,7 @@
       </article>
 
       <article class="entry" id="cipbot">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">CipBot</span></p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path"><a class="entry-link" href="/systems/cipbot/">CipBot</a></span></p>
         <p class="pipeline">WhatsApp <span class="arrow">-&gt;</span> Structured chat flow <span class="arrow">-&gt;</span> Client database <span class="arrow">-&gt;</span> Admin panel</p>
         <p class="entry-body">An intelligent chatbot connecting a pharmaceutical company's procurement team with its
         vendors, deployed on WhatsApp. A structured chat flow surfaced internal database records,
@@ -91,7 +100,7 @@
       </article>
 
       <article class="entry" id="trajectus-ivr">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Trajectus IVR</span></p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path"><a class="entry-link" href="/systems/trajectus-ivr/">Trajectus IVR</a></span></p>
         <p class="pipeline">Phone call <span class="arrow">-&gt;</span> Voice IVR <span class="arrow">-&gt;</span> Medical query handling</p>
         <p class="entry-body">An IVR-based chatbot handling medical query calls, built on Google
         DialogFlow. Delivered as outsourced work for Computer Instruments (CI).</p>
@@ -99,7 +108,7 @@
       </article>
 
       <article class="entry" id="coglide-cori-and-gx">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Coglide — Cori &amp; Gx</span></p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path"><a class="entry-link" href="/systems/coglide-cori-and-gx/">Coglide — Cori &amp; Gx</a></span></p>
         <p class="pipeline">Inbound email <span class="arrow">-&gt;</span> Contact extraction <span class="arrow">-&gt;</span> Extension sync <span class="arrow">-&gt;</span> Marketing database</p>
         <p class="entry-body">"Cori", an email service extracting contact details out of inbound
         mail, plus "Gx", a browser extension syncing data from diverse marketing websites into
@@ -109,7 +118,7 @@
       </article>
 
       <article class="entry" id="emotyx">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Emotyx</span></p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path"><a class="entry-link" href="/systems/emotyx/">Emotyx</a></span></p>
         <p class="pipeline">Live CCTV <span class="arrow">-&gt;</span> Backend network <span class="arrow">-&gt;</span> Customer insights</p>
         <p class="entry-body">Backend network structure for software extracting intelligent,
         actionable insights from real-time CCTV footage for customer understanding — built and
@@ -118,7 +127,7 @@
       </article>
 
       <article class="entry" id="attendance-management-system">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Attendance Management System</span></p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path"><a class="entry-link" href="/systems/attendance-management-system/">Attendance Management System</a></span></p>
         <p class="pipeline">Student records <span class="arrow">-&gt;</span> Python backend <span class="arrow">-&gt;</span> Image processing</p>
         <p class="entry-body">Owned the entire back-end code structure for managing student and
         attendance records, and supported the AI development around its image processing.</p>
@@ -126,7 +135,7 @@
       </article>
 
       <article class="entry" id="other-projects">
-        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path">Other Projects</span></p>
+        <p class="entry-head"><span class="tag tag-ok">[ok]</span> <span class="path"><a class="entry-link" href="/systems/other-projects/">Other Projects</a></span></p>
         <p class="entry-body">A GPT-3.5 minutes-to-meeting generator that transcribed calls and
         wrote up the minutes. Shell tooling to verify API endpoint data and harden it against SQL
         injection, shipped as a Postman collection. A Selenium scraper collecting marketing data

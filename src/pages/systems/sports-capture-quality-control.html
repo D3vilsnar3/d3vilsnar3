@@ -1,0 +1,28 @@
+<p class="entry-body">Two production AWS Lambdas sit between a sports-technology product's
+capture devices and anyone who has to trust the data those devices produce. Every
+upload runs through mandatory parameter checks first — frame rate, focal length,
+shutter, exposure delta, ISO — against the product's own error-classification guide,
+cheap checks that catch a large share of bad captures before any model runs.</p>
+
+<p class="entry-body">Captures that pass go on to visual verification: CNN/ONNX models
+confirm the actual moment of impact, with routing by capture mode — indoor, outdoor,
+range, net — since each mode's footage looks different enough to need its own model.
+Swapping in a model trained specifically for one mode instead of a general-purpose one
+lifted recall by roughly ten points on that mode. Where no CNN has been trained for a
+mode yet, a vision-capable Bedrock model (Nemotron) stands in as a fallback rather than
+leaving that mode unverified. Every check, pass or fail, renders an annotated debug
+video so a human reviewer never has to take the pipeline's word for it.</p>
+
+<p class="entry-body">The ground truth those models are trained and evaluated against
+comes from a team of annotators using desktop tooling built alongside the pipeline —
+per-person attribution, a correction/verification workflow, and live physics feedback so
+an annotator can see immediately whether a correction moves the calculated ball flight
+closer to a reference reading.</p>
+
+<ul class="entry-points">
+  <li>Parameter checks first, cheap and deterministic, before any model runs</li>
+  <li>Per-mode CNN/ONNX routing — a dedicated model beats one general-purpose model</li>
+  <li>Bedrock vision fallback for modes with no trained CNN yet</li>
+  <li>Rendered annotated video on every check, for human review</li>
+  <li>Purpose-built annotation tooling feeding the ground truth these models train on</li>
+</ul>
