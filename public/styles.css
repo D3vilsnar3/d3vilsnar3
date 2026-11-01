@@ -1021,11 +1021,14 @@ html[data-snap] :is(#hero, #capabilities, #systems, #experience, #about, #blog, 
 }
 
 /* Every row in the process table links to that system's write-up. The anchor
-   sits in the name cell so it is a real, keyboard-reachable link, then a
-   stretched overlay makes the whole row the hit area. */
-.proc tbody tr { position: relative; cursor: pointer; }
+   sits in the name cell so it is a real, keyboard-reachable link; script.js
+   makes the rest of the row clickable too. (Previously a `position:relative`
+   `<tr>` plus a stretched `::after` did this in pure CSS, but WebKit doesn't
+   treat a table-row as a valid containing block for that overlay, so on
+   iPadOS/iOS Safari it escaped the row entirely and the last row's overlay
+   ended up covering the whole table - every tap landed on "Other Projects".) */
+.proc tbody tr { cursor: pointer; }
 .proc-link { color: inherit; text-decoration: none; }
-.proc-link::after { content: ""; position: absolute; inset: 0; }
 .proc tbody tr:hover .proc-link,
 .proc-link:focus-visible { color: var(--accent); }
 .proc tbody tr:hover .proc-metric { color: var(--accent); }

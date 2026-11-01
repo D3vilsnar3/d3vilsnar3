@@ -379,6 +379,23 @@ if (statEls.length) {
 })();
 
 
+/* ---------- process table: whole row is the hit area ----------
+   Each row's real link lives in the name cell; this just forwards a tap/click
+   anywhere else in the row to it, so the hit area still covers the full row
+   without relying on a stretched CSS overlay (see styles.css for why that
+   broke on iPad Safari). */
+(function procRowLinks() {
+  document.querySelectorAll(".proc tbody tr").forEach((tr) => {
+    const link = tr.querySelector(".proc-link");
+    if (!link) return;
+    tr.addEventListener("click", (e) => {
+      if (e.target.closest("a")) return;
+      window.location.href = link.href;
+    });
+  });
+})();
+
+
 /* ---------- clicking the name replays the page-load intro ----------
    The intro is gated on a sessionStorage flag so it only plays once a visit.
    Clearing the flag and reloading is what actually replays it: from an inner
