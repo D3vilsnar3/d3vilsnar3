@@ -174,16 +174,15 @@
 
   <div class="col-main">
     <h1 class="name">Govind<br>Pradeep</h1>
-    <p class="title">Senior AI / ML Engineer — AWS &amp; Agentic AI</p>
+    <p class="title">Senior AI Engineer — AWS &amp; Agentic AI</p>
     <div class="name-rule"></div>
 
     <h2>Profile</h2>
-    <p class="summary">Engineer with ~7 years building AI applications and automation end to end on AWS —
-    Bedrock-based agents, retrieval-augmented generation (RAG) over vector databases, production
-    computer-vision pipelines, and the serverless cloud infrastructure that runs them unsupervised.
-    I own the full AI lifecycle from use-case discovery through production deployment and monitoring:
-    designing secure APIs and agentic workflows, evaluating and hardening them against real-world
-    failure, and leading the people and architecture decisions behind them.</p>
+    <p class="summary">Engineer with ~7 years building AI applications on AWS end to end —
+    Bedrock-based agents, RAG over vector databases, production computer-vision pipelines, and
+    the serverless infrastructure that runs them unsupervised. I own the AI lifecycle from
+    use-case discovery through deployment and monitoring, designing secure APIs and agentic
+    workflows and leading the architecture decisions behind them.</p>
 
     <h2>Experience</h2>
 
@@ -191,42 +190,34 @@
       <p class="role-title">Senior Automation &amp; AI Engineer, <span class="role-org">AsimovX</span></p>
       <p class="role-meta">Feb 2024 — Present</p>
       <ul>
-        <li><span class="lead">Built a Playwright + Amazon Bedrock (Nova Pro) agent</span> that
-        autonomously navigated and searched the web, reasoned over pages, and extracted structured
-        data (including image OCR on flyers) — delivering 178 fully verified target records
-        end to end with no human-in-the-loop on the extraction step.</li>
+        <li><span class="lead">Built a Playwright + Amazon Bedrock (Nova Pro) agent</span> —
+        autonomous web navigation, search and extraction (including image OCR) delivering 178
+        fully verified records end to end, no human-in-the-loop.</li>
 
         <li><span class="lead">Built a Bedrock-powered negotiation agent</span> — a browser
-        extension plus Flask service that prices listings from photos via Bedrock's Converse API
-        and negotiates unattended, with rate-limit/anti-abuse guardrails and a credential-isolation
-        design (AWS SDK default chain, no keys ever reaching the client) that closed a real
-        security exposure.</li>
+        extension plus Flask service pricing listings from photos via Bedrock's Converse API and
+        negotiating unattended, with guardrails and a credential-isolation design that closed a
+        real security exposure.</li>
 
         <li><span class="lead">Shipped Thali</span>, a SwiftUI iOS meal planner with a Bedrock
-        (Claude)-powered AI coaching tab, on a serverless AWS backend — Cognito, API Gateway,
-        Lambda, DynamoDB — now in App Store review. <span class="lead">Architected the auth and
-        OAuth layer</span>: migrated sign-in to Cognito email/password plus Apple/Google, and built
-        a backend-for-frontend OAuth relay (PKCE S256, RFC 8252-compliant) that keeps every
-        third-party token off the device entirely — then extended the same backend and Cognito
-        client to a from-scratch Android (Kotlin/Compose) port.</li>
+        (Claude) AI coaching tab on a serverless AWS backend (Cognito, API Gateway, Lambda,
+        DynamoDB) — now in App Store review.</li>
 
-        <li><span class="lead">Own the production AWS data pipeline</span> behind a sports-technology
-        product's shot data — nine Lambda functions spanning ingest, quality control, alignment,
-        scoring, reporting and alerting.</li>
+        <li><span class="lead">Architected the auth/OAuth layer</span> — Cognito email/password
+        plus Apple/Google, with a PKCE backend-for-frontend relay keeping tokens off-device — then
+        extended it to a from-scratch Android port.</li>
 
-        <li><span class="lead">Built the product's automated shot quality-control system:</span> two
-        production Lambdas validating every capture a device uploads — parameter checks, then
-        CNN/ONNX visual verification with a Bedrock vision-model fallback for edge cases, plus an
-        annotated video for review. <strong>86% recall</strong> on range-mode ball-impact detection.</li>
+        <li><span class="lead">Own the production AWS data pipeline</span> behind a sports-tech
+        product's shot data — nine Lambdas spanning ingest, quality control, alignment, scoring,
+        reporting and alerting, including an automated shot quality-control system (CNN/ONNX plus
+        a Bedrock vision-model fallback, <strong>86% recall</strong>).</li>
 
         <li><span class="lead">Trained and shipped three neural networks</span> predicting spin rate,
-        spin axis and club speed on a dataset of <strong>~2.4M rows</strong>, cutting club-speed
-        error from <strong>20.5 km/h to 1.99 km/h</strong> and shipping as CoreML for on-device
-        iOS inference.</li>
+        spin axis and club speed on <strong>~2.4M rows</strong>, cutting club-speed error from
+        <strong>20.5 km/h to 1.99 km/h</strong>, shipped as CoreML for on-device iOS inference.</li>
 
-        <li><span class="lead">Lead a team of annotators</span> producing ground-truth data, and
-        built the PyQt5 desktop tooling they use daily — per-user attribution, a correction
-        workflow, and live physics feedback.</li>
+        <li><span class="lead">Lead a team of annotators</span> producing ground-truth data; built
+        the PyQt5 desktop tooling they use daily.</li>
       </ul>
     </div>
   </div>
@@ -234,7 +225,7 @@
   <aside class="side">
     <section>
       <h3>Details</h3>
-      <p><span class="lbl">Location</span>Bangalore, India — open to remote</p>
+      <p><span class="lbl">Location</span>Bangalore, India</p>
       <p><span class="lbl">Phone</span>+91 90619 05172</p>
       <p><span class="lbl">Email</span><a href="mailto:govindpradeep1998@gmail.com">govindpradeep1998@gmail.com</a></p>
     </section>
