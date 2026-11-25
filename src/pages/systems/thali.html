@@ -5,14 +5,18 @@ to eat next, how a day is trending, whether a goal is realistic.</p>
 
 <p class="entry-body">The part that turns tracking into action: a full partnership with
 Swiggy and Instamart lets the coaching flow go straight to ordering — food or groceries
-— from inside the same conversation that just told you what to eat. Currently in beta
-on TestFlight, pending Apple's Builders Club review before a public release. Full
-write-up and screens live on its own site —
+— from inside the same conversation that just told you what to eat. A serverless AWS
+backend — Cognito, API Gateway, Lambda, DynamoDB, with Bedrock (Claude) behind the
+coaching and recipe extraction — holds every credential and runs the AI, so the client
+app is a thin shell on top of it. A Kotlin/Jetpack Compose Android port now runs on
+that same backend. 1.0 is submitted for App Store review, with Swiggy production
+sign-in already live. Full write-up and screens live on its own site —
 <a href="https://thali.asimovx.com" target="_blank" rel="noopener noreferrer">thali.asimovx.com</a>.</p>
 
 <ul class="entry-points">
   <li>Natural-language meal logging — no manual macro entry</li>
   <li>An "Ask" tab that coaches against the running log, not a single meal</li>
   <li>A full Swiggy and Instamart partnership, ordering straight from the coaching conversation</li>
-  <li>Built solo, backend and iOS client both</li>
+  <li>iOS and Android clients on one serverless AWS backend — Cognito, API Gateway, Lambda, DynamoDB, Bedrock</li>
+  <li>Built solo — backend, iOS and Android clients all three</li>
 </ul>

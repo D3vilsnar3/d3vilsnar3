@@ -62,7 +62,7 @@ const HOME_ONLY = [
 const PROJECTS = [
   { slug: "thali", title: "Thali", status: "wip", icon: "plate",
     pipeline: "Natural-language meal log <span class=\"arrow\">-&gt;</span> AI coaching <span class=\"arrow\">-&gt;</span> Order through Swiggy &amp; Instamart",
-    metric: "in beta on TestFlight" },
+    metric: "iOS &amp; Android, 1.0 submitted for App Store review" },
   { slug: "marketplace-negotiation-agent", title: "Marketplace Negotiation Agent", status: "run", icon: "tag",
     pipeline: "Capture listing <span class=\"arrow\">-&gt;</span> Vision model prices it <span class=\"arrow\">-&gt;</span> Negotiates autonomously",
     metric: "runs continuously on a cloud instance, negotiating in parallel" },

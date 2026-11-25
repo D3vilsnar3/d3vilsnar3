@@ -67,9 +67,11 @@
     <h1 class="page-title">Marketplace Negotiation Agent</h1>
 <p class="entry-body">A browser extension plus a local server drives an operator's own
 authenticated session on a large consumer marketplace end to end: it captures a listing,
-has a vision model assess the item's condition from photos, prices it accordingly, then
-opens negotiations with sellers and carries the conversation through to a close —
-unattended.</p>
+has a vision model (Bedrock, Claude) assess the item's condition from photos, prices it
+accordingly, then opens negotiations with sellers and carries the conversation through to
+a close — unattended. The server resolves AWS credentials through the SDK's own default
+chain rather than embedding any key in the extension, so nothing capable of calling
+Bedrock ever reaches the browser or the client machine.</p>
 
 <p class="entry-body">The hard part was never the happy path. Rate-limit detection and
 messaging guards exist because the marketplace started throttling and flagging the
@@ -79,7 +81,8 @@ account. The agent now recognizes those signals and backs off or pauses itself b
 they escalate.</p>
 
 <ul class="entry-points">
-  <li>Vision-model condition assessment and pricing from listing photos</li>
+  <li>Vision-model condition assessment and pricing from listing photos (Bedrock, Claude)</li>
+  <li>AWS credentials resolved server-side via the SDK default chain — never shipped to the extension</li>
   <li>Autonomous negotiation over the marketplace's own messaging, not an API</li>
   <li>Rate-limit and block detection built reactively from real incidents</li>
   <li>Runs continuously on a cloud instance, negotiating multiple listings in parallel</li>
