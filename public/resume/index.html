@@ -174,15 +174,16 @@
 
   <div class="col-main">
     <h1 class="name">Govind<br>Pradeep</h1>
-    <p class="title">Senior Automation &amp; AI Systems Engineer</p>
+    <p class="title">Senior AI / ML Engineer — AWS &amp; Agentic AI</p>
     <div class="name-rule"></div>
 
     <h2>Profile</h2>
-    <p class="summary">Engineer with ~7 years building automation and applied-AI systems end to end —
-    autonomous browser agents, production computer-vision pipelines, and the cloud infrastructure
-    that runs them unsupervised. I take systems from first prototype through production operation:
-    training and shipping models, hardening automation against real-world failure, and leading the
-    people who produce the ground-truth data behind it.</p>
+    <p class="summary">Engineer with ~7 years building AI applications and automation end to end on AWS —
+    Bedrock-based agents, retrieval-augmented generation (RAG) over vector databases, production
+    computer-vision pipelines, and the serverless cloud infrastructure that runs them unsupervised.
+    I own the full AI lifecycle from use-case discovery through production deployment and monitoring:
+    designing secure APIs and agentic workflows, evaluating and hardening them against real-world
+    failure, and leading the people and architecture decisions behind them.</p>
 
     <h2>Experience</h2>
 
@@ -190,35 +191,42 @@
       <p class="role-title">Senior Automation &amp; AI Engineer, <span class="role-org">AsimovX</span></p>
       <p class="role-meta">Feb 2024 — Present</p>
       <ul>
-        <li><span class="lead">Shipped Thali</span>, an iOS and Android meal planner with an AI
-        coaching tab and a Swiggy/Instamart ordering partnership, on a serverless AWS backend
-        (Cognito, API Gateway, Lambda, DynamoDB, Bedrock) — 1.0 submitted for App Store review.</li>
+        <li><span class="lead">Built a Playwright + Amazon Bedrock (Nova Pro) agent</span> that
+        autonomously navigated and searched the web, reasoned over pages, and extracted structured
+        data (including image OCR on flyers) — delivering 178 fully verified target records
+        end to end with no human-in-the-loop on the extraction step.</li>
 
-        <li><span class="lead">Own the production AWS data pipeline behind a sports-technology product's shot data</span>
-        — nine Lambda functions spanning ingest, quality control, alignment, scoring, reporting
-        and alerting.</li>
+        <li><span class="lead">Built a Bedrock-powered negotiation agent</span> — a browser
+        extension plus Flask service that prices listings from photos via Bedrock's Converse API
+        and negotiates unattended, with rate-limit/anti-abuse guardrails and a credential-isolation
+        design (AWS SDK default chain, no keys ever reaching the client) that closed a real
+        security exposure.</li>
+
+        <li><span class="lead">Shipped Thali</span>, a SwiftUI iOS meal planner with a Bedrock
+        (Claude)-powered AI coaching tab, on a serverless AWS backend — Cognito, API Gateway,
+        Lambda, DynamoDB — now in App Store review. <span class="lead">Architected the auth and
+        OAuth layer</span>: migrated sign-in to Cognito email/password plus Apple/Google, and built
+        a backend-for-frontend OAuth relay (PKCE S256, RFC 8252-compliant) that keeps every
+        third-party token off the device entirely — then extended the same backend and Cognito
+        client to a from-scratch Android (Kotlin/Compose) port.</li>
+
+        <li><span class="lead">Own the production AWS data pipeline</span> behind a sports-technology
+        product's shot data — nine Lambda functions spanning ingest, quality control, alignment,
+        scoring, reporting and alerting.</li>
 
         <li><span class="lead">Built the product's automated shot quality-control system:</span> two
         production Lambdas validating every capture a device uploads — parameter checks, then
-        CNN/ONNX visual verification with an AI fallback, plus an annotated video for review.
-        <strong>86% recall</strong> on range-mode ball-impact detection.</li>
-
-        <li><span class="lead">Lead a team of annotators</span> producing ground-truth data, and
-        built the PyQt5 desktop tooling they use daily — per-user attribution, a correction
-        workflow, and live physics feedback.</li>
+        CNN/ONNX visual verification with a Bedrock vision-model fallback for edge cases, plus an
+        annotated video for review. <strong>86% recall</strong> on range-mode ball-impact detection.</li>
 
         <li><span class="lead">Trained and shipped three neural networks</span> predicting spin rate,
         spin axis and club speed on a dataset of <strong>~2.4M rows</strong>, cutting club-speed
         error from <strong>20.5 km/h to 1.99 km/h</strong> and shipping as CoreML for on-device
         iOS inference.</li>
 
-        <li><span class="lead">Built an autonomous negotiation agent</span> — a browser extension
-        plus Flask service driving an authenticated session, pricing listings from photos and
-        negotiating unattended, with rate-limit and spam guards built from real incidents.</li>
-
-        <li><span class="lead">Built a fleet of five production scrapers</span> collecting
-        <strong>22,000+ profiles and posts</strong>, each with its own deduplication and
-        resume-after-failure logic.</li>
+        <li><span class="lead">Lead a team of annotators</span> producing ground-truth data, and
+        built the PyQt5 desktop tooling they use daily — per-user attribution, a correction
+        workflow, and live physics feedback.</li>
       </ul>
     </div>
   </div>
@@ -241,39 +249,39 @@
     <section>
       <h3>Core Skills</h3>
       <div class="skill">
+        <div class="skill-name">AWS Bedrock &amp; Agentic AI</div>
+        <div class="bar"><i style="width:92%"></i></div>
+      </div>
+      <div class="skill">
         <div class="skill-name">Python</div>
         <div class="bar"><i style="width:95%"></i></div>
       </div>
       <div class="skill">
-        <div class="skill-name">Browser Automation</div>
-        <div class="bar"><i style="width:95%"></i></div>
+        <div class="skill-name">RAG &amp; Vector Search</div>
+        <div class="bar"><i style="width:85%"></i></div>
       </div>
       <div class="skill">
-        <div class="skill-name">LLM &amp; Agent Systems</div>
+        <div class="skill-name">AWS Serverless / Cloud-Native</div>
         <div class="bar"><i style="width:90%"></i></div>
       </div>
       <div class="skill">
-        <div class="skill-name">AWS / Cloud</div>
+        <div class="skill-name">APIs &amp; Backend</div>
         <div class="bar"><i style="width:88%"></i></div>
       </div>
       <div class="skill">
         <div class="skill-name">Computer Vision &amp; ML</div>
         <div class="bar"><i style="width:85%"></i></div>
       </div>
-      <div class="skill">
-        <div class="skill-name">APIs &amp; Backend</div>
-        <div class="bar"><i style="width:88%"></i></div>
-      </div>
     </section>
 
     <section>
       <h3>Toolkit</h3>
       <div class="chips">
-        <span>AWS Bedrock</span><span>Playwright</span><span>Selenium</span>
-        <span>Chrome MV3</span><span>Lambda</span><span>DynamoDB</span>
+        <span>AWS Bedrock</span><span>Lambda</span><span>API Gateway</span>
+        <span>Cognito</span><span>DynamoDB</span><span>Vector DB / RAG</span>
+        <span>Playwright</span><span>Selenium</span><span>Chrome MV3</span>
         <span>TensorFlow</span><span>ONNX</span><span>CoreML</span>
-        <span>Hugging Face</span><span>Rasa</span><span>DialogFlow</span>
-        <span>Flask</span><span>Express</span><span>Docker</span>
+        <span>Hugging Face</span><span>Flask</span><span>Docker</span>
         <span>SwiftUI</span><span>JavaScript</span><span>SQL</span>
       </div>
     </section>
@@ -300,12 +308,13 @@
         platform: Hugging Face models for object detection, tagging and image description;
         translation and transcription for audio; combined handling for video; summarization and
         keyword extraction for text. Integrated a fine-tuned LLaMA with a vector database for
-        retrieval-backed extraction and chat.</li>
+        <strong>retrieval-augmented generation (RAG)</strong>, powering retrieval-backed extraction
+        and chat.</li>
 
         <li><span class="lead">CipBot</span> — an intelligent WhatsApp chatbot built on Rasa
-        connecting a pharmaceutical company's procurement team with its vendors, surfacing internal database records
-        through a structured chat flow with role-based options per user type, plus an admin panel
-        for reviewing interactions and data traffic.</li>
+        connecting a pharmaceutical company's procurement team with its vendors, surfacing internal
+        database records through a structured chat flow with role-based options per user type, plus
+        an admin panel for reviewing interactions and data traffic.</li>
 
         <li><span class="lead">Trajectus (Computer Instruments)</span> — an IVR-based chatbot on
         Google DialogFlow handling medical query calls, delivered as outsourced client work.</li>
@@ -342,6 +351,10 @@
     </div>
 
     <h2>Certification &amp; Writing</h2>
+    <div class="stack-item">
+      <p class="stack-title">Machine Learning Specialization — DeepLearning.AI (in progress)</p>
+      <p class="stack-meta">Coursera</p>
+    </div>
     <div class="stack-item">
       <p class="stack-title">Python: Programming Efficiently</p>
       <p class="stack-meta">LinkedIn Learning</p>
